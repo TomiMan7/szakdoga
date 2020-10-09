@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="salesmanpage.salesmanUpdateController">
+    <children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="430.0" prefWidth="748.0" VBox.vgrow="ALWAYS">
+            <children>
+                <ComboBox fx:id="vendor" layoutX="10.0" layoutY="10.0" prefWidth="100.0" promptText="Vendor" />
+                <Button fx:id="search" layoutX="684.0" layoutY="55.0" mnemonicParsing="false" text="Search" />
+                <Label fx:id="vendorLabel" layoutX="14.0" layoutY="68.0" prefHeight="18.0" prefWidth="102.0" text="Vendor:" />
+                <Label fx:id="nameLabel" layoutX="14.0" layoutY="108.0" prefHeight="18.0" prefWidth="102.0" text="Name:" />
+                <Label fx:id="specidLabel" layoutX="14.0" layoutY="148.0" prefHeight="18.0" prefWidth="102.0" text="Spec ID:" />
+                <Label fx:id="amountLabel" layoutX="14.0" layoutY="188.0" prefHeight="18.0" prefWidth="102.0" text="Amount:" />
+                <Label fx:id="availabilityLabel" layoutX="14.0" layoutY="228.0" prefHeight="18.0" prefWidth="102.0" text="Availability:" />
+                <Label fx:id="vendorOut" layoutX="140.0" layoutY="68.0" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="nameOut" layoutX="140.0" layoutY="108.0" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="specidOut" layoutX="140.0" layoutY="148.0" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="amountOut" layoutX="140.0" layoutY="188.0" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="availabilityOut" layoutX="140.0" layoutY="231.0" prefHeight="18.0" prefWidth="102.0" />
+                <TextField fx:id="vendorIn" layoutX="250.0" layoutY="68.0" prefWidth="150.0" promptText="updated Info" />
+                <TextField fx:id="nameIn" layoutX="250.0" layoutY="108.0" prefWidth="150.0" promptText="updated Info" />
+                <TextField fx:id="specidIn" layoutX="250.0" layoutY="148.0" prefWidth="150.0" promptText="updated Info" />
+                <TextField fx:id="amountIn" layoutX="250.0" layoutY="188.0" prefWidth="150.0" promptText="updated Info" />
+                <TextField fx:id="availabilityIn" layoutX="250.0" layoutY="228.0" prefWidth="150.0" promptText="updated Info" />
+                <Button fx:id="update" layoutX="656.0" layoutY="261.0" mnemonicParsing="false" text="Update info" />
+                <ComboBox fx:id="name" layoutX="120.0" layoutY="10.0" prefWidth="100.0" promptText="Name" />
+                <ComboBox fx:id="specid" layoutX="230.0" layoutY="10.0" prefWidth="100.0" promptText="Spec. ID." />
+                <ComboBox fx:id="amount" layoutX="340.0" layoutY="10.0" prefWidth="100.0" promptText="Amount" />
+                <ComboBox fx:id="availability" layoutX="450.0" layoutY="10.0" prefWidth="100.0" promptText="Availability" />
+                <Button fx:id="searchdata" layoutX="617.0" layoutY="10.0" mnemonicParsing="false" text="Update search data" />
+                <TextArea fx:id="description" layoutX="12.0" layoutY="551.0" prefHeight="138.0" prefWidth="725.0" promptText="Description" />
+                <ListView fx:id="list" layoutX="440.0" layoutY="57.0" prefHeight="480.0" prefWidth="200.0" />
+                <Label fx:id="cpuLabel" layoutX="14.0" layoutY="294.0" prefHeight="18.0" prefWidth="102.0" text="CPU:" />
+                <Label fx:id="gpuLabel" layoutX="14.0" layoutY="334.0" prefHeight="18.0" prefWidth="102.0" text="GPU:" />
+                <Label fx:id="ramLabel" layoutX="14.0" layoutY="374.0" prefHeight="18.0" prefWidth="102.0" text="RAM:" />
+                <Label fx:id="storageLabel" layoutX="14.0" layoutY="414.0" prefHeight="18.0" prefWidth="102.0" text="Storage:" />
+                <Label fx:id="screenLabel" layoutX="14.0" layoutY="454.0" prefHeight="18.0" prefWidth="102.0" text="Screen:" />
+                <Label fx:id="cpuOut" layoutX="140.0" layoutY="294.0" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="gpuOut" layoutX="140.0" layoutY="334.0" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="ramOut" layoutX="140.0" layoutY="374.0" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="storageOut" layoutX="140.0" layoutY="414.0" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="screenOut" layoutX="140.0" layoutY="454.0" prefHeight="18.0" prefWidth="102.0" />
+                <TextField fx:id="cpuIn" layoutX="250.0" layoutY="294.0" prefWidth="150.0" promptText="updated Info" />
+                <TextField fx:id="gpuIn" layoutX="250.0" layoutY="334.0" prefWidth="150.0" promptText="updated Info" />
+                <TextField fx:id="ramIn" layoutX="250.0" layoutY="374.0" prefWidth="150.0" promptText="updated Info" />
+                <TextField fx:id="storageIn" layoutX="250.0" layoutY="414.0" prefWidth="150.0" promptText="updated Info" />
+                <TextField fx:id="screenIn" layoutX="250.0" layoutY="454.0" prefWidth="150.0" promptText="updated Info" />
+                <Label fx:id="priceLabel" layoutX="14.0" layoutY="494.0" prefHeight="18.0" prefWidth="102.0" text="Price:" />
+                <Label fx:id="priceOut" layoutX="140.0" layoutY="494.0" prefHeight="18.0" prefWidth="102.0" />
+                <TextField fx:id="priceIn" layoutX="250.0" layoutY="494.0" prefWidth="150.0" promptText="updated Info" />
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

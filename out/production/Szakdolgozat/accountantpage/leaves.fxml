@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="250.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accountantpage.leavesController">
+    <children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <children>
+                <DatePicker fx:id="startdate" layoutX="10.0" layoutY="10.0" promptText="Starting date" />
+                <DatePicker fx:id="enddate" layoutX="10.0" layoutY="80.0" promptText="End date" />
+                <CheckBox fx:id="sickpay" layoutX="10.0" layoutY="150.0" mnemonicParsing="false" text="Sick pay?" />
+                <ScrollPane layoutX="210.0" layoutY="10.0" prefHeight="169.0" prefWidth="202.0">
+                    <content>
+                        <ListView fx:id="names" prefHeight="500.0" prefWidth="200.0" />
+                    </content>
+                </ScrollPane>
+                <Button fx:id="confirm" layoutX="10.0" layoutY="190.0" mnemonicParsing="false" text="Confirm" />
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

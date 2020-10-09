@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accountantpage.workhoursController">
+    <children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <children>
+                <TextField floatText="Pick or enter a name" layoutX="10.0" layoutY="40.0" />
+                <TextField floatText="Work hours" layoutX="10.0" layoutY="80.0" />
+                <Button fx:id="button" layoutX="10.0" layoutY="220.0" mnemonicParsing="false" text="Confirm" />
+                <DatePicker fx:id="date" layoutX="10.0" layoutY="150.0" promptText="Pick date" />
+                <ScrollPane layoutX="214.0" layoutY="40.0" prefHeight="222.0" prefWidth="252.0">
+                    <content>
+                        <ListView prefHeight="453.0" prefWidth="250.0" />
+                    </content>
+                </ScrollPane>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

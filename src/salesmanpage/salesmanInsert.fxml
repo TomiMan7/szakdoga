@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="500.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="salesmanpage.salesmanInsertController">
+    <children>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="500.0" prefWidth="991.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Button fx:id="insertButton" layoutX="734.0" layoutY="466.0" mnemonicParsing="false" text="Upload to database" />
+                <TextField fx:id="vendor" floatText="Laptop Vendor" layoutX="10.0" layoutY="20.0" prefWidth="300.0" />
+                <TextField fx:id="name" floatText="Laptop Name" layoutX="10.0" layoutY="60.0" prefWidth="300.0" />
+                <TextField fx:id="amount" floatText="Available amount" layoutX="10.0" layoutY="100.0" prefWidth="300.0" />
+                <TextField fx:id="availability" floatText="Availability" layoutX="10.0" layoutY="140.0" prefWidth="300.0" />
+                <TextArea fx:id="description" layoutX="14.0" layoutY="266.0" prefHeight="200.0" prefWidth="840.0" promptText="Laptop description" />
+                <TextField fx:id="cpu" floatText="CPU" layoutX="555.0" layoutY="20.0" prefWidth="300.0" />
+                <TextField fx:id="gpu" floatText="GPU" layoutX="555.0" layoutY="60.0" prefWidth="300.0" />
+                <TextField fx:id="ram" floatText="RAM" layoutX="555.0" layoutY="100.0" prefWidth="300.0" />
+                <TextField fx:id="storage" floatText="Storage" layoutX="555.0" layoutY="140.0" prefWidth="300.0" />
+                <TextField fx:id="screen" floatText="Screen" layoutX="555.0" layoutY="180.0" prefWidth="300.0" />
+                <TextField fx:id="price" floatText="Price" layoutX="555.0" layoutY="220.0" prefWidth="300.0" />
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>

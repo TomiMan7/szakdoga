@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="550.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="salesmanpage.salesmanpageController">
+    <children>
+        <MenuBar VBox.vgrow="NEVER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Database actions">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#addNewLaptopScreen" text="Add new laptop..." />
+                        <MenuItem mnemonicParsing="false" onAction="#dbUpdateScreen" text="Update/Remove laptop" />
+                  <MenuItem mnemonicParsing="false" onAction="#updateCustomerScreen" text="Update Customer Info/Delete" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <SplitPane dividerPositions="0.23829607760438634, 0.7254323070434416" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <items>
+                <AnchorPane>
+                    <children>
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Search for laptops" textAlignment="CENTER" wrapText="false">
+                            <font>
+                                <Font size="18.0" fx:id="x1" />
+                            </font>
+                            <textFill>
+                                <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
+                            </textFill>
+                        </Label>
+                        <ComboBox fx:id="cpu" layoutX="10.0" layoutY="60.0" prefWidth="200.0" promptText="CPU" />
+                        <ComboBox fx:id="gpu" layoutX="10.0" layoutY="120.0" prefWidth="200.0" promptText="GPU" />
+                        <ComboBox fx:id="ram" layoutX="10.0" layoutY="180.0" prefWidth="200.0" promptText="RAM" />
+                        <ComboBox fx:id="storage" layoutX="10.0" layoutY="240.0" prefWidth="200.0" promptText="Storge" />
+                        <ComboBox fx:id="screen" layoutX="10.0" layoutY="300.0" prefWidth="200.0" promptText="Screen" />
+                        <ComboBox fx:id="vendor" layoutX="10.0" layoutY="360.0" prefWidth="200.0" promptText="Vendor" />
+                        <ComboBox fx:id="name" layoutX="10.0" layoutY="420.0" prefWidth="200.0" promptText="Name" />
+                        <Button fx:id="search" layoutX="150.0" layoutY="480.0" mnemonicParsing="false" text="Search" />
+                        <Button fx:id="buy" layoutX="10.0" layoutY="480.0" mnemonicParsing="false" onAction="#addNewCustomerScreen" text="Buy...." />
+                    </children>
+                </AnchorPane>
+                <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
+                    <content>
+                        <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="800.0" prefWidth="430.0">
+                            <children>
+                                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Search results" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                                <ListView fx:id="list" layoutX="10.0" layoutY="50.0" prefHeight="700.0" prefWidth="410.0" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </ScrollPane>
+                <ScrollPane layoutX="10.0" layoutY="10.0" prefHeight="-1.0" prefWidth="-1.0">
+                    <content>
+                        <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="800.0" prefWidth="200.0">
+                            <children>
+                                <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Search results" textAlignment="CENTER" wrapText="false">
+                                    <font>
+                                        <Font size="18.0" fx:id="x11" />
+                                    </font>
+                                    <textFill>
+                                        <Color red="0.624" green="0.624" blue="0.624" fx:id="x21" />
+                                    </textFill>
+                                </Label>
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="80.0" prefWidth="200.0" text="Vendor" textAlignment="CENTER" wrapText="true" />
+                                <Label fx:id="vendorLabel" layoutX="10.0" layoutY="110.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="170.0" prefWidth="200.0" text="Name" textAlignment="CENTER" />
+                                <Label fx:id="nameLabel" layoutX="10.0" layoutY="200.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="260.0" prefWidth="200.0" text="CPU" textAlignment="CENTER" />
+                                <Label fx:id="cpuLabel" layoutX="10.0" layoutY="290.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="350.0" prefWidth="200.0" text="GPU" textAlignment="CENTER" />
+                                <Label fx:id="gpuLabel" layoutX="10.0" layoutY="380.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="440.0" prefWidth="200.0" text="RAM" textAlignment="CENTER" />
+                                <Label fx:id="ramLabel" layoutX="10.0" layoutY="470.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="530.0" prefWidth="200.0" text="Storage" textAlignment="CENTER" />
+                                <Label fx:id="storageLabel" layoutX="10.0" layoutY="560.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="620.0" prefWidth="200.0" text="Screen" textAlignment="CENTER" />
+                                <Label fx:id="screenLabel" layoutX="10.0" layoutY="650.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="710.0" prefWidth="200.0" text="Available amount" textAlignment="CENTER" />
+                                <Label fx:id="amountLabel" layoutX="10.0" layoutY="740.0" prefWidth="200.0" textAlignment="CENTER" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </ScrollPane>
+            </items>
+        </SplitPane>
+    </children>
+</VBox>
