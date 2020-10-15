@@ -1,6 +1,7 @@
 package Database;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Employees
 {
@@ -303,8 +304,11 @@ public class Employees
     }
 
     //table permissions
-    public static void getPermissionsData(String where, String equals)
+    public static ArrayList getPermissionsData(String selectWhat, String where, String equals)
     {
+
+        ArrayList result = new ArrayList();
+
         try
         {
             PreparedStatement st = conn.prepareStatement("select * from permissions where "+ where +" = ?");
@@ -312,9 +316,18 @@ public class Employees
             rs = st.executeQuery();
             while(rs.next())
             {
-                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getInt(3)+
-                        " "+rs.getInt(4)+" "+rs.getInt(5));
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getInt(3));
+                result.add(rs.getInt(4));
+                result.add(rs.getInt(5));
+                result.add(rs.getString(6));
+//                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getInt(3)+
+//                        " "+rs.getInt(4)+" "+rs.getInt(5)+" "+rs.getString(6) );
                 //TODO AFTER GUI
+
+//                result.forEach(n -> System.out.println(n));
+
             }
         }
         catch (SQLException e)
@@ -322,6 +335,7 @@ public class Employees
 //             alert("Cant get everything from table permissions")
             e.printStackTrace();
         }
+        return result;
     }
 
     public static void updatePermissions(String what, String toWhat, String where, String equals)
@@ -379,5 +393,11 @@ public class Employees
             //alert("Cant insert the given values to table permissions")
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        Employees.Connect();
+        Employees.getPermissionsData("name", "name","Dolgozo");
+        Employees.CloseConnection();
     }
 }
