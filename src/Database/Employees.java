@@ -39,17 +39,25 @@ public class Employees
 
 
     //employees table
-    public static void getAllEmployeeData()
+    public static ArrayList getAllEmployeeData()
     {
+        ArrayList result = new ArrayList();
         try
         {
             PreparedStatement st = conn.prepareStatement("select * from employees");
             rs = st.executeQuery();
             while(rs.next())
             {
-                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
-                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getInt(6)+" "+rs.getInt(7));
-                //TODO AFTER GUI
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getString(4));
+                result.add(rs.getString(5));
+                result.add(rs.getInt(6));
+                result.add(rs.getInt(7));
+//                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+//                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getInt(6)+" "+rs.getInt(7));
+//                //TODO AFTER GUI
             }
         }
         catch (SQLException e)
@@ -57,10 +65,12 @@ public class Employees
 //             alert("Cant get everything from table employees")
             e.printStackTrace();
         }
+        return result;
     }
 
-    public static void getEmployeeData(String where, String equals)
+    public static ArrayList getEmployeeData(String where, String equals)
     {
+        ArrayList result = new ArrayList();
         try
         {
             PreparedStatement st = conn.prepareStatement("select * from employees where "+ where +" = ?");
@@ -68,9 +78,16 @@ public class Employees
             rs = st.executeQuery();
             while(rs.next())
             {
-                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
-                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getInt(6)+" "+rs.getInt(7));
-                //TODO AFTER GUI
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getString(4));
+                result.add(rs.getString(5));
+                result.add(rs.getInt(6));
+                result.add(rs.getInt(7));
+//                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+//                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getInt(6)+" "+rs.getInt(7));
+//                //TODO AFTER GUI
             }
         }
         catch (SQLException e)
@@ -78,6 +95,7 @@ public class Employees
 //             alert("Cant get everything from table employees")
             e.printStackTrace();
         }
+        return result;
     }
 
     public static void updateEmployee(String what, String toWhat, String where, String equals)

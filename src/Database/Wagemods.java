@@ -1,6 +1,8 @@
 package Database;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class Wagemods
 {
@@ -56,19 +58,27 @@ public class Wagemods
         }
     }
 
-    public static void getAll()
+    public static ArrayList getAll(String name)
     {
+        ArrayList result = new ArrayList();
         try
         {
-            PreparedStatement st = conn.prepareStatement("select * from wagemods");
-//            PreparedStatement st=conn.prepareStatement("select * from wagemods where name like ?");
-//            st.setString(1,"Dolgozo");
+//            PreparedStatement st = conn.prepareStatement("select * from wagemods");
+            PreparedStatement st=conn.prepareStatement("select * from wagemods where name like ?");
+            st.setString(1,name);
             rs = st.executeQuery();
             while(rs.next())
             {
-                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
-                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)+" "+rs.getString(7));
-                //TODO AFTER GUI
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getString(4));
+                result.add(rs.getString(5));
+                result.add(rs.getString(6));
+                result.add(rs.getString(7));
+//                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+//                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)+" "+rs.getString(7));
+//                //TODO AFTER GUI
             }
         }
         catch (SQLException e)
@@ -76,6 +86,7 @@ public class Wagemods
 //             alert("Cant get everything from table wagemods")
             e.printStackTrace();
         }
+        return result;
     }
 
     public static void getColumnforEmployee(String column, String name)
@@ -154,5 +165,11 @@ public class Wagemods
             //alert("Cant delete the given values from table wagemods")
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        Connect();
+        getAll("Dolgozo");
+        CloseConnection();
     }
 }

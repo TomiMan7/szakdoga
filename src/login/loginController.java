@@ -37,7 +37,6 @@ public class loginController
         alert.showAndWait();
     }
 
-
     public void LoginAs()
     {
 //        ArrayList name = Employees.getPermissionsData("name", "name", username.getText());
