@@ -46,8 +46,6 @@ public class accountantpageController
     @FXML
     public Label emailLabel;
     @FXML
-    public Label postLabel;
-    @FXML
     public Label wageLabel;
     @FXML
     public Label workhoursLabel;
@@ -151,20 +149,50 @@ public class accountantpageController
         takarekPercentage.setText(wagemods.get(6).toString());
 
         ArrayList details = Employees.getEmployeeData("name", nameList.getSelectionModel().getSelectedItem().toString());
+
+        int id = Integer.parseInt(details.get(0).toString());
+
         nameLabel.setText(details.get(1).toString());
         positionLabel.setText(details.get(4).toString());
         phoneLabel.setText(details.get(2).toString());
-        emailLabel.setText(details.get(5).toString());
-        wageLabel.setText(details.get(6).toString());
+        emailLabel.setText(details.get(3).toString());
+        wageLabel.setText(details.get(5).toString());
+//        int baseWorkHours = Integer.parseInt( details.get(6).toString());
 
-        currentDate();
+        String[] currentdates = currentDate();
+
+        ArrayList workedHours = Employees.getHoursWorked(nameList.getSelectionModel().getSelectedItem().toString(),currentdates[0],currentdates[1] );
+        int allWorkedHours = 0;
+        for(int i = 0; i <= workedHours.size()-1; i++)
+            allWorkedHours += Integer.parseInt(  workedHours.get(i).toString());
+        workhoursLabel.setText( String.valueOf(allWorkedHours));
+
+        int wage =  Integer.parseInt(wageLabel.getText()) * Integer.parseInt( workhoursLabel.getText());
+
+        nyugdijLevonas.setText( String.valueOf( wage / 100 * Integer.parseInt( nyugdijPercentage.getText() ) ));
+        tbLevonas.setText(String.valueOf( wage / 100 * Integer.parseInt( tbPercentage.getText() ) ));
+        szjaLevonas.setText(String.valueOf( wage / 100 * Integer.parseInt( szjaPercentage.getText() ) ));
+        mpjLevonas.setText(String.valueOf( wage / 100 * Float.parseFloat( mpjPercentage.getText() ) ));
+        takarekLevonas.setText(takarekPercentage.getText());//(String.valueOf( wage / 100 * Integer.parseInt( takarekPercentage.getText() ) ));
+
+
+        ArrayList leavedHours = Employees.getHoursLeft(id, currentdates[0], currentdates[1]);
+//        leavedHours.forEach(n -> System.out.println(n));
+
     }
 
-    public void currentDate()
+    public String[] currentDate()
     {
-        ArrayList date = new ArrayList();
+        String[] date;
+        String date2;
         LocalDate now = LocalDate.now();
-        date.add(now.toString().split("-"));
-        System.out.println(date.get(0).toString());
+        date2 = now.toString();
+        date = date2.split("-",3);
+
+//        System.out.println(date[0]);
+//        System.out.println(date[1]);
+//        System.out.println(date[2]);
+
+        return date;
     }
 }

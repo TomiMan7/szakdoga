@@ -176,6 +176,37 @@ public class Employees
         }
     }
 
+    public static ArrayList getHoursLeft(int id, String year, String month)
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select * from leaves where workerid like ? and startyear like ? and startmonth like ?");
+            st.setInt(1,id);
+            st.setString(2,year);
+            st.setString(3,month);
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+//                result.add(rs.getString(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getString(4));
+                result.add(rs.getString(5));
+                result.add(rs.getString(6));
+                result.add(rs.getInt(7));
+//                result.add(rs.getInt(8));
+
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table whours")
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public static void getLeavesData(String where, String equals)
     {
         try
@@ -246,12 +277,12 @@ public class Employees
     {
         try
         {
-            PreparedStatement st = conn.prepareStatement("select * from permissions");
+            PreparedStatement st = conn.prepareStatement("select * from whours");
             rs = st.executeQuery();
             while(rs.next())
             {
-                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getInt(3)+
-                        " "+rs.getInt(4)+" "+rs.getInt(5));
+                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6));
                 //TODO AFTER GUI
             }
         }
@@ -260,6 +291,31 @@ public class Employees
 //             alert("Cant get everything from table permissions")
             e.printStackTrace();
         }
+    }
+
+    public static ArrayList getHoursWorked(String name, String year, String month)
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select hour from whours where name like ? and year like ? and month like ?");
+            st.setString(1,name);
+            st.setString(2,year);
+            st.setString(3,month);
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+                result.add(rs.getInt(1));
+//                System.out.println(rs.getInt(1));
+//                //TODO AFTER GUI
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table whours")
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public static void getWhoursData(String where, String equals)
@@ -415,7 +471,9 @@ public class Employees
 
     public static void main(String[] args) {
         Employees.Connect();
-        Employees.getPermissionsData("name", "name","Dolgozo");
+//        Employees.getPermissionsData("name", "name","Dolgozo");
+//        getHoursWorked("Dolgozo", "2020", "09");
+//        getHoursLeft(2, "2020", "10");
         Employees.CloseConnection();
     }
 }
