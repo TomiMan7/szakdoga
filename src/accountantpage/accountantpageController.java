@@ -16,7 +16,6 @@ import java.util.ArrayList;
 
 public class accountantpageController
 {
-
     @FXML
     public Label nyugdijLevonas;
     @FXML

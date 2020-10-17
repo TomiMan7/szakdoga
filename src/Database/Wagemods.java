@@ -1,5 +1,7 @@
 package Database;
 
+import javafx.scene.control.Alert;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -10,23 +12,16 @@ public class Wagemods
     static ResultSet rs = null;
     static Connection conn = null;
 
-//    private static boolean loggedIn = false;
+    public static void alert(String message)
+    {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Stuff");
+        alert.setHeight(500);
+        alert.setWidth(200);
+        alert.setContentText(message);
 
-//    public static boolean CheckLoggedInStatus()
-//    {
-//        return loggedIn;
-//    }
-
-//    public static void alert(String message)
-//    {
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//        alert.setTitle("Stuff");
-//        alert.setHeight(500);
-//        alert.setWidth(200);
-//        alert.setContentText(message);
-//
-//        alert.showAndWait();
-//    }
+        alert.showAndWait();
+    }
 
     public static void Connect()
     {

@@ -68,6 +68,39 @@ public class Employees
         return result;
     }
 
+    public static ArrayList getWhatEmployee(String what)
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select "+ what + " from employees");
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+                try
+                {
+                    result.add(rs.getInt(1));
+                }
+                catch (Exception e)
+                {}
+
+                try
+                {
+                    result.add(rs.getString(1));
+
+                }catch (Exception e)
+                {}
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table employees")
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
     public static ArrayList getEmployeeData(String where, String equals)
     {
         ArrayList result = new ArrayList();
@@ -474,6 +507,7 @@ public class Employees
 //        Employees.getPermissionsData("name", "name","Dolgozo");
 //        getHoursWorked("Dolgozo", "2020", "09");
 //        getHoursLeft(2, "2020", "10");
+//        getWhatEmployee("name");
         Employees.CloseConnection();
     }
 }

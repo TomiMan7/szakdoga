@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accountantpage.accountantUpdateController">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="420.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
             <children>
@@ -13,32 +13,32 @@
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <ComboBox layoutX="64.0" layoutY="27.0" prefWidth="150.0" promptText="Employee names" />
+                <ComboBox fx:id="empNameList" layoutX="64.0" layoutY="27.0" prefWidth="150.0" promptText="Dolgozók nevei:" />
                 <Label layoutX="14.0" layoutY="31.0" text="Names:" />
-                <TextField layoutX="246.0" layoutY="27.0" prefHeight="26.0" prefWidth="170.0" promptText="search by name" />
-                <Button layoutX="461.0" layoutY="27.0" mnemonicParsing="false" text="Search for employee" />
+                <Button layoutX="461.0" layoutY="27.0" mnemonicParsing="false" onAction="#searchForEmployee" text="Search for employee" />
                 <Label fx:id="first" layoutX="14.0" layoutY="100.0" prefWidth="102.0" />
                 <Label layoutX="14.0" layoutY="68.0" text="Datas of employee:" />
                 <Label fx:id="second" layoutX="14.0" layoutY="140.0" prefHeight="18.0" prefWidth="102.0" />
-                <Button layoutX="461.0" layoutY="73.0" mnemonicParsing="false" text="Search for wage info" />
+                <Button layoutX="461.0" layoutY="73.0" mnemonicParsing="false" onAction="#searchForWagemods" text="Search for wage info" />
                 <Label fx:id="third" layoutX="14.0" layoutY="180.0" prefHeight="18.0" prefWidth="102.0" />
                 <Label fx:id="fourth" layoutX="14.0" layoutY="220.0" prefHeight="18.0" prefWidth="102.0" />
                 <Label fx:id="fifth" layoutX="14.0" layoutY="260.0" prefHeight="18.0" prefWidth="102.0" />
                 <Label fx:id="sixth" layoutX="14.0" layoutY="300.0" prefHeight="18.0" prefWidth="102.0" />
-                <Label fx:id="firstText" layoutX="140.0" layoutY="100.0" prefWidth="102.0" />
-                <Label fx:id="secondText" layoutX="140.0" layoutY="140.0" prefHeight="18.0" prefWidth="102.0" />
-                <Label fx:id="thirdText" layoutX="140.0" layoutY="180.0" prefHeight="18.0" prefWidth="102.0" />
-                <Label fx:id="fourthText" layoutX="140.0" layoutY="220.0" prefHeight="18.0" prefWidth="102.0" />
-                <Label fx:id="fifthText" layoutX="140.0" layoutY="260.0" prefHeight="18.0" prefWidth="102.0" />
-                <Label fx:id="sixthText" layoutX="140.0" layoutY="300.0" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="firstText" layoutX="140.0" layoutY="100.0" onMouseClicked="#firstLabel" prefWidth="102.0" />
+                <Label fx:id="secondText" layoutX="140.0" layoutY="140.0" onMouseClicked="#secondLabel" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="thirdText" layoutX="140.0" layoutY="180.0" onMouseClicked="#thirdLabel" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="fourthText" layoutX="140.0" layoutY="220.0" onMouseClicked="#fourthLabel" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="fifthText" layoutX="140.0" layoutY="260.0" onMouseClicked="#FifthLabel" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="sixthText" layoutX="140.0" layoutY="300.0" onMouseClicked="#sixthLabel" prefHeight="18.0" prefWidth="102.0" />
                 <TextField fx:id="firstInput" layoutX="250.0" layoutY="100.0" prefWidth="150.0" promptText="updated Info" />
                 <TextField fx:id="secondInput" layoutX="250.0" layoutY="140.0" prefWidth="150.0" promptText="updated Info" />
                 <TextField fx:id="thirdInput" layoutX="250.0" layoutY="180.0" prefWidth="150.0" promptText="updated Info" />
                 <TextField fx:id="fourthInput" layoutX="250.0" layoutY="220.0" prefWidth="150.0" promptText="updated Info" />
                 <TextField fx:id="fifthInput" layoutX="250.0" layoutY="260.0" prefWidth="150.0" promptText="updated Info" />
                 <TextField fx:id="sixthInput" layoutX="250.0" layoutY="300.0" prefWidth="150.0" promptText="updated Info" />
-                <Button fx:id="delete" layoutX="28.0" layoutY="341.0" mnemonicParsing="false" text="Delete employee" />
-                <Button fx:id="update" layoutX="435.0" layoutY="341.0" mnemonicParsing="false" text="Update info" />
+                <Button fx:id="delete" layoutX="28.0" layoutY="341.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Delete employee" />
+                <Button fx:id="update" layoutX="435.0" layoutY="341.0" mnemonicParsing="false" onAction="#updateEmployee" text="Update info" />
+            <Button fx:id="fillNameList" layoutX="250.0" layoutY="27.0" mnemonicParsing="false" onAction="#fillNames" text="Search" />
             </children>
         </AnchorPane>
     </children>
