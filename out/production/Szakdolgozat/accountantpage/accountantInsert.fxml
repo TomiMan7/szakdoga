@@ -10,16 +10,6 @@
 
 <VBox prefHeight="420.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accountantpage.accountantInsertController">
     <children>
-        <MenuBar VBox.vgrow="NEVER">
-            <menus>
-                <Menu mnemonicParsing="false" text="Database actions">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="New" />
-                        <MenuItem mnemonicParsing="false" text="Open…" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="399.0" prefWidth="550.0" VBox.vgrow="ALWAYS">
             <children>
                 <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
@@ -27,19 +17,19 @@
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="tableName" layoutX="116.0" layoutY="27.0" onAction="#setTextFields" prefHeight="30.0" prefWidth="180.0" promptText="Database table name">
+                <ComboBox fx:id="tableName" layoutX="116.0" layoutY="27.0" onAction="#setTextFields" prefHeight="30.0" prefWidth="180.0" promptText="Adatbázis választás">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Employees" />
-                            <String fx:value="Wagemods" />
+                            <String fx:value="Dolgozók" />
+                            <String fx:value="Levonások" />
                         </FXCollections>
                     </items>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </ComboBox>
-                <Label layoutX="14.0" layoutY="31.0" text="Insert into:" />
-                <Button fx:id="insertButton" layoutX="330.0" layoutY="339.0" mnemonicParsing="false" text="Insert into database">
+                <Label layoutX="14.0" layoutY="31.0" text="Beillesztés...:" />
+                <Button fx:id="insertButton" layoutX="330.0" layoutY="339.0" mnemonicParsing="false" onAction="#insert" text="Felvitel az adatbázisba.">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

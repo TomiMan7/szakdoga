@@ -125,12 +125,19 @@ public class accountantUpdateController
 
     public void deleteEmployee()
     {
-//        Employees.deleteFromDbEmployees("employees", "name", empNameList.getValue().toString());
-    }
+        if(second.getText().equals("Telefon:"))
+            Employees.deleteFromDbEmployees("employees", "name", firstText.getText());
 
+        else if(second.getText().equals("Nyugdíj:"))
+            Wagemods.deleteWage("name", firstText.getText());
+
+        else
+            loginController.alert("Nem lehet törölni!");
+
+    }
     public void updateEmployee()
     {
-        if(second.getText().equals("Telefon"))
+        if(second.getText().equals("Telefon:"))
         {
             Employees.updateEmployee("name", firstInput.getText(), "name", firstText.getText());
             Employees.updateEmployee("phone", secondInput.getText(), "phone", secondText.getText());
@@ -140,14 +147,14 @@ public class accountantUpdateController
             Employees.updateEmployee("whours", sixthInput.getText(), "whours", sixthText.getText());
             fillNames();
         }
-        else if(second.getText().equals("Nyugdíj"))
+        else if(second.getText().equals("Nyugdíj:"))
         {
             Wagemods.updateColumn("name", firstInput.getText(), "name", firstText.getText());
-            Wagemods.updateColumn("nyugdij", secondInput.getText(), "nyugdij", secondText.getText());
-            Wagemods.updateColumn("tb", thirdInput.getText(), "tb", thirdText.getText());
-            Wagemods.updateColumn("szja", fourthInput.getText(), "szja", fourthText.getText());
-            Wagemods.updateColumn("mpj", fifthInput.getText(), "mpj", fifthText.getText());
-            Wagemods.updateColumn("nyugdijtakarek", sixthInput.getText(), "nyugdijtakarek", sixthText.getText());
+            Wagemods.updateColumn("nyugdij", secondInput.getText(), "name", firstText.getText());
+            Wagemods.updateColumn("tb", thirdInput.getText(), "name", firstText.getText());
+            Wagemods.updateColumn("szja", fourthInput.getText(), "name", firstText.getText());
+            Wagemods.updateColumn("mpj", fifthInput.getText(), "name", firstText.getText());
+            Wagemods.updateColumn("nyugdijtakarek", sixthInput.getText(), "name", firstText.getText());
             fillNames();
         }
 

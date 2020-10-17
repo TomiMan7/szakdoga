@@ -103,7 +103,6 @@ public class accountantpageController
             stage.resizableProperty().setValue(false);
             stage.setTitle("Confirm work hours");
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
