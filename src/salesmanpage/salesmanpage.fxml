@@ -51,7 +51,7 @@
                         </AnchorPane>
                     </content>
                 </ScrollPane>
-                <ScrollPane layoutX="10.0" layoutY="10.0" prefHeight="-1.0" prefWidth="-1.0">
+                <ScrollPane layoutX="10.0" layoutY="10.0" prefHeight="540.0" prefWidth="-1.0">
                     <content>
                         <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="800.0" prefWidth="200.0">
                             <children>
@@ -64,21 +64,23 @@
                                     </textFill>
                                 </Label>
                                 <Label alignment="CENTER" layoutX="10.0" layoutY="80.0" prefWidth="200.0" text="Vendor" textAlignment="CENTER" wrapText="true" />
-                                <Label fx:id="vendorLabel" layoutX="10.0" layoutY="110.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label fx:id="vendorLabel" alignment="CENTER" layoutX="10.0" layoutY="110.0" prefWidth="200.0" textAlignment="CENTER" />
                                 <Label alignment="CENTER" layoutX="10.0" layoutY="170.0" prefWidth="200.0" text="Name" textAlignment="CENTER" />
-                                <Label fx:id="nameLabel" layoutX="10.0" layoutY="200.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label fx:id="nameLabel" alignment="CENTER" layoutX="10.0" layoutY="200.0" prefWidth="200.0" textAlignment="CENTER" />
                                 <Label alignment="CENTER" layoutX="10.0" layoutY="260.0" prefWidth="200.0" text="CPU" textAlignment="CENTER" />
-                                <Label fx:id="cpuLabel" layoutX="10.0" layoutY="290.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label fx:id="cpuLabel" alignment="CENTER" layoutX="10.0" layoutY="290.0" prefWidth="200.0" textAlignment="CENTER" />
                                 <Label alignment="CENTER" layoutX="10.0" layoutY="350.0" prefWidth="200.0" text="GPU" textAlignment="CENTER" />
-                                <Label fx:id="gpuLabel" layoutX="10.0" layoutY="380.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label fx:id="gpuLabel" alignment="CENTER" layoutX="10.0" layoutY="380.0" prefWidth="200.0" textAlignment="CENTER" />
                                 <Label alignment="CENTER" layoutX="10.0" layoutY="440.0" prefWidth="200.0" text="RAM" textAlignment="CENTER" />
-                                <Label fx:id="ramLabel" layoutX="10.0" layoutY="470.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label fx:id="ramLabel" alignment="CENTER" layoutX="10.0" layoutY="470.0" prefWidth="200.0" textAlignment="CENTER" />
                                 <Label alignment="CENTER" layoutX="10.0" layoutY="530.0" prefWidth="200.0" text="Storage" textAlignment="CENTER" />
-                                <Label fx:id="storageLabel" layoutX="10.0" layoutY="560.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label fx:id="storageLabel" alignment="CENTER" layoutX="10.0" layoutY="560.0" prefWidth="200.0" textAlignment="CENTER" />
                                 <Label alignment="CENTER" layoutX="10.0" layoutY="620.0" prefWidth="200.0" text="Screen" textAlignment="CENTER" />
-                                <Label fx:id="screenLabel" layoutX="10.0" layoutY="650.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label fx:id="screenLabel" alignment="CENTER" layoutX="10.0" layoutY="650.0" prefWidth="200.0" textAlignment="CENTER" />
                                 <Label alignment="CENTER" layoutX="10.0" layoutY="710.0" prefWidth="200.0" text="Available amount" textAlignment="CENTER" />
-                                <Label fx:id="amountLabel" layoutX="10.0" layoutY="740.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label fx:id="amountLabel" alignment="CENTER" layoutX="10.0" layoutY="740.0" prefWidth="200.0" textAlignment="CENTER" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="800.0" prefWidth="200.0" text="Price" textAlignment="CENTER" />
+                                <Label fx:id="priceLabel" alignment="CENTER" layoutX="10.0" layoutY="830.0" prefWidth="200.0" textAlignment="CENTER" />
                             </children>
                         </AnchorPane>
                     </content>

@@ -1,6 +1,7 @@
 package Database;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Shop
 {
@@ -37,8 +38,9 @@ public class Shop
     }
 
     //table customer
-    public static void getCustomerData(String where, String equals)
+    public static ArrayList getCustomerData(String where, String equals)
     {
+        ArrayList result = new ArrayList();
         try
         {
             PreparedStatement st = conn.prepareStatement("select * from customer where "+ where +" = ?");
@@ -46,9 +48,16 @@ public class Shop
             rs = st.executeQuery();
             while(rs.next())
             {
-                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
-                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)
-                        +" "+rs.getString(7));
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getString(4));
+                result.add(rs.getString(5));
+                result.add(rs.getString(6));
+                result.add(rs.getString(7));
+//                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+//                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)
+//                        +" "+rs.getString(7));
                 //TODO AFTER GUI
             }
         }
@@ -57,6 +66,7 @@ public class Shop
 //             alert("Cant get everything from table customer")
             e.printStackTrace();
         }
+        return result;
     }
 
     public static void getAllCustomerData()
@@ -382,6 +392,87 @@ public class Shop
         }
     }
 
+    public static ArrayList getaSpecificationData(String where, String equals, String where2, String equals2, String where3, String equals3, String where4, String equals4, String where5, String equals5)
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select * from specification where "+ where +" like ?" +
+                                                                                     "and "+ where2 +" like ?"+
+                                                                                     "and "+ where3 +" like ?"+
+                                                                                     "and "+ where4 +" like ?"+
+                                                                                     "and "+ where5 +" like ?");
+
+            st.setString(1,equals);
+            st.setString(2,equals2);
+            st.setString(3,equals3);
+            st.setString(4,equals4);
+            st.setString(5,equals5);
+            System.out.println(st);
+
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getString(4));
+                result.add(rs.getString(5));
+                result.add(rs.getString(6));
+                result.add(rs.getString(7));
+
+//                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+//                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)
+//                        +" "+rs.getString(7));
+//                //TODO AFTER GUI
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table specification")
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static ArrayList getaSpecification(String where, String equals, String where2, String equals2, String where3, String equals3, String where4, String equals4, String where5, String equals5)
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select * from specification where "+ where +" like(\\\"%\"+equals+\"%\\\") " +
+                    " and "+ where2 +" like(\\\"%\"+equals2+\"%\\\") "+
+                    " and "+ where3 +" like(\\\"%\"+equals3+\"%\\\") "+
+                    " and "+ where4 +" like(\\\"%\"+equals4+\"%\\\") "+
+                    " and "+ where5 +" like(\\\"%\"+equals5+\"%\\\") ");
+
+            System.out.println(st);
+
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getString(4));
+                result.add(rs.getString(5));
+                result.add(rs.getString(6));
+                result.add(rs.getString(7));
+
+                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)
+                        +" "+rs.getString(7));
+//                //TODO AFTER GUI
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table specification")
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public static void updateSpecification(String what, String toWhat, String where, String equals)
     {
         try
@@ -420,6 +511,28 @@ public class Shop
         }
     }
 
+    public static ArrayList selectMax(String what)
+    {
+        ArrayList result = new ArrayList();
+
+        try {
+            PreparedStatement st = conn.prepareStatement("select max("+what+") from specification");
+
+            rs = st.executeQuery();
+
+            while (rs.next())
+            {
+                result.add(rs.getInt(1));
+//                System.out.println(rs.getInt(1));
+                //TODO AFTER GUI
+            }
+        } catch (SQLException e) {
+//             alert("Cant get everything from table specification")
+            e.printStackTrace();
+        }
+    return result;
+    }
+
     public static void deleteFromDbShop(String table, String where, String what)
     {
         try
@@ -434,5 +547,37 @@ public class Shop
             //alert("Cant delete the given values from table shop")
             e.printStackTrace();
         }
+    }
+
+    //special
+    public static void getALaptopAll()
+    {
+        try {
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM laptops left OUTER JOIN specification on laptops.specid = specification.id");
+            rs = st.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+                        " "+rs.getInt(4)+" "+rs.getInt(5)+" "+rs.getString(6)+" "+rs.getInt(7));
+                //TODO AFTER GUI
+            }
+        } catch (SQLException e) {
+//             alert("Cant get everything from table laptops")
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        Connect();
+//        getaSpecificationData("cpu", "ryzen 7 4700", "gpu", "amd ry7500", "ram", "16gb",
+//                "storage", "2tb ssd", "screen", "17 IPS");
+
+        getaSpecificationData("cpu", "", "gpu", "", "ram", "gb",
+                "storage", "ssd", "screen", "IPS");
+
+//        selectMax("id");
+
+        CloseConnection();
+
     }
 }

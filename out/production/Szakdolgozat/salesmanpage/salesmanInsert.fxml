@@ -14,7 +14,7 @@
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Button fx:id="insertButton" layoutX="734.0" layoutY="466.0" mnemonicParsing="false" text="Upload to database" />
+                <Button fx:id="insertButton" layoutX="734.0" layoutY="466.0" mnemonicParsing="false" onAction="#insertInto" text="Upload to database" />
                 <TextField fx:id="vendor" floatText="Laptop Vendor" layoutX="10.0" layoutY="20.0" prefWidth="300.0" />
                 <TextField fx:id="name" floatText="Laptop Name" layoutX="10.0" layoutY="60.0" prefWidth="300.0" />
                 <TextField fx:id="amount" floatText="Available amount" layoutX="10.0" layoutY="100.0" prefWidth="300.0" />

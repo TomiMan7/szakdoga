@@ -3,6 +3,9 @@ package salesmanpage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -10,6 +13,23 @@ import java.io.IOException;
 
 public class salesmanpageController
 {
+    public static ComboBox cpu;
+    public static ComboBox gpu;
+    public static ComboBox ram;
+    public static ComboBox storage;
+    public static ComboBox screen;
+    public static ComboBox vendor;
+    public static ComboBox name;
+    public Label vendorLabel;
+    public Label nameLabel;
+    public Label cpuLabel;
+    public Label gpuLabel;
+    public Label ramLabel;
+    public Label storageLabel;
+    public Label screenLabel;
+    public Label amountLabel;
+    public Label priceLabel;
+
     private boolean updateOpen = false;
     private boolean insertOpen = false;
 
@@ -77,6 +97,17 @@ public class salesmanpageController
             stage.setScene(new Scene(root1));
             stage.resizableProperty().setValue(false);
             stage.setTitle("Insert new Laptop");
+
+            customerInsertController.vendorLabel = vendorLabel.getText();
+            customerInsertController.nameLabel = nameLabel.getText();
+            customerInsertController.cpuLabel = cpuLabel.getText();
+            customerInsertController.gpuLabel = gpuLabel.getText();
+            customerInsertController.ramLabel = ramLabel.getText();
+            customerInsertController.storageLabel = storageLabel.getText();
+            customerInsertController.screenLabel = screenLabel.getText();
+            customerInsertController.amountLabel = amountLabel.getText();
+            customerInsertController.priceLabel = priceLabel.getText();
+
             stage.show();
 
         } catch (IOException e) {
