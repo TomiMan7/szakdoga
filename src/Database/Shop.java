@@ -3,6 +3,8 @@ package Database;
 import java.sql.*;
 import java.util.ArrayList;
 
+import static Database.Wagemods.alert;
+
 public class Shop
 {
     public static String connection = "";
@@ -220,20 +222,30 @@ public class Shop
         }
     }
 
-    public static void getAllLaptopsData()
+    public static ArrayList getAllLaptopsData()
     {
+        ArrayList result = new ArrayList();
         try {
             PreparedStatement st = conn.prepareStatement("select * from laptops");
             rs = st.executeQuery();
-            while (rs.next()) {
-                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
-                        " "+rs.getInt(4)+" "+rs.getInt(5)+" "+rs.getString(6)+" "+rs.getInt(7));
+            while (rs.next())
+            {
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getInt(4));
+                result.add(rs.getInt(5));
+                result.add(rs.getString(6));
+                result.add(rs.getInt(7));
+//                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+//                        " "+rs.getInt(4)+" "+rs.getInt(5)+" "+rs.getString(6)+" "+rs.getInt(7));
                 //TODO AFTER GUI
             }
         } catch (SQLException e) {
-//             alert("Cant get everything from table laptops")
+             alert("Cant get everything from table laptops");
             e.printStackTrace();
         }
+        return result;
     }
 
     public static void updateLaptops(String what, String toWhat, String where, String equals)
@@ -375,21 +387,33 @@ public class Shop
         }
     }
 
-    public static void getAllSpecificationData()
+    public static ArrayList getAllSpecificationData()
     {
+        ArrayList result = new ArrayList();
+
         try {
             PreparedStatement st = conn.prepareStatement("select * from specification");
             rs = st.executeQuery();
-            while (rs.next()) {
-                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
-                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)
-                        +" "+rs.getString(7));
+
+            while (rs.next())
+            {
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getString(4));
+                result.add(rs.getString(5));
+                result.add(rs.getString(6));
+                result.add(rs.getString(7));
+//                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+//                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)
+//                        +" "+rs.getString(7));
                 //TODO AFTER GUI
             }
         } catch (SQLException e) {
-//             alert("Cant get everything from table specification")
+             alert("Cant get everything from table specification");
             e.printStackTrace();
         }
+        return result;
     }
 
     public static ArrayList getaSpecificationData(String where, String equals, String where2, String equals2, String where3, String equals3, String where4, String equals4, String where5, String equals5)
@@ -440,13 +464,11 @@ public class Shop
         ArrayList result = new ArrayList();
         try
         {
-            PreparedStatement st = conn.prepareStatement("select * from specification where "+ where +" like(\\\"%\"+equals+\"%\\\") " +
-                    " and "+ where2 +" like(\\\"%\"+equals2+\"%\\\") "+
-                    " and "+ where3 +" like(\\\"%\"+equals3+\"%\\\") "+
-                    " and "+ where4 +" like(\\\"%\"+equals4+\"%\\\") "+
-                    " and "+ where5 +" like(\\\"%\"+equals5+\"%\\\") ");
-
-            System.out.println(st);
+            PreparedStatement st = conn.prepareStatement("select * from specification where "+ where +" like(\"%"+equals+"%\") " +
+                    " and "+ where2 +" like(\"%"+equals2+"%\") "+
+                    " and "+ where3 +" like(\"%"+equals3+"%\") "+
+                    " and "+ where4 +" like(\"%"+equals4+"%\") "+
+                    " and "+ where5 +" like(\"%"+equals5+"%\") ");
 
             rs = st.executeQuery();
             while(rs.next())
@@ -459,9 +481,9 @@ public class Shop
                 result.add(rs.getString(6));
                 result.add(rs.getString(7));
 
-                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
-                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)
-                        +" "+rs.getString(7));
+//                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+//                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)
+//                        +" "+rs.getString(7));
 //                //TODO AFTER GUI
             }
         }
@@ -572,10 +594,13 @@ public class Shop
 //        getaSpecificationData("cpu", "ryzen 7 4700", "gpu", "amd ry7500", "ram", "16gb",
 //                "storage", "2tb ssd", "screen", "17 IPS");
 
-        getaSpecificationData("cpu", "", "gpu", "", "ram", "gb",
-                "storage", "ssd", "screen", "IPS");
+//        getaSpecification("cpu", "", "gpu", "", "ram", "gb",
+//                "storage", "ssd", "screen", "IPS");
 
 //        selectMax("id");
+
+        getAllLaptopsData();
+        getAllSpecificationData();
 
         CloseConnection();
 

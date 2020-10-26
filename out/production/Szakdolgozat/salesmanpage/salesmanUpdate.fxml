@@ -8,7 +8,7 @@
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="430.0" prefWidth="748.0" VBox.vgrow="ALWAYS">
             <children>
                 <ComboBox fx:id="vendor" layoutX="10.0" layoutY="10.0" prefWidth="100.0" promptText="Vendor" />
-                <Button fx:id="search" layoutX="684.0" layoutY="55.0" mnemonicParsing="false" text="Search" />
+                <Button fx:id="search" layoutX="684.0" layoutY="55.0" mnemonicParsing="false" onAction="#Search" text="Search" />
                 <Label fx:id="vendorLabel" layoutX="14.0" layoutY="68.0" prefHeight="18.0" prefWidth="102.0" text="Vendor:" />
                 <Label fx:id="nameLabel" layoutX="14.0" layoutY="108.0" prefHeight="18.0" prefWidth="102.0" text="Name:" />
                 <Label fx:id="specidLabel" layoutX="14.0" layoutY="148.0" prefHeight="18.0" prefWidth="102.0" text="Spec ID:" />
@@ -29,7 +29,7 @@
                 <ComboBox fx:id="specid" layoutX="230.0" layoutY="10.0" prefWidth="100.0" promptText="Spec. ID." />
                 <ComboBox fx:id="amount" layoutX="340.0" layoutY="10.0" prefWidth="100.0" promptText="Amount" />
                 <ComboBox fx:id="availability" layoutX="450.0" layoutY="10.0" prefWidth="100.0" promptText="Availability" />
-                <Button fx:id="searchdata" layoutX="617.0" layoutY="10.0" mnemonicParsing="false" text="Update search data" />
+                <Button fx:id="searchdata" layoutX="617.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateSearch" text="Update search data" />
                 <TextArea fx:id="description" layoutX="12.0" layoutY="551.0" prefHeight="138.0" prefWidth="725.0" promptText="Description" />
                 <ListView fx:id="list" layoutX="440.0" layoutY="57.0" prefHeight="480.0" prefWidth="200.0" />
                 <Label fx:id="cpuLabel" layoutX="14.0" layoutY="294.0" prefHeight="18.0" prefWidth="102.0" text="CPU:" />
