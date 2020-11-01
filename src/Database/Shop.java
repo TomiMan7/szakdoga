@@ -2,6 +2,7 @@ package Database;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.spi.AbstractResourceBundleProvider;
 
 import static Database.Wagemods.alert;
 
@@ -201,8 +202,9 @@ public class Shop
 
 
     //table laptops
-    public static void getLaptopsData(String where, String equals)
+    public static ArrayList getLaptopsData(String where, String equals)
     {
+        ArrayList result = new ArrayList();
         try
         {
             PreparedStatement st = conn.prepareStatement("select * from laptops where "+ where +" = ?");
@@ -210,8 +212,16 @@ public class Shop
             rs = st.executeQuery();
             while(rs.next())
             {
-                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
-                        " "+rs.getInt(4)+" "+rs.getInt(5)+" "+rs.getString(6)+" "+rs.getInt(7));
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getInt(4));
+                result.add(rs.getInt(5));
+                result.add(rs.getString(6));
+                result.add(rs.getInt(7));
+//
+//                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+//                        " "+rs.getInt(4)+" "+rs.getInt(5)+" "+rs.getString(6)+" "+rs.getInt(7));
                 //TODO AFTER GUI
             }
         }
@@ -220,6 +230,7 @@ public class Shop
 //             alert("Cant get everything from table laptops")
             e.printStackTrace();
         }
+        return result;
     }
 
     public static ArrayList getAllLaptopsData()
@@ -599,8 +610,9 @@ public class Shop
 
 //        selectMax("id");
 
-        getAllLaptopsData();
-        getAllSpecificationData();
+//        getAllLaptopsData();
+//        getAllSpecificationData();
+//        getLaptopsData("vendor","Acer");
 
         CloseConnection();
 

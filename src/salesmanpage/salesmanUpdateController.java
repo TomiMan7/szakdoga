@@ -38,11 +38,32 @@ public class salesmanUpdateController
     public ComboBox vendor;
 
 
-    public void updateSearch()
+    public void clearMenus()
     {
-        ArrayList laptops = Shop.getAllLaptopsData();
-        ArrayList specs = Shop.getAllSpecificationData();
+        vendor.getItems().clear();
+        vendor.getSelectionModel().clearSelection();
+        vendor.setPromptText("Gyártó");
 
+        name.getItems().clear();
+        name.getSelectionModel().clearSelection();
+        name.setPromptText("Név");
+
+        specid.getItems().clear();
+        specid.getSelectionModel().clearSelection();
+        specid.setPromptText("Spec.ID");
+
+        amount.getItems().clear();
+        amount.getSelectionModel().clearSelection();
+        amount.setPromptText("Mennyiseg");
+
+        availability.getItems().clear();
+        availability.getSelectionModel().clearSelection();
+        availability.setPromptText("Elérhetőség");
+    }
+
+    public void setMenus(ArrayList laptops)
+    {
+//        clearMenus();
         for(int i = 1; i < laptops.size(); i=i+7)
             vendor.getItems().addAll(laptops.get(i).toString());
 
@@ -55,8 +76,61 @@ public class salesmanUpdateController
         for(int i = 4; i < laptops.size(); i=i+7)
             amount.getItems().addAll(laptops.get(i).toString());
 
-        for(int i = 5; i < laptops.size(); i=i+7)
+        for(int i = 6; i < laptops.size(); i=i+7)
             availability.getItems().addAll(laptops.get(i).toString());
+    }
+
+    public void updateSearch()
+    {
+        clearMenus();
+        ArrayList laptops = Shop.getAllLaptopsData();
+        //ArrayList specs = Shop.getAllSpecificationData();
+        setMenus(laptops);
+    }
+
+    public void vendor()
+    {
+        String vendorText = vendor.getSelectionModel().getSelectedItem().toString();
+        ArrayList laptops = Shop.getLaptopsData("vendor", vendorText);
+        clearMenus();
+        setMenus(laptops);
+        vendor.setPromptText(vendorText);
+    }
+
+    public void name()
+    {
+        String nameText = name.getSelectionModel().getSelectedItem().toString();
+        ArrayList laptops = Shop.getLaptopsData("name", nameText);
+        clearMenus();
+        setMenus(laptops);
+        name.setPromptText(nameText);
+    }
+
+    public void specid()
+    {
+        String specidText = specid.getSelectionModel().getSelectedItem().toString();
+        ArrayList laptops = Shop.getLaptopsData("specid", specidText);
+        clearMenus();
+        setMenus(laptops);
+        specid.setPromptText(specidText);
+    }
+
+    public void amount()
+    {
+        String amountText = amount.getSelectionModel().getSelectedItem().toString();
+        ArrayList laptops = Shop.getLaptopsData("amount", amountText);
+        clearMenus();
+        setMenus(laptops);
+        amount.setPromptText(amountText);
+    }
+
+    public void availability()
+    {
+        String availabilityText = availability.getSelectionModel().getSelectedItem().toString();
+        ArrayList laptops = Shop.getLaptopsData("availability", availabilityText);
+        clearMenus();
+        setMenus(laptops);
+        availability.setPromptText(availabilityText);
     }
 
     public void Search()
