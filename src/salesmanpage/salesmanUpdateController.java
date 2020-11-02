@@ -141,7 +141,7 @@ public class salesmanUpdateController
         }catch (Exception e)
         {
             if(vendorText == null || vendorText.equals(""))
-                vendorText = "kurva anyadat";
+                vendorText = "";
         }
 
 
