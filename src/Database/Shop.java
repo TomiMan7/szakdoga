@@ -2,7 +2,7 @@ package Database;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.spi.AbstractResourceBundleProvider;
+//import java.util.spi.AbstractResourceBundleProvider;
 
 import static Database.Wagemods.alert;
 
@@ -376,8 +376,9 @@ public class Shop
     }
 
     //table specification
-    public static void getSpecificationData(String where, String equals)
+    public static ArrayList getSpecificationData(String where, String equals)
     {
+        ArrayList result = new ArrayList();
         try
         {
             PreparedStatement st = conn.prepareStatement("select * from specification where "+ where +" = ?");
@@ -385,17 +386,26 @@ public class Shop
             rs = st.executeQuery();
             while(rs.next())
             {
-                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
-                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)
-                        +" "+rs.getString(7));
-                //TODO AFTER GUI
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getString(4));
+                result.add(rs.getString(5));
+                result.add(rs.getString(6));
+                result.add(rs.getString(7));
+
+//                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+//                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)
+//                        +" "+rs.getString(7));
+//                //TODO AFTER GUI
             }
         }
         catch (SQLException e)
         {
-//             alert("Cant get everything from table specification")
+//             alert("Cant get everything from table specification");
             e.printStackTrace();
         }
+        return result;
     }
 
     public static ArrayList getAllSpecificationData()
@@ -613,6 +623,7 @@ public class Shop
 //        getAllLaptopsData();
 //        getAllSpecificationData();
 //        getLaptopsData("vendor","Acer");
+//        getSpecificationData("id","2");
 
         CloseConnection();
 

@@ -4,6 +4,7 @@ import Database.Shop;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class salesmanUpdateController
@@ -39,174 +40,128 @@ public class salesmanUpdateController
     public ComboBox vendor;
 
 
-    public void clearMenus()
-    {
-        vendor.getItems().clear();
-        vendor.getSelectionModel().clearSelection();
-        vendor.setPromptText("Gyártó");
+    public void clearMenus(){
+        vendor.getItems().setAll("");
+        try {
+            vendor.getItems().remove(0);
+        }catch (Exception e){}
 
-        name.getItems().clear();
+
+        name.getItems().setAll("");
+        try {
+            name.getItems().remove(0);
+        }catch (Exception e){}
+
         name.getSelectionModel().clearSelection();
+        vendor.getSelectionModel().clearSelection();
+
+        vendor.setPromptText("Gyártó");
         name.setPromptText("Név");
-
-        /*specid.getItems().clear();
-        specid.getSelectionModel().clearSelection();
-        specid.setPromptText("Spec.ID");
-
-        amount.getItems().clear();
-        amount.getSelectionModel().clearSelection();
-        amount.setPromptText("Mennyiseg");
-
-        availability.getItems().clear();
-        availability.getSelectionModel().clearSelection();
-        availability.setPromptText("Elérhetőség");*/
     }
 
     public void setMenus(ArrayList laptops)
     {
-//        clearMenus();
+        clearMenus();
+
         for(int i = 1; i < laptops.size(); i=i+7)
-            vendor.getItems().addAll(laptops.get(i).toString());
+            vendor.getItems().add(laptops.get(i).toString());
 
         for(int i = 2; i < laptops.size(); i=i+7)
-            name.getItems().addAll(laptops.get(i).toString());
-
-        /*for(int i = 3; i < laptops.size(); i=i+7)
-            specid.getItems().addAll(laptops.get(i).toString());
-
-        for(int i = 4; i < laptops.size(); i=i+7)
-            amount.getItems().addAll(laptops.get(i).toString());
-
-        for(int i = 6; i < laptops.size(); i=i+7)
-            availability.getItems().addAll(laptops.get(i).toString());*/
+            name.getItems().add(laptops.get(i).toString());
     }
 
-    public void updateSearch()
-    {
-        clearMenus();
+    public void updateSearch(){
         ArrayList laptops = Shop.getAllLaptopsData();
-        //ArrayList specs = Shop.getAllSpecificationData();
         setMenus(laptops);
     }
 
-    public void vendor()
-    {
+    public void vendor(){
         String vendorText = vendor.getSelectionModel().getSelectedItem().toString();
         ArrayList laptops = Shop.getLaptopsData("vendor", vendorText);
-        clearMenus();
         setMenus(laptops);
         vendor.setPromptText(vendorText);
     }
 
-    public void name()
-    {
+    public void name() throws InterruptedException{
+        Thread.sleep(500);
         String nameText = name.getSelectionModel().getSelectedItem().toString();
         ArrayList laptops = Shop.getLaptopsData("name", nameText);
-        clearMenus();
         setMenus(laptops);
         name.setPromptText(nameText);
     }
 
-    /*public void specid()
-    {
-        String specidText = specid.getSelectionModel().getSelectedItem().toString();
-        ArrayList laptops = Shop.getLaptopsData("specid", specidText);
-        clearMenus();
-        setMenus(laptops);
-        specid.setPromptText(specidText);
-    }*/
+    public void Search(){
+        ArrayList laptop = Shop.getLaptopsData("name", name.getItems().get(0).toString() );
 
-    /*public void amount()
-    {
-        String amountText = amount.getSelectionModel().getSelectedItem().toString();
-        ArrayList laptops = Shop.getLaptopsData("amount", amountText);
-        clearMenus();
-        setMenus(laptops);
-        amount.setPromptText(amountText);
-    }*/
+        vendorOut.setText(laptop.get(1).toString());
+        nameOut.setText(laptop.get(2).toString());
+        specidOut.setText(laptop.get(3).toString());
+        amountOut.setText(laptop.get(4).toString());
+        description.setText(laptop.get(5).toString());
+        availabilityOut.setText(laptop.get(6).toString());
 
-    /*public void availability()
-    {
-        String availabilityText = availability.getSelectionModel().getSelectedItem().toString();
-        ArrayList laptops = Shop.getLaptopsData("availability", availabilityText);
-        clearMenus();
-        setMenus(laptops);
-        availability.setPromptText(availabilityText);
-    }*/
+        ArrayList spec = Shop.getSpecificationData("id", laptop.get(0).toString() );
 
-    public void Search()
-    {
-        String vendorText = "";
-        try {
-            vendorText = vendor.getSelectionModel().getSelectedItem().toString();
-        }catch (Exception e)
-        {
-            if(vendorText == null || vendorText.equals(""))
-                vendorText = "";
-        }
-
-
-
-        System.out.println(vendorText);
-
-//        ArrayList laptops =  Shop.getaSpecification("cpu", "", "gpu", "", "ram", "gb", "storage", "ssd", "screen", "IPS");
-
-//        for(int i = 0; i < laptops.size(); i++)
-//            System.out.println(laptops.get(i).toString());
+        cpuOut.setText(spec.get(1).toString());
+        gpuOut.setText(spec.get(2).toString());
+        ramOut.setText(spec.get(3).toString());
+        storageOut.setText(spec.get(4).toString());
+        screenOut.setText(spec.get(5).toString());
+        priceOut.setText(spec.get(6).toString());
     }
 
     public void setVendorOutText()
     {
-        vendorOut.setText(vendorIn.getText());
+        vendorIn.setText(vendorOut.getText());
     }
 
     public void setNameOutText()
     {
-        nameOut.setText(nameIn.getText());
+        nameIn.setText(nameOut.getText());
     }
 
     public void setSpecidOutText()
     {
-        specidOut.setText(specidIn.getText());
+        specidIn.setText(specidOut.getText());
     }
 
     public void setAmountOutText()
     {
-        amountOut.setText(amountIn.getText());
+        amountIn.setText(amountOut.getText());
     }
 
     public void setAvailabilityOutText()
     {
-        availabilityOut.setText(availabilityIn.getText());
+        availabilityIn.setText(availabilityOut.getText());
     }
 
     public void setCpuOutText()
     {
-        cpuOut.setText(cpuIn.getText());
+        cpuIn.setText(cpuOut.getText());
     }
 
     public void setGpuOutText()
     {
-        gpuOut.setText(gpuIn.getText());
+        gpuIn.setText(gpuOut.getText());
     }
 
     public void setRamOutText()
     {
-        ramOut.setText(ramIn.getText());
+        ramIn.setText(ramOut.getText());
     }
 
     public void setStorageOutText()
     {
-        storageOut.setText(storageIn.getText());
+        storageIn.setText(storageOut.getText());
     }
 
     public void setScreenOutText()
     {
-        screenOut.setText(screenIn.getText());
+        screenIn.setText(screenOut.getText());
     }
 
     public void setPriceOutText()
     {
-        priceOut.setText(priceIn.getText());
+        priceIn.setText(priceOut.getText());
     }
 }
