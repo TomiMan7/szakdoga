@@ -1,6 +1,7 @@
 package salesmanpage;
 
 import Database.Shop;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class salesmanUpdateController
         name.getSelectionModel().clearSelection();
         name.setPromptText("Név");
 
-        specid.getItems().clear();
+        /*specid.getItems().clear();
         specid.getSelectionModel().clearSelection();
         specid.setPromptText("Spec.ID");
 
@@ -58,7 +59,7 @@ public class salesmanUpdateController
 
         availability.getItems().clear();
         availability.getSelectionModel().clearSelection();
-        availability.setPromptText("Elérhetőség");
+        availability.setPromptText("Elérhetőség");*/
     }
 
     public void setMenus(ArrayList laptops)
@@ -70,14 +71,14 @@ public class salesmanUpdateController
         for(int i = 2; i < laptops.size(); i=i+7)
             name.getItems().addAll(laptops.get(i).toString());
 
-        for(int i = 3; i < laptops.size(); i=i+7)
+        /*for(int i = 3; i < laptops.size(); i=i+7)
             specid.getItems().addAll(laptops.get(i).toString());
 
         for(int i = 4; i < laptops.size(); i=i+7)
             amount.getItems().addAll(laptops.get(i).toString());
 
         for(int i = 6; i < laptops.size(); i=i+7)
-            availability.getItems().addAll(laptops.get(i).toString());
+            availability.getItems().addAll(laptops.get(i).toString());*/
     }
 
     public void updateSearch()
@@ -106,32 +107,32 @@ public class salesmanUpdateController
         name.setPromptText(nameText);
     }
 
-    public void specid()
+    /*public void specid()
     {
         String specidText = specid.getSelectionModel().getSelectedItem().toString();
         ArrayList laptops = Shop.getLaptopsData("specid", specidText);
         clearMenus();
         setMenus(laptops);
         specid.setPromptText(specidText);
-    }
+    }*/
 
-    public void amount()
+    /*public void amount()
     {
         String amountText = amount.getSelectionModel().getSelectedItem().toString();
         ArrayList laptops = Shop.getLaptopsData("amount", amountText);
         clearMenus();
         setMenus(laptops);
         amount.setPromptText(amountText);
-    }
+    }*/
 
-    public void availability()
+    /*public void availability()
     {
         String availabilityText = availability.getSelectionModel().getSelectedItem().toString();
         ArrayList laptops = Shop.getLaptopsData("availability", availabilityText);
         clearMenus();
         setMenus(laptops);
         availability.setPromptText(availabilityText);
-    }
+    }*/
 
     public void Search()
     {
@@ -152,5 +153,60 @@ public class salesmanUpdateController
 
 //        for(int i = 0; i < laptops.size(); i++)
 //            System.out.println(laptops.get(i).toString());
+    }
+
+    public void setVendorOutText()
+    {
+        vendorOut.setText(vendorIn.getText());
+    }
+
+    public void setNameOutText()
+    {
+        nameOut.setText(nameIn.getText());
+    }
+
+    public void setSpecidOutText()
+    {
+        specidOut.setText(specidIn.getText());
+    }
+
+    public void setAmountOutText()
+    {
+        amountOut.setText(amountIn.getText());
+    }
+
+    public void setAvailabilityOutText()
+    {
+        availabilityOut.setText(availabilityIn.getText());
+    }
+
+    public void setCpuOutText()
+    {
+        cpuOut.setText(cpuIn.getText());
+    }
+
+    public void setGpuOutText()
+    {
+        gpuOut.setText(gpuIn.getText());
+    }
+
+    public void setRamOutText()
+    {
+        ramOut.setText(ramIn.getText());
+    }
+
+    public void setStorageOutText()
+    {
+        storageOut.setText(storageIn.getText());
+    }
+
+    public void setScreenOutText()
+    {
+        screenOut.setText(screenIn.getText());
+    }
+
+    public void setPriceOutText()
+    {
+        priceOut.setText(priceIn.getText());
     }
 }

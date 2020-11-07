@@ -14,11 +14,11 @@
                 <Label fx:id="specidLabel" layoutX="14.0" layoutY="148.0" prefHeight="18.0" prefWidth="102.0" text="Spec ID:" />
                 <Label fx:id="amountLabel" layoutX="14.0" layoutY="188.0" prefHeight="18.0" prefWidth="102.0" text="Amount:" />
                 <Label fx:id="availabilityLabel" layoutX="14.0" layoutY="228.0" prefHeight="18.0" prefWidth="102.0" text="Availability:" />
-                <Label fx:id="vendorOut" layoutX="140.0" layoutY="68.0" prefHeight="18.0" prefWidth="102.0" />
-                <Label fx:id="nameOut" layoutX="140.0" layoutY="108.0" prefHeight="18.0" prefWidth="102.0" />
-                <Label fx:id="specidOut" layoutX="140.0" layoutY="148.0" prefHeight="18.0" prefWidth="102.0" />
-                <Label fx:id="amountOut" layoutX="140.0" layoutY="188.0" prefHeight="18.0" prefWidth="102.0" />
-                <Label fx:id="availabilityOut" layoutX="140.0" layoutY="231.0" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="vendorOut" layoutX="140.0" layoutY="68.0" onMouseClicked="#setVendorOutText" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="nameOut" layoutX="140.0" layoutY="108.0" onMouseClicked="#setNameOutText" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="specidOut" layoutX="140.0" layoutY="148.0" onMouseClicked="#setSpecidOutText" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="amountOut" layoutX="140.0" layoutY="188.0" onMouseClicked="#setAmountOutText" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="availabilityOut" layoutX="140.0" layoutY="231.0" onMouseClicked="#setAvailabilityOutText" prefHeight="18.0" prefWidth="102.0" />
                 <TextField fx:id="vendorIn" layoutX="250.0" layoutY="68.0" prefWidth="150.0" promptText="updated Info" />
                 <TextField fx:id="nameIn" layoutX="250.0" layoutY="108.0" prefWidth="150.0" promptText="updated Info" />
                 <TextField fx:id="specidIn" layoutX="250.0" layoutY="148.0" prefWidth="150.0" promptText="updated Info" />
@@ -26,9 +26,6 @@
                 <TextField fx:id="availabilityIn" layoutX="250.0" layoutY="228.0" prefWidth="150.0" promptText="updated Info" />
                 <Button fx:id="update" layoutX="656.0" layoutY="261.0" mnemonicParsing="false" text="Update info" />
                 <ComboBox fx:id="name" layoutX="120.0" layoutY="10.0" onAction="#name" prefWidth="100.0" promptText="Name" />
-                <ComboBox fx:id="specid" layoutX="230.0" layoutY="10.0" onAction="#specid" prefWidth="100.0" promptText="Spec. ID." />
-                <ComboBox fx:id="amount" layoutX="340.0" layoutY="10.0" onAction="#amount" prefWidth="100.0" promptText="Amount" />
-                <ComboBox fx:id="availability" layoutX="450.0" layoutY="10.0" onAction="#availability" prefWidth="100.0" promptText="Availability" />
                 <Button fx:id="searchdata" layoutX="617.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateSearch" text="Update search data" />
                 <TextArea fx:id="description" layoutX="12.0" layoutY="551.0" prefHeight="138.0" prefWidth="725.0" promptText="Description" />
                 <ListView fx:id="list" layoutX="440.0" layoutY="57.0" prefHeight="480.0" prefWidth="200.0" />
@@ -37,18 +34,18 @@
                 <Label fx:id="ramLabel" layoutX="14.0" layoutY="374.0" prefHeight="18.0" prefWidth="102.0" text="RAM:" />
                 <Label fx:id="storageLabel" layoutX="14.0" layoutY="414.0" prefHeight="18.0" prefWidth="102.0" text="Storage:" />
                 <Label fx:id="screenLabel" layoutX="14.0" layoutY="454.0" prefHeight="18.0" prefWidth="102.0" text="Screen:" />
-                <Label fx:id="cpuOut" layoutX="140.0" layoutY="294.0" prefHeight="18.0" prefWidth="102.0" />
-                <Label fx:id="gpuOut" layoutX="140.0" layoutY="334.0" prefHeight="18.0" prefWidth="102.0" />
-                <Label fx:id="ramOut" layoutX="140.0" layoutY="374.0" prefHeight="18.0" prefWidth="102.0" />
-                <Label fx:id="storageOut" layoutX="140.0" layoutY="414.0" prefHeight="18.0" prefWidth="102.0" />
-                <Label fx:id="screenOut" layoutX="140.0" layoutY="454.0" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="cpuOut" layoutX="140.0" layoutY="294.0" onMouseClicked="#setCpuOutText" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="gpuOut" layoutX="140.0" layoutY="334.0" onMouseClicked="#setGpuOutText" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="ramOut" layoutX="140.0" layoutY="374.0" onMouseClicked="#setRamOutText" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="storageOut" layoutX="140.0" layoutY="414.0" onMouseClicked="#setStorageOutText" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="screenOut" layoutX="140.0" layoutY="454.0" onMouseClicked="#setScreenOutText" prefHeight="18.0" prefWidth="102.0" />
                 <TextField fx:id="cpuIn" layoutX="250.0" layoutY="294.0" prefWidth="150.0" promptText="updated Info" />
                 <TextField fx:id="gpuIn" layoutX="250.0" layoutY="334.0" prefWidth="150.0" promptText="updated Info" />
                 <TextField fx:id="ramIn" layoutX="250.0" layoutY="374.0" prefWidth="150.0" promptText="updated Info" />
                 <TextField fx:id="storageIn" layoutX="250.0" layoutY="414.0" prefWidth="150.0" promptText="updated Info" />
                 <TextField fx:id="screenIn" layoutX="250.0" layoutY="454.0" prefWidth="150.0" promptText="updated Info" />
                 <Label fx:id="priceLabel" layoutX="14.0" layoutY="494.0" prefHeight="18.0" prefWidth="102.0" text="Price:" />
-                <Label fx:id="priceOut" layoutX="140.0" layoutY="494.0" prefHeight="18.0" prefWidth="102.0" />
+                <Label fx:id="priceOut" layoutX="140.0" layoutY="494.0" onMouseClicked="#setPriceOutText" prefHeight="18.0" prefWidth="102.0" />
                 <TextField fx:id="priceIn" layoutX="250.0" layoutY="494.0" prefWidth="150.0" promptText="updated Info" />
             </children>
         </AnchorPane>
