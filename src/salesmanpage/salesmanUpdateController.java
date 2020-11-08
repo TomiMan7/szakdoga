@@ -1,10 +1,7 @@
 package salesmanpage;
 
 import Database.Shop;
-import javafx.collections.ObservableList;
 import javafx.scene.control.*;
-
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class salesmanUpdateController
@@ -41,17 +38,20 @@ public class salesmanUpdateController
 
 
     public void clearMenus(){
-        vendor.getItems().setAll("");
         try {
+            vendor.getItems().setAll("");
             vendor.getItems().remove(0);
         }catch (Exception e){}
 
 
-        name.getItems().setAll("");
         try {
+            name.getItems().setAll("");
             name.getItems().remove(0);
         }catch (Exception e){}
 
+
+//        name.getItems().clear();
+//        vendor.getItems().clear();
         name.getSelectionModel().clearSelection();
         vendor.getSelectionModel().clearSelection();
 
@@ -63,21 +63,31 @@ public class salesmanUpdateController
     {
         clearMenus();
 
-        for(int i = 1; i < laptops.size(); i=i+7)
-            vendor.getItems().add(laptops.get(i).toString());
+        for(int i = 1; i < laptops.size() - 1; i=i+7){
+                vendor.getItems().add(laptops.get(i).toString());
+            if(i+7 > laptops.size()){
+                break;
+            }
+        }
 
-        for(int i = 2; i < laptops.size(); i=i+7)
+        for(int i = 2; i <= laptops.size() - 1; i=i+7) {
             name.getItems().add(laptops.get(i).toString());
+            if(i+7 > laptops.size()){
+                break;
+            }
+        }
     }
 
     public void updateSearch(){
         ArrayList laptops = Shop.getAllLaptopsData();
+//        clearMenus();
         setMenus(laptops);
     }
 
     public void vendor(){
         String vendorText = vendor.getSelectionModel().getSelectedItem().toString();
         ArrayList laptops = Shop.getLaptopsData("vendor", vendorText);
+//        clearMenus();
         setMenus(laptops);
         vendor.setPromptText(vendorText);
     }
@@ -86,8 +96,51 @@ public class salesmanUpdateController
         Thread.sleep(500);
         String nameText = name.getSelectionModel().getSelectedItem().toString();
         ArrayList laptops = Shop.getLaptopsData("name", nameText);
+//        clearMenus();
         setMenus(laptops);
         name.setPromptText(nameText);
+    }
+
+    public void upload()
+    {
+        try {
+            Shop.updateLaptops(vendorOut.getText(), nameOut.getText(), Integer.parseInt(amountOut.getText()), Integer.parseInt(availabilityOut.getText()), description.getText(), "name", nameIn.getText() );
+
+        }catch (Exception e){e.printStackTrace();}
+
+        ArrayList id = Shop.getLaptopsData("name", nameIn.getText());
+
+        Shop.updateSpecification(cpuOut.getText(), gpuOut.getText(), ramOut.getText(), storageOut.getText(), screenOut.getText(), priceOut.getText(), "id", id.get(0).toString());
+
+        updateSearch();
+
+        vendorOut.setText("");
+        nameOut.setText("");
+        specidOut.setText("");
+        amountOut.setText("");
+        description.setText("");
+        availabilityOut.setText("");
+
+        vendorIn.setText("");
+        nameIn.setText("");
+        specidIn.setText("");
+        amountIn.setText("");
+        description.setText("");
+        availabilityIn.setText("");
+
+        cpuOut.setText("");
+        ramOut.setText("");
+        gpuOut.setText("");
+        storageOut.setText("");
+        screenOut.setText("");
+        priceOut.setText("");
+
+        cpuIn.setText("");
+        ramIn.setText("");
+        gpuIn.setText("");
+        storageIn.setText("");
+        screenIn.setText("");
+        priceIn.setText("");
     }
 
     public void Search(){

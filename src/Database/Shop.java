@@ -72,30 +72,49 @@ public class Shop
         return result;
     }
 
-    public static void getAllCustomerData()
+    public static ArrayList getAllCustomerData()
     {
+        ArrayList result = new ArrayList();
         try {
             PreparedStatement st = conn.prepareStatement("select * from customer");
             rs = st.executeQuery();
             while (rs.next()) {
-                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
-                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)
-                        +" "+rs.getString(7));
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getString(4));
+                result.add(rs.getString(5));
+                result.add(rs.getString(6));
+                result.add(rs.getString(7));
+
+//                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
+//                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)
+//                        +" "+rs.getString(7));
                 //TODO AFTER GUI
             }
         } catch (SQLException e) {
 //             alert("Cant get everything from table shop")
             e.printStackTrace();
         }
+        return result;
     }
 
-    public static void updateCustomer(String what, String toWhat, String where, String equals)
+    public static ArrayList updateCustomer(String name, String phone, String email, String city, String street, String hnoumber, String whereName, String wherePhone, String whereEmail)
     {
+        ArrayList result = new ArrayList();
         try
         {
-            PreparedStatement st = conn.prepareStatement("update customer set "+what+" = ? where "+where+" = ?");
-            st.setString(1,toWhat);
-            st.setString(2,equals);
+            PreparedStatement st = conn.prepareStatement("update customer set name = ?, phone = ?, email = ?, city = ?, street = ?, hnumber = ? where name = ? and phone = ? and email = ?");
+
+            st.setString(1,name);
+            st.setString(2,phone);
+            st.setString(3,email);
+            st.setString(4,city);
+            st.setString(5,street);
+            st.setString(6,hnoumber);
+            st.setString(7,whereName);
+            st.setString(8,wherePhone);
+            st.setString(9,whereEmail);
 
             st.executeUpdate();
         }
@@ -104,6 +123,7 @@ public class Shop
             //alert("Cant get the given column from table customer")
             e.printStackTrace();
         }
+        return result;
     }
 
     public static void insertCustomer(String name, String phone, String email, String city, String street, String hnumer)
@@ -123,6 +143,24 @@ public class Shop
         catch (SQLException e)
         {
             //alert("Cant insert the given values to table shop")
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteCustomer(String name, String email, String phone)
+    {
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("delete from customer where name = ? and phone = ? and email = ?");
+            st.setString(1,name);
+            st.setString(2,email);
+            st.setString(3,phone);
+
+            st.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            //alert("Cant delete the given values from table shop")
             e.printStackTrace();
         }
     }
@@ -259,19 +297,25 @@ public class Shop
         return result;
     }
 
-    public static void updateLaptops(String what, String toWhat, String where, String equals)
+    public static void updateLaptops(String newVendor, String newName,/* int newSpecdid, */int newAmount, int newAvailability, String newDescription, String where, String equals)
     {
         try
         {
-            PreparedStatement st = conn.prepareStatement("update laptops set "+what+" = ? where "+where+" = ?");
-            st.setString(1,toWhat);
-            st.setString(2,equals);
+            PreparedStatement st = conn.prepareStatement("update laptops set vendor = ?, name = ?, amount = ?, description = ?, availability = ? where "+where+" = ?");
+
+            st.setString(1,newVendor);
+            st.setString(2,newName);
+//            st.setInt(3,newSpecdid);
+            st.setInt(3,newAmount);
+            st.setString(4,newDescription);
+            st.setInt(5,newAvailability);
+            st.setString(6,equals);
 
             st.executeUpdate();
         }
         catch (SQLException e)
         {
-            //alert("Cant get the given column from table laptops")
+//            alert("Nem lehetett frissíteni!");
             e.printStackTrace();
         }
     }
@@ -516,13 +560,19 @@ public class Shop
         return result;
     }
 
-    public static void updateSpecification(String what, String toWhat, String where, String equals)
+    public static void updateSpecification(String cpu, String gpu, String ram, String storage, String screen, String price, String where, String equals)
     {
         try
         {
-            PreparedStatement st = conn.prepareStatement("update specification set "+what+" = ? where "+where+" = ?");
-            st.setString(1,toWhat);
-            st.setString(2,equals);
+            PreparedStatement st = conn.prepareStatement("update specification set cpu = ?, gpu = ?, ram = ?, storage = ?, screen = ?, price = ? where "+where+" = ?");
+
+            st.setString(1,cpu);
+            st.setString(2,gpu);
+            st.setString(3,ram);
+            st.setString(4,storage);
+            st.setString(5,screen);
+            st.setString(6,price);
+            st.setString(7,equals);
 
             st.executeUpdate();
         }
@@ -625,6 +675,10 @@ public class Shop
 //        getLaptopsData("vendor","Acer");
 //        getSpecificationData("id","2");
 
+//        Shop.updateLaptops("Acer","Aspire F5 575", 666, 1, "It's good", "name", "Aspire F5 575");
+//        Shop.updateSpecification("Ryzen 7 4700H", "AMD RX7500", "16GB", "2TB SSD", "17\"IPS", "500", "id", "1");
+
+        updateCustomer("Customer1", "+3622222222", "customeremail@customer.hu", "piac", "street", "7", "Customer1", "+362222222", "customeremail@customer.hu");
         CloseConnection();
 
     }
