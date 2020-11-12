@@ -3,14 +3,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<VBox prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="salesmanpage.salesmanUpdateController">
+<VBox prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="salesmanpage.salesmanUpdateController">
     <children>
-        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="430.0" prefWidth="748.0" VBox.vgrow="ALWAYS">
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="641.0" prefWidth="874.0" VBox.vgrow="ALWAYS">
             <children>
                 <ComboBox fx:id="vendor" layoutX="10.0" layoutY="10.0" onAction="#vendor" prefWidth="150.0" promptText="Gyártó" />
-                <Button fx:id="search" layoutX="672.0" layoutY="55.0" mnemonicParsing="false" onAction="#Search" text="Keresés" />
+                <Button fx:id="search" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#Search" text="Keresés" />
                 <Label fx:id="vendorLabel" layoutX="14.0" layoutY="68.0" prefHeight="18.0" prefWidth="102.0" text="Gyártó:" />
                 <Label fx:id="nameLabel" layoutX="14.0" layoutY="108.0" prefHeight="18.0" prefWidth="102.0" text="Név:" />
                 <Label fx:id="specidLabel" layoutX="14.0" layoutY="148.0" prefHeight="18.0" prefWidth="102.0" text="Spec. ID:" />
@@ -26,10 +24,9 @@
                 <TextField fx:id="specidIn" layoutX="350.0" layoutY="148.0" prefWidth="200.0" promptText="Spec. ID nem frissíthető!" />
                 <TextField fx:id="amountIn" layoutX="350.0" layoutY="188.0" prefWidth="200.0" promptText="Frissített infó" />
                 <TextField fx:id="availabilityIn" layoutX="350.0" layoutY="228.0" prefWidth="200.0" promptText="Frissített infó" />
-                <Button fx:id="update" layoutX="656.0" layoutY="261.0" mnemonicParsing="false" onAction="#upload" text="Info Frissítése" />
-                <ComboBox fx:id="name" layoutX="200.0" layoutY="10.0" onAction="#name" prefWidth="150.0" promptText="Név" />
-                <Button fx:id="searchdata" layoutX="606.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateSearch" text="Keresési info frissítése" />
-                <TextArea fx:id="description" layoutX="12.0" layoutY="551.0" prefHeight="138.0" prefWidth="725.0" promptText="Leírás" />
+                <Button fx:id="update" layoutX="380.0" layoutY="10.0" mnemonicParsing="false" onAction="#upload" text="Info Frissítése" />
+                <Button fx:id="searchdata" layoutX="170.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateSearch" text="Keresési info frissítése" />
+                <TextArea fx:id="description" layoutX="12.0" layoutY="551.0" prefHeight="138.0" prefWidth="540.0" promptText="Leírás" />
                 <Label fx:id="cpuLabel" layoutX="14.0" layoutY="294.0" prefHeight="18.0" prefWidth="102.0" text="CPU:" />
                 <Label fx:id="gpuLabel" layoutX="14.0" layoutY="334.0" prefHeight="18.0" prefWidth="102.0" text="GPU:" />
                 <Label fx:id="ramLabel" layoutX="14.0" layoutY="374.0" prefHeight="18.0" prefWidth="102.0" text="RAM:" />
@@ -48,6 +45,7 @@
                 <Label fx:id="priceLabel" layoutX="14.0" layoutY="494.0" prefHeight="18.0" prefWidth="102.0" text="Ár:" />
                 <Label fx:id="priceOut" layoutX="140.0" layoutY="494.0" onMouseClicked="#setPriceOutText" prefHeight="18.0" prefWidth="200.0" />
                 <TextField fx:id="priceIn" layoutX="350.0" layoutY="494.0" prefWidth="200.0" promptText="Frissített infó" />
+                <ListView fx:id="name" layoutX="580.0" layoutY="66.0" onMouseClicked="#Search" prefHeight="600.0" prefWidth="300.0" />
             </children>
         </AnchorPane>
     </children>

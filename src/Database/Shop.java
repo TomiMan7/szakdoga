@@ -238,6 +238,28 @@ public class Shop
         }
     }
 
+    public static ArrayList getLaptopsVendor()
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select vendor from laptops group by vendor");
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+                result.add(rs.getString(1));
+//
+//                System.out.println(rs.getString(1));
+                //TODO AFTER GUI
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table laptops")
+            e.printStackTrace();
+        }
+        return result;
+    }
 
     //table laptops
     public static ArrayList getLaptopsData(String where, String equals)
@@ -678,7 +700,8 @@ public class Shop
 //        Shop.updateLaptops("Acer","Aspire F5 575", 666, 1, "It's good", "name", "Aspire F5 575");
 //        Shop.updateSpecification("Ryzen 7 4700H", "AMD RX7500", "16GB", "2TB SSD", "17\"IPS", "500", "id", "1");
 
-        updateCustomer("Customer1", "+3622222222", "customeremail@customer.hu", "piac", "street", "7", "Customer1", "+362222222", "customeremail@customer.hu");
+//        updateCustomer("Customer1", "+3622222222", "customeremail@customer.hu", "piac", "street", "7", "Customer1", "+362222222", "customeremail@customer.hu");
+//        getLaptopsVendor();
         CloseConnection();
 
     }

@@ -16,7 +16,7 @@ public class salesmanUpdateController
     public TextField specidIn;
     public TextField amountIn;
     public TextField availabilityIn;
-    public ComboBox name;
+    public ListView name;
     public ComboBox specid;
     public ComboBox amount;
     public ComboBox availability;
@@ -36,40 +36,8 @@ public class salesmanUpdateController
     public TextField priceIn;
     public ComboBox vendor;
 
-
-    public void clearMenus(){
-        try {
-            vendor.getItems().setAll("");
-            vendor.getItems().remove(0);
-        }catch (Exception e){}
-
-
-        try {
-            name.getItems().setAll("");
-            name.getItems().remove(0);
-        }catch (Exception e){}
-
-
-//        name.getItems().clear();
-//        vendor.getItems().clear();
-        name.getSelectionModel().clearSelection();
-        vendor.getSelectionModel().clearSelection();
-
-        vendor.setPromptText("Gyártó");
-        name.setPromptText("Név");
-    }
-
     public void setMenus(ArrayList laptops)
     {
-        clearMenus();
-
-        for(int i = 1; i < laptops.size() - 1; i=i+7){
-                vendor.getItems().add(laptops.get(i).toString());
-            if(i+7 > laptops.size()){
-                break;
-            }
-        }
-
         for(int i = 2; i <= laptops.size() - 1; i=i+7) {
             name.getItems().add(laptops.get(i).toString());
             if(i+7 > laptops.size()){
@@ -78,27 +46,22 @@ public class salesmanUpdateController
         }
     }
 
-    public void updateSearch(){
-        ArrayList laptops = Shop.getAllLaptopsData();
-//        clearMenus();
-        setMenus(laptops);
+    public void updateSearch()
+    {
+        ArrayList laptops = Shop.getLaptopsVendor();
+
+        for(int i = 0; i <= laptops.size() - 1; i++){
+            vendor.getItems().add(laptops.get(i).toString());
+        }
     }
 
-    public void vendor(){
-        String vendorText = vendor.getSelectionModel().getSelectedItem().toString();
-        ArrayList laptops = Shop.getLaptopsData("vendor", vendorText);
-//        clearMenus();
-        setMenus(laptops);
-        vendor.setPromptText(vendorText);
-    }
-
-    public void name() throws InterruptedException{
-        Thread.sleep(500);
-        String nameText = name.getSelectionModel().getSelectedItem().toString();
-        ArrayList laptops = Shop.getLaptopsData("name", nameText);
-//        clearMenus();
-        setMenus(laptops);
-        name.setPromptText(nameText);
+    public void vendor()
+    {
+            String vendorText = vendor.getSelectionModel().getSelectedItem().toString();
+            ArrayList laptops = Shop.getLaptopsData("vendor", vendorText);
+            name.getItems().clear();
+            setMenus(laptops);
+            vendor.setPromptText(vendorText);
     }
 
     public void upload()
@@ -143,8 +106,9 @@ public class salesmanUpdateController
         priceIn.setText("");
     }
 
-    public void Search(){
-        ArrayList laptop = Shop.getLaptopsData("name", name.getItems().get(0).toString() );
+    public void Search()
+    {
+        ArrayList laptop = Shop.getLaptopsData("name", name.getSelectionModel().getSelectedItem().toString() );
 
         vendorOut.setText(laptop.get(1).toString());
         nameOut.setText(laptop.get(2).toString());
