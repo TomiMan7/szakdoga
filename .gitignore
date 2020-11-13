@@ -174,3 +174,9 @@ buildNumber.properties
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij,git,kotlin,maven
 .idea/workspace.xml
 .idea/workspace.xml
+.idea/vcs.xml
+.idea/compiler.xml
+.idea/description.html
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
