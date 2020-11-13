@@ -52,6 +52,8 @@ public class accountantpageController
     public Label leavehoursLabel;
     public Label sickpayLabel;
     public Label netto;
+    public Label brutto;
+    public Label osszeslevonas;
     @FXML
     private javafx.scene.control.MenuItem dbUpdate;
     @FXML
@@ -197,6 +199,7 @@ public class accountantpageController
 
         int wage =  Integer.parseInt(wageLabel.getText()) * Integer.parseInt( workhoursLabel.getText());
         wage += sickpay*baseWorkHours;
+        brutto.setText( String.valueOf(wage));
 
         nyugdijLevonas.setText( String.valueOf( wage / 100 * Integer.parseInt( nyugdijPercentage.getText() ) ));
         tbLevonas.setText(String.valueOf( wage / 100 * Integer.parseInt( tbPercentage.getText() ) ));
@@ -204,8 +207,10 @@ public class accountantpageController
         mpjLevonas.setText(String.valueOf( wage / 100 * Float.parseFloat( mpjPercentage.getText() ) ));
         takarekLevonas.setText(takarekPercentage.getText());//(String.valueOf( wage / 100 * Integer.parseInt( takarekPercentage.getText() ) ));
 
-        float nettoWage =  Float.parseFloat(nyugdijLevonas.getText()) +  Float.parseFloat(tbLevonas.getText()) + Float.parseFloat(szjaLevonas.getText()) + Float.parseFloat(mpjLevonas.getText()) + Float.parseFloat(takarekLevonas.getText());
-        netto.setText( String.valueOf(wage - nettoWage));
+        float levonas =  Float.parseFloat(nyugdijLevonas.getText()) +  Float.parseFloat(tbLevonas.getText()) + Float.parseFloat(szjaLevonas.getText()) + Float.parseFloat(mpjLevonas.getText()) + Float.parseFloat(takarekLevonas.getText());
+
+        netto.setText( String.valueOf(wage - levonas));
+        osszeslevonas.setText( String.valueOf(levonas));
         leavehoursLabel.setText( String.valueOf(totalLeftHours));
         sickpayLabel.setText(String.valueOf(sickpay));
     }
