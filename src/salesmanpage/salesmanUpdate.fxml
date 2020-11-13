@@ -8,7 +8,6 @@
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="641.0" prefWidth="874.0" VBox.vgrow="ALWAYS">
             <children>
                 <ComboBox fx:id="vendor" layoutX="10.0" layoutY="10.0" onAction="#vendor" prefWidth="150.0" promptText="Gyártó" />
-                <Button fx:id="search" layoutX="310.0" layoutY="10.0" mnemonicParsing="false" onAction="#Search" text="Keresés" />
                 <Label fx:id="vendorLabel" layoutX="14.0" layoutY="68.0" prefHeight="18.0" prefWidth="102.0" text="Gyártó:" />
                 <Label fx:id="nameLabel" layoutX="14.0" layoutY="108.0" prefHeight="18.0" prefWidth="102.0" text="Név:" />
                 <Label fx:id="specidLabel" layoutX="14.0" layoutY="148.0" prefHeight="18.0" prefWidth="102.0" text="Spec. ID:" />

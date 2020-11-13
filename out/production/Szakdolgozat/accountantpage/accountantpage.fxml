@@ -82,7 +82,7 @@
                         <Label layoutX="12.0" layoutY="160.0" text="Position:" />
                         <Label layoutX="12.0" layoutY="210.0" text="Phone:" />
                         <Label layoutX="12.0" layoutY="270.0" text="Email:" />
-                        <Label layoutX="12.0" layoutY="330.0" text="Wage:" />
+                        <Label layoutX="12.0" layoutY="330.0" text="Órabér:" />
                         <Label layoutX="12.0" layoutY="390.0" text="Total worked hours:" />
                         <Label fx:id="nameLabel" layoutX="93.0" layoutY="110.0" prefHeight="18.0" prefWidth="120.0" />
                         <Label fx:id="positionLabel" layoutX="93.0" layoutY="160.0" prefHeight="18.0" prefWidth="120.0" />
@@ -92,6 +92,10 @@
                         <Label fx:id="workhoursLabel" layoutX="130.0" layoutY="390.0" prefWidth="70.0" textAlignment="RIGHT" />
                         <Label layoutX="12.0" layoutY="450.0" text="Leave hours:" />
                         <Label fx:id="leavehoursLabel" layoutX="93.0" layoutY="450.0" prefWidth="120.0" />
+                  <Label layoutX="12.0" layoutY="500.0" text="Táppénz:" />
+                  <Label fx:id="sickpayLabel" layoutX="93.0" layoutY="500.0" prefWidth="120.0" />
+                  <Label layoutX="12.0" layoutY="550.0" text="Nettó fizetés:" />
+                  <Label fx:id="netto" layoutX="93.0" layoutY="550.0" prefWidth="120.0" />
                     </children>
                 </AnchorPane>
             </items>

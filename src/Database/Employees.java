@@ -221,14 +221,14 @@ public class Employees
             rs = st.executeQuery();
             while(rs.next())
             {
-//                result.add(rs.getString(1));
-                result.add(rs.getString(2));
-                result.add(rs.getString(3));
-                result.add(rs.getString(4));
-                result.add(rs.getString(5));
-                result.add(rs.getString(6));
-                result.add(rs.getInt(7));
-//                result.add(rs.getInt(8));
+//                result.add(rs.getString(1)); //id
+//                result.add(rs.getString(2)); //startyear
+//                result.add(rs.getString(3)); //startmonth
+                result.add(rs.getString(4)); //startday
+//                result.add(rs.getString(5)); //endyear
+//                result.add(rs.getString(6)); //endmonth
+                result.add(rs.getInt(7)); //endday
+                result.add(rs.getInt(8)); //sickpay
 
             }
         }
@@ -339,8 +339,7 @@ public class Employees
             while(rs.next())
             {
                 result.add(rs.getInt(1));
-//                System.out.println(rs.getInt(1));
-//                //TODO AFTER GUI
+//                System.out.println(rs.getString(1));
             }
         }
         catch (SQLException e)
@@ -505,7 +504,7 @@ public class Employees
     public static void main(String[] args) {
         Employees.Connect();
 //        Employees.getPermissionsData("name", "name","Dolgozo");
-//        getHoursWorked("Dolgozo", "2020", "09");
+//        getHoursWorked("Dolgozo", "2020", "10");
 //        getHoursLeft(2, "2020", "10");
 //        getWhatEmployee("name");
         Employees.CloseConnection();

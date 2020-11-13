@@ -17,11 +17,7 @@ public class salesmanUpdateController
     public TextField amountIn;
     public TextField availabilityIn;
     public ListView name;
-    public ComboBox specid;
-    public ComboBox amount;
-    public ComboBox availability;
     public TextArea description;
-    public ListView list;
     public Label cpuOut;
     public Label gpuOut;
     public Label ramOut;
@@ -36,6 +32,8 @@ public class salesmanUpdateController
     public TextField priceIn;
     public ComboBox vendor;
 
+    private boolean search = true;
+
     public void setMenus(ArrayList laptops)
     {
         for(int i = 2; i <= laptops.size() - 1; i=i+7) {
@@ -48,10 +46,14 @@ public class salesmanUpdateController
 
     public void updateSearch()
     {
-        ArrayList laptops = Shop.getLaptopsVendor();
+        if(search)
+        {
+            ArrayList laptops = Shop.getLaptopsVendor();
 
-        for(int i = 0; i <= laptops.size() - 1; i++){
-            vendor.getItems().add(laptops.get(i).toString());
+            for (int i = 0; i <= laptops.size() - 1; i++) {
+                vendor.getItems().add(laptops.get(i).toString());
+            }
+            search = !search;
         }
     }
 
@@ -108,23 +110,23 @@ public class salesmanUpdateController
 
     public void Search()
     {
-        ArrayList laptop = Shop.getLaptopsData("name", name.getSelectionModel().getSelectedItem().toString() );
+            ArrayList laptop = Shop.getLaptopsData("name", name.getSelectionModel().getSelectedItem().toString());
 
-        vendorOut.setText(laptop.get(1).toString());
-        nameOut.setText(laptop.get(2).toString());
-        specidOut.setText(laptop.get(3).toString());
-        amountOut.setText(laptop.get(4).toString());
-        description.setText(laptop.get(5).toString());
-        availabilityOut.setText(laptop.get(6).toString());
+            vendorOut.setText(laptop.get(1).toString());
+            nameOut.setText(laptop.get(2).toString());
+            specidOut.setText(laptop.get(3).toString());
+            amountOut.setText(laptop.get(4).toString());
+            description.setText(laptop.get(5).toString());
+            availabilityOut.setText(laptop.get(6).toString());
 
-        ArrayList spec = Shop.getSpecificationData("id", laptop.get(0).toString() );
+            ArrayList spec = Shop.getSpecificationData("id", laptop.get(0).toString());
 
-        cpuOut.setText(spec.get(1).toString());
-        gpuOut.setText(spec.get(2).toString());
-        ramOut.setText(spec.get(3).toString());
-        storageOut.setText(spec.get(4).toString());
-        screenOut.setText(spec.get(5).toString());
-        priceOut.setText(spec.get(6).toString());
+            cpuOut.setText(spec.get(1).toString());
+            gpuOut.setText(spec.get(2).toString());
+            ramOut.setText(spec.get(3).toString());
+            storageOut.setText(spec.get(4).toString());
+            screenOut.setText(spec.get(5).toString());
+            priceOut.setText(spec.get(6).toString());
     }
 
     public void setVendorOutText()

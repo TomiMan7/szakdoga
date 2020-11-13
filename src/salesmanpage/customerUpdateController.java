@@ -74,7 +74,10 @@ public class customerUpdateController
 
     public void delete()
     {
-        Shop.deleteCustomer(nameOut.getText(), phoneOut.getText(), emailOut.getText());
+        ArrayList customerData = Shop.getCustomerData("name", nameOut.getText());
+        String id = customerData.get(0).toString();
+        Shop.updateOrders("date", "CANCELED", "id", id);
+       // Shop.deleteCustomer(nameOut.getText(), phoneOut.getText(), emailOut.getText());
         clearLabels();
     }
 

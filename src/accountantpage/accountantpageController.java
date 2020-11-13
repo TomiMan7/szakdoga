@@ -50,6 +50,8 @@ public class accountantpageController
     public Label workhoursLabel;
     @FXML
     public Label leavehoursLabel;
+    public Label sickpayLabel;
+    public Label netto;
     @FXML
     private javafx.scene.control.MenuItem dbUpdate;
     @FXML
@@ -155,17 +157,46 @@ public class accountantpageController
         phoneLabel.setText(details.get(2).toString());
         emailLabel.setText(details.get(3).toString());
         wageLabel.setText(details.get(5).toString());
-//        int baseWorkHours = Integer.parseInt( details.get(6).toString());
+        int baseWorkHours = Integer.parseInt( details.get(6).toString());
 
         String[] currentdates = currentDate();
 
         ArrayList workedHours = Employees.getHoursWorked(nameList.getSelectionModel().getSelectedItem().toString(),currentdates[0],currentdates[1] );
+
         int allWorkedHours = 0;
         for(int i = 0; i <= workedHours.size()-1; i++)
-            allWorkedHours += Integer.parseInt(  workedHours.get(i).toString());
+        {
+            allWorkedHours += Integer.parseInt(workedHours.get(i).toString());
+        }
+
         workhoursLabel.setText( String.valueOf(allWorkedHours));
 
+        ArrayList leavedHours = Employees.getHoursLeft(id, currentdates[0], currentdates[1]);
+        int totalLeftHours = 0;
+        int skip = 0;
+        int sickpay = 0;
+        for(int i = 0; i <= leavedHours.size() - 3; i=i+3)
+        {
+            if(skip <= 2) //minden 3 a tappenzt jelzo bejegyzes ezert skippelunk
+            {
+                if( Integer.parseInt(leavedHours.get(i+2).toString()) == 0) {
+                    totalLeftHours += Integer.parseInt(leavedHours.get(i + 1).toString()) - Integer.parseInt(leavedHours.get(i).toString());
+                    skip++;
+                }
+                else
+                {
+                    skip++;
+                    sickpay += Integer.parseInt(leavedHours.get(i + 1).toString()) - Integer.parseInt(leavedHours.get(i).toString());
+                }
+            }
+            else
+            {
+                skip = 0;
+            }
+        }
+
         int wage =  Integer.parseInt(wageLabel.getText()) * Integer.parseInt( workhoursLabel.getText());
+        wage += sickpay*baseWorkHours;
 
         nyugdijLevonas.setText( String.valueOf( wage / 100 * Integer.parseInt( nyugdijPercentage.getText() ) ));
         tbLevonas.setText(String.valueOf( wage / 100 * Integer.parseInt( tbPercentage.getText() ) ));
@@ -173,10 +204,10 @@ public class accountantpageController
         mpjLevonas.setText(String.valueOf( wage / 100 * Float.parseFloat( mpjPercentage.getText() ) ));
         takarekLevonas.setText(takarekPercentage.getText());//(String.valueOf( wage / 100 * Integer.parseInt( takarekPercentage.getText() ) ));
 
-
-        ArrayList leavedHours = Employees.getHoursLeft(id, currentdates[0], currentdates[1]);
-//        leavedHours.forEach(n -> System.out.println(n));
-
+        float nettoWage =  Float.parseFloat(nyugdijLevonas.getText()) +  Float.parseFloat(tbLevonas.getText()) + Float.parseFloat(szjaLevonas.getText()) + Float.parseFloat(mpjLevonas.getText()) + Float.parseFloat(takarekLevonas.getText());
+        netto.setText( String.valueOf(wage - nettoWage));
+        leavehoursLabel.setText( String.valueOf(totalLeftHours));
+        sickpayLabel.setText(String.valueOf(sickpay));
     }
 
     public String[] currentDate()
