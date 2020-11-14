@@ -1,5 +1,7 @@
 package salesmanpage;
 
+import Database.Shop;
+import com.sun.javafx.scene.SceneHelper;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,16 +12,17 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class salesmanpageController
 {
-    public static ComboBox cpu;
-    public static ComboBox gpu;
-    public static ComboBox ram;
-    public static ComboBox storage;
-    public static ComboBox screen;
-    public static ComboBox vendor;
-    public static ComboBox name;
+    public ComboBox cpu;
+    public ComboBox gpu;
+    public ComboBox ram;
+    public ComboBox storage;
+    public ComboBox screen;
+    public ComboBox vendor;
+    public ComboBox name;
     public Label vendorLabel;
     public Label nameLabel;
     public Label cpuLabel;
@@ -29,6 +32,7 @@ public class salesmanpageController
     public Label screenLabel;
     public Label amountLabel;
     public Label priceLabel;
+    public ComboBox price;
 
     private boolean updateOpen = false;
     private boolean insertOpen = false;
@@ -130,5 +134,78 @@ public class salesmanpageController
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setData()
+    {
+        name.getItems().clear();
+        vendor.getItems().clear();
+        cpu.getItems().clear();
+        gpu.getItems().clear();
+        ram.getItems().clear();
+        storage.getItems().clear();
+        screen.getItems().clear();
+
+        ArrayList laptops = Shop.getAllLaptopsData();
+        ArrayList cpus = Shop.getLaptopsCpu();
+        ArrayList gpus = Shop.getLaptopsGpu();
+        ArrayList rams = Shop.getLaptopsRam();
+        ArrayList storages = Shop.getLaptopsStorage();
+        ArrayList screens = Shop.getLaptopsScreen();
+        ArrayList prices = Shop.getLaptopsPrice();
+
+        for(int i = 2; i <= laptops.size() - 1; i=i+7) {
+            name.getItems().add(laptops.get(i).toString());
+            if(i+7 > laptops.size()){
+                break;
+            }
+        }
+
+        for(int i = 1; i <= laptops.size() - 1; i=i+7) {
+            vendor.getItems().add(laptops.get(i).toString());
+            if(i+7 > laptops.size()){
+                break;
+            }
+        }
+
+        for(int i = 0; i <= cpus.size() - 1; i++)
+        {
+            cpu.getItems().add(cpus.get(i).toString());
+        }
+
+        for(int i = 0; i <= gpus.size() - 1; i++)
+        {
+            gpu.getItems().add(gpus.get(i).toString());
+        }
+
+        for(int i = 0; i <= rams.size() - 1; i++)
+        {
+            ram.getItems().add(rams.get(i).toString());
+        }
+
+        for(int i = 0; i <= storages.size() - 1; i++)
+        {
+            storage.getItems().add(storages.get(i).toString());
+        }
+
+        for(int i = 0; i <= screens.size() - 1; i++)
+        {
+            screen.getItems().add(screens.get(i).toString());
+        }
+
+        for(int i = 0; i <= prices.size() - 1; i++)
+        {
+            price.getItems().add(prices.get(i).toString());
+        }
+    }
+
+    public void search()
+    {
+//        String cpudata = cpu.getValue().toString();//getSelectionModel().getSelectedItem().toString();
+//        String gpudata = cpu.getSelectionModel().getSelectedItem().toString();
+
+
+//        if (cpudata == null)
+//            System.out.println("anyad");
     }
 }

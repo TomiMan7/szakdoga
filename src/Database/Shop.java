@@ -681,6 +681,138 @@ public class Shop
         }
     }
 
+    public static ArrayList getLaptopsCpu()
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select cpu from specification group by cpu");
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+                result.add(rs.getString(1));
+
+//                System.out.println(rs.getString(1));
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table specification");
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static ArrayList getLaptopsGpu()
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select gpu from specification group by gpu");
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+                result.add(rs.getString(1));
+
+//                System.out.println(rs.getString(1));
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table specification");
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static ArrayList getLaptopsRam()
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select ram from specification group by ram");
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+                result.add(rs.getString(1));
+
+//                System.out.println(rs.getString(1));
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table specification");
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static ArrayList getLaptopsStorage()
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select storage from specification group by storage");
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+                result.add(rs.getString(1));
+
+//                System.out.println(rs.getString(1));
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table specification");
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static ArrayList getLaptopsScreen()
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select screen from specification group by screen");
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+                result.add(rs.getString(1));
+
+//                System.out.println(rs.getString(1));
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table specification");
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static ArrayList getLaptopsPrice()
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select price from specification group by price");
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+                result.add(rs.getString(1));
+
+//                System.out.println(rs.getString(1));
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table specification");
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public static void main(String[] args)
     {
         Connect();
@@ -702,6 +834,7 @@ public class Shop
 
 //        updateCustomer("Customer1", "+3622222222", "customeremail@customer.hu", "piac", "street", "7", "Customer1", "+362222222", "customeremail@customer.hu");
 //        getLaptopsVendor();
+        getLaptopsCpu();
         CloseConnection();
 
     }
