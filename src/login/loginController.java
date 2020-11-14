@@ -50,7 +50,7 @@ public class loginController
 //
 //        if ( name.contains(username.getText()) && pass.contains(password.getText()) && name.get(loginas - 1).equals(1))
 //        {
-            if (combobox.getValue().toString().equals("Accountant")) {
+            if (combobox.getValue().toString().equals("Könyvelő")) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/accountantpage/accountantpage.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
@@ -58,7 +58,7 @@ public class loginController
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.setScene(new Scene(root1));
                     stage.resizableProperty().setValue(false);
-                    stage.setTitle("Accountant Infopage");
+                    stage.setTitle("Könyvelő főoldal:");
                     stage.show();
 
                     Stage stage2 = (Stage) loginbutton.getScene().getWindow();
@@ -66,7 +66,7 @@ public class loginController
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            } else if (combobox.getValue().toString().equals("Salesman")) {
+            } else if (combobox.getValue().toString().equals("Értékesítő")) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/salesmanpage/salesmanpage.fxml"));
                     Parent root1 = (Parent) fxmlLoader.load();
@@ -74,7 +74,7 @@ public class loginController
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.setScene(new Scene(root1));
                     stage.resizableProperty().setValue(false);
-                    stage.setTitle("Shop");
+                    stage.setTitle("Eladói főoldal:");
                     stage.show();
 
                     Stage stage2 = (Stage) loginbutton.getScene().getWindow();
@@ -83,24 +83,6 @@ public class loginController
                     e.printStackTrace();
                 }
             }
-//        else if(combobox.getValue().toString().equals("Manager"))
-//        {
-//            try {
-//                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(".fxml"));
-//                Parent root1 = (Parent) fxmlLoader.load();
-//                Stage stage = new Stage();
-//                stage.initModality(Modality.APPLICATION_MODAL);
-//                stage.setScene(new Scene(root1));
-//                stage.resizableProperty().setValue(false);
-//                stage.setTitle("Manager");
-//                stage.show();
-//
-//                Stage stage2 = (Stage) loginbutton.getScene().getWindow();
-//                stage2.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
             else {
                 alert("Please select a category to log in!");
             }

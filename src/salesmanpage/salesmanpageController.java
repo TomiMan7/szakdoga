@@ -44,7 +44,7 @@ public class salesmanpageController
 //            stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(root1));
                 stage.resizableProperty().setValue(false);
-                stage.setTitle("Update/Delete Laptop");
+                stage.setTitle("Laptop frissítése/törlése");
                 stage.setOnCloseRequest(event ->
                 {
                     updateOpen = false;
@@ -70,7 +70,7 @@ public class salesmanpageController
 //            stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(root1));
                 stage.resizableProperty().setValue(false);
-                stage.setTitle("Insert new Laptop");
+                stage.setTitle("Új laptop felvitele");
                 stage.setOnCloseRequest(event ->
                 {
                     insertOpen = false;
@@ -124,7 +124,7 @@ public class salesmanpageController
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root1));
             stage.resizableProperty().setValue(false);
-            stage.setTitle("Update or remove customer info/order");
+            stage.setTitle("Vevő adatok frissítése/Rendelés törlése");
             stage.show();
 
         } catch (IOException e) {

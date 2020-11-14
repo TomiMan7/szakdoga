@@ -15,13 +15,13 @@
                     </font>
                 </Label>
             <CheckBox fx:id="paymentMethod" layoutX="36.0" layoutY="280.0" mnemonicParsing="false" text="Készpénz?" />
-                <Button fx:id="insertButton" layoutX="120.0" layoutY="330.0" mnemonicParsing="false" onAction="#insertCustomer" text="Upload to database" />
-                <TextField fx:id="name" floatText="Name:" layoutX="36.0" layoutY="14.0" prefWidth="300.0" />
-                <TextField fx:id="phone" floatText="Phone:" layoutX="36.0" layoutY="54.0" prefWidth="300.0" />
-                <TextField fx:id="email" floatText="Email:" layoutX="36.0" layoutY="94.0" prefWidth="300.0" />
-                <TextField fx:id="city" floatText="City:" layoutX="36.0" layoutY="134.0" prefWidth="300.0" />
-                <TextField fx:id="street" floatText="Street:" layoutX="36.0" layoutY="174.0" prefWidth="300.0" />
-                <TextField fx:id="housenumber" floatText="House Number:" layoutX="36.0" layoutY="214.0" prefWidth="300.0" />
+                <Button fx:id="insertButton" layoutX="120.0" layoutY="330.0" mnemonicParsing="false" onAction="#insertCustomer" text="Felvitel az adatbázisba" />
+                <TextField fx:id="name" floatText="Név:" layoutX="36.0" layoutY="14.0" prefWidth="300.0" />
+                <TextField fx:id="phone" floatText="Telefonszám:" layoutX="36.0" layoutY="54.0" prefWidth="300.0" />
+                <TextField fx:id="email" floatText="E-mail:" layoutX="36.0" layoutY="94.0" prefWidth="300.0" />
+                <TextField fx:id="city" floatText="Város:" layoutX="36.0" layoutY="134.0" prefWidth="300.0" />
+                <TextField fx:id="street" floatText="Utca:" layoutX="36.0" layoutY="174.0" prefWidth="300.0" />
+                <TextField fx:id="housenumber" floatText="Ház szám:" layoutX="36.0" layoutY="214.0" prefWidth="300.0" />
             </children>
         </AnchorPane>
     </children>

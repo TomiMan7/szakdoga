@@ -71,7 +71,7 @@ public class accountantpageController
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root1));
             stage.resizableProperty().setValue(false);
-            stage.setTitle("Insert into database");
+            stage.setTitle("Felvitel");
             stage.show();
 
         } catch (IOException e) {
@@ -88,7 +88,7 @@ public class accountantpageController
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root1));
             stage.resizableProperty().setValue(false);
-            stage.setTitle("Accountant Infopage");
+            stage.setTitle("Frissítés");
             stage.show();
 
         } catch (IOException e) {
@@ -105,7 +105,7 @@ public class accountantpageController
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root1));
             stage.resizableProperty().setValue(false);
-            stage.setTitle("Confirm work hours");
+            stage.setTitle("Munkaórák");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -121,7 +121,7 @@ public class accountantpageController
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root1));
             stage.resizableProperty().setValue(false);
-            stage.setTitle("Confirm work hours");
+            stage.setTitle("Szabadságok");
             stage.show();
 
         } catch (IOException e) {

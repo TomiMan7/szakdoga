@@ -9,14 +9,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.sql.SQLException;
-
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        primaryStage.setTitle("Please log in.");
+        primaryStage.setTitle("Kérem jelentkezzen be!");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.resizableProperty().setValue(false);
         primaryStage.show();
@@ -29,7 +27,8 @@ public class Main extends Application {
 
         } catch (Exception e)
         {
-            loginController.alert("Cant connect to database! Please check your connection");
+            loginController.alert("Nem sikerült az adatbázishoz csatlakozni!" +
+                    "Kérem ellenőrizze a kapcsolatát és az adatbázis elérhetőségét");
         }
 
     }

@@ -12,12 +12,12 @@
                 <Label fx:id="nameLabel" layoutX="14.0" layoutY="108.0" prefHeight="18.0" prefWidth="102.0" text="Név:" />
                 <Label fx:id="specidLabel" layoutX="14.0" layoutY="148.0" prefHeight="18.0" prefWidth="102.0" text="Spec. ID:" />
                 <Label fx:id="amountLabel" layoutX="14.0" layoutY="188.0" prefHeight="18.0" prefWidth="102.0" text="Elérhető db.szám:" />
-                <Label fx:id="availabilityLabel" layoutX="14.0" layoutY="228.0" prefHeight="18.0" prefWidth="102.0" text="Elérhetőség:" />
+                <Label fx:id="availabilityLabel" layoutX="14.0" layoutY="228.0" prefHeight="18.0" prefWidth="150.0" text="Elérhetőség:(0:nem, 1:igen)" />
                 <Label fx:id="vendorOut" layoutX="140.0" layoutY="68.0" onMouseClicked="#setVendorOutText" prefHeight="18.0" prefWidth="200.0" />
                 <Label fx:id="nameOut" layoutX="140.0" layoutY="108.0" onMouseClicked="#setNameOutText" prefHeight="18.0" prefWidth="200.0" />
                 <Label fx:id="specidOut" layoutX="140.0" layoutY="148.0" onMouseClicked="#setSpecidOutText" prefHeight="18.0" prefWidth="200.0" />
                 <Label fx:id="amountOut" layoutX="140.0" layoutY="188.0" onMouseClicked="#setAmountOutText" prefHeight="18.0" prefWidth="200.0" />
-                <Label fx:id="availabilityOut" layoutX="140.0" layoutY="231.0" onMouseClicked="#setAvailabilityOutText" prefHeight="18.0" prefWidth="200.0" />
+                <Label fx:id="availabilityOut" layoutX="160.0" layoutY="228.0" onMouseClicked="#setAvailabilityOutText" prefHeight="18.0" prefWidth="180.0" />
                 <TextField fx:id="vendorIn" layoutX="350.0" layoutY="68.0" prefWidth="200.0" promptText="Frissített infó" />
                 <TextField fx:id="nameIn" layoutX="350.0" layoutY="108.0" prefWidth="200.0" promptText="Frissített infó" />
                 <TextField fx:id="specidIn" layoutX="350.0" layoutY="148.0" prefWidth="200.0" promptText="Spec. ID nem frissíthető!" />

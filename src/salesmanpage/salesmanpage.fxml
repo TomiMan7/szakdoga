@@ -9,11 +9,11 @@
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
-                <Menu mnemonicParsing="false" text="Database actions">
+                <Menu mnemonicParsing="false" text="Adatbázis műveletek">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#addNewLaptopScreen" text="Add new laptop..." />
-                        <MenuItem mnemonicParsing="false" onAction="#dbUpdateScreen" text="Update/Remove laptop" />
-                  <MenuItem mnemonicParsing="false" onAction="#updateCustomerScreen" text="Update Customer Info/Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#addNewLaptopScreen" text="Új laptop felvitele" />
+                        <MenuItem mnemonicParsing="false" onAction="#dbUpdateScreen" text="Laptop frissítése/törlése" />
+                  <MenuItem mnemonicParsing="false" onAction="#updateCustomerScreen" text="Vevő adatok frissítése/Rendelés törlése" />
                     </items>
                 </Menu>
             </menus>
@@ -22,7 +22,7 @@
             <items>
                 <AnchorPane>
                     <children>
-                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Search for laptops" textAlignment="CENTER" wrapText="false">
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Laptopok keresése:" textAlignment="CENTER" wrapText="false">
                             <font>
                                 <Font size="18.0" fx:id="x1" />
                             </font>
@@ -33,19 +33,20 @@
                         <ComboBox fx:id="cpu" layoutX="10.0" layoutY="60.0" prefWidth="200.0" promptText="CPU" />
                         <ComboBox fx:id="gpu" layoutX="10.0" layoutY="120.0" prefWidth="200.0" promptText="GPU" />
                         <ComboBox fx:id="ram" layoutX="10.0" layoutY="180.0" prefWidth="200.0" promptText="RAM" />
-                        <ComboBox fx:id="storage" layoutX="10.0" layoutY="240.0" prefWidth="200.0" promptText="Storge" />
-                        <ComboBox fx:id="screen" layoutX="10.0" layoutY="300.0" prefWidth="200.0" promptText="Screen" />
-                        <ComboBox fx:id="vendor" layoutX="10.0" layoutY="360.0" prefWidth="200.0" promptText="Vendor" />
-                        <ComboBox fx:id="name" layoutX="10.0" layoutY="420.0" prefWidth="200.0" promptText="Name" />
-                        <Button fx:id="search" layoutX="150.0" layoutY="480.0" mnemonicParsing="false" text="Search" />
-                        <Button fx:id="buy" layoutX="10.0" layoutY="480.0" mnemonicParsing="false" onAction="#addNewCustomerScreen" text="Buy...." />
+                        <ComboBox fx:id="storage" layoutX="10.0" layoutY="240.0" prefWidth="200.0" promptText="Tárhely" />
+                        <ComboBox fx:id="screen" layoutX="10.0" layoutY="300.0" prefWidth="200.0" promptText="Kijelző" />
+                        <ComboBox fx:id="vendor" layoutX="10.0" layoutY="360.0" prefWidth="200.0" promptText="Gyártó" />
+                        <ComboBox fx:id="name" layoutX="10.0" layoutY="420.0" prefWidth="200.0" promptText="Név" />
+                        <Button fx:id="search" layoutX="150.0" layoutY="480.0" mnemonicParsing="false" text="Keresés" />
+                        <Button fx:id="buy" layoutX="10.0" layoutY="480.0" mnemonicParsing="false" onAction="#addNewCustomerScreen" text="Vétel.." />
+                  <Button fx:id="refresh" layoutX="75.0" layoutY="480.0" mnemonicParsing="false" text="Frissítés" />
                     </children>
                 </AnchorPane>
                 <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
                     <content>
                         <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="800.0" prefWidth="430.0">
                             <children>
-                                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Search results" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Keresés eredménye:" textAlignment="CENTER" textFill="$x2" wrapText="false" />
                                 <ListView fx:id="list" layoutX="10.0" layoutY="50.0" prefHeight="700.0" prefWidth="410.0" />
                             </children>
                         </AnchorPane>
@@ -55,7 +56,7 @@
                     <content>
                         <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="800.0" prefWidth="200.0">
                             <children>
-                                <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Search results" textAlignment="CENTER" wrapText="false">
+                                <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Laptop adatok:" textAlignment="CENTER" wrapText="false">
                                     <font>
                                         <Font size="18.0" fx:id="x11" />
                                     </font>
@@ -63,9 +64,9 @@
                                         <Color red="0.624" green="0.624" blue="0.624" fx:id="x21" />
                                     </textFill>
                                 </Label>
-                                <Label alignment="CENTER" layoutX="10.0" layoutY="80.0" prefWidth="200.0" text="Vendor" textAlignment="CENTER" wrapText="true" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="80.0" prefWidth="200.0" text="Gyártó" textAlignment="CENTER" wrapText="true" />
                                 <Label fx:id="vendorLabel" alignment="CENTER" layoutX="10.0" layoutY="110.0" prefWidth="200.0" textAlignment="CENTER" />
-                                <Label alignment="CENTER" layoutX="10.0" layoutY="170.0" prefWidth="200.0" text="Name" textAlignment="CENTER" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="170.0" prefWidth="200.0" text="Név" textAlignment="CENTER" />
                                 <Label fx:id="nameLabel" alignment="CENTER" layoutX="10.0" layoutY="200.0" prefWidth="200.0" textAlignment="CENTER" />
                                 <Label alignment="CENTER" layoutX="10.0" layoutY="260.0" prefWidth="200.0" text="CPU" textAlignment="CENTER" />
                                 <Label fx:id="cpuLabel" alignment="CENTER" layoutX="10.0" layoutY="290.0" prefWidth="200.0" textAlignment="CENTER" />
@@ -73,13 +74,13 @@
                                 <Label fx:id="gpuLabel" alignment="CENTER" layoutX="10.0" layoutY="380.0" prefWidth="200.0" textAlignment="CENTER" />
                                 <Label alignment="CENTER" layoutX="10.0" layoutY="440.0" prefWidth="200.0" text="RAM" textAlignment="CENTER" />
                                 <Label fx:id="ramLabel" alignment="CENTER" layoutX="10.0" layoutY="470.0" prefWidth="200.0" textAlignment="CENTER" />
-                                <Label alignment="CENTER" layoutX="10.0" layoutY="530.0" prefWidth="200.0" text="Storage" textAlignment="CENTER" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="530.0" prefWidth="200.0" text="Tárhely" textAlignment="CENTER" />
                                 <Label fx:id="storageLabel" alignment="CENTER" layoutX="10.0" layoutY="560.0" prefWidth="200.0" textAlignment="CENTER" />
-                                <Label alignment="CENTER" layoutX="10.0" layoutY="620.0" prefWidth="200.0" text="Screen" textAlignment="CENTER" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="620.0" prefWidth="200.0" text="Kijelző" textAlignment="CENTER" />
                                 <Label fx:id="screenLabel" alignment="CENTER" layoutX="10.0" layoutY="650.0" prefWidth="200.0" textAlignment="CENTER" />
-                                <Label alignment="CENTER" layoutX="10.0" layoutY="710.0" prefWidth="200.0" text="Available amount" textAlignment="CENTER" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="710.0" prefWidth="200.0" text="Elérhető mennyiség" textAlignment="CENTER" />
                                 <Label fx:id="amountLabel" alignment="CENTER" layoutX="10.0" layoutY="740.0" prefWidth="200.0" textAlignment="CENTER" />
-                                <Label alignment="CENTER" layoutX="10.0" layoutY="800.0" prefWidth="200.0" text="Price" textAlignment="CENTER" />
+                                <Label alignment="CENTER" layoutX="10.0" layoutY="800.0" prefWidth="200.0" text="Ár" textAlignment="CENTER" />
                                 <Label fx:id="priceLabel" alignment="CENTER" layoutX="10.0" layoutY="830.0" prefWidth="200.0" textAlignment="CENTER" />
                             </children>
                         </AnchorPane>
