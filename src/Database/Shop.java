@@ -261,6 +261,29 @@ public class Shop
         return result;
     }
 
+
+    public static ArrayList getLaptopsName()
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select name from laptops group by name");
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+                result.add(rs.getString(1));
+//
+//                System.out.println(rs.getString(1));
+                //TODO AFTER GUI
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table laptops")
+            e.printStackTrace();
+        }
+        return result;
+    }
     //table laptops
     public static ArrayList getLaptopsData(String where, String equals)
     {
@@ -297,7 +320,7 @@ public class Shop
     {
         ArrayList result = new ArrayList();
         try {
-            PreparedStatement st = conn.prepareStatement("select * from laptops");
+            PreparedStatement st = conn.prepareStatement("select * from laptops group by vendor, name order by vendor, name");
             rs = st.executeQuery();
             while (rs.next())
             {
@@ -686,7 +709,7 @@ public class Shop
         ArrayList result = new ArrayList();
         try
         {
-            PreparedStatement st = conn.prepareStatement("select cpu from specification group by cpu");
+            PreparedStatement st = conn.prepareStatement("select cpu from specification group by cpu order by cpu");
             rs = st.executeQuery();
             while(rs.next())
             {
@@ -708,7 +731,7 @@ public class Shop
         ArrayList result = new ArrayList();
         try
         {
-            PreparedStatement st = conn.prepareStatement("select gpu from specification group by gpu");
+            PreparedStatement st = conn.prepareStatement("select gpu from specification group by gpu order by gpu");
             rs = st.executeQuery();
             while(rs.next())
             {
@@ -730,7 +753,7 @@ public class Shop
         ArrayList result = new ArrayList();
         try
         {
-            PreparedStatement st = conn.prepareStatement("select ram from specification group by ram");
+            PreparedStatement st = conn.prepareStatement("select ram from specification group by ram order by ram");
             rs = st.executeQuery();
             while(rs.next())
             {
@@ -752,7 +775,7 @@ public class Shop
         ArrayList result = new ArrayList();
         try
         {
-            PreparedStatement st = conn.prepareStatement("select storage from specification group by storage");
+            PreparedStatement st = conn.prepareStatement("select storage from specification group by storage order by storage");
             rs = st.executeQuery();
             while(rs.next())
             {
@@ -774,7 +797,7 @@ public class Shop
         ArrayList result = new ArrayList();
         try
         {
-            PreparedStatement st = conn.prepareStatement("select screen from specification group by screen");
+            PreparedStatement st = conn.prepareStatement("select screen from specification group by screen order by screen");
             rs = st.executeQuery();
             while(rs.next())
             {
@@ -796,7 +819,7 @@ public class Shop
         ArrayList result = new ArrayList();
         try
         {
-            PreparedStatement st = conn.prepareStatement("select price from specification group by price");
+            PreparedStatement st = conn.prepareStatement("select price from specification group by price order by price");
             rs = st.executeQuery();
             while(rs.next())
             {
@@ -808,6 +831,56 @@ public class Shop
         catch (SQLException e)
         {
 //             alert("Cant get everything from table specification");
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static ArrayList getLaptopsForSell(String cpu, String gpu, String ram, String storage, String screen, String vendor, String name, String price)
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select * from laptops inner join specification on laptops.specid = specification.id" +
+                    " where cpu like (\"%"+cpu+"%\") " +
+                    " and gpu like (\"%"+gpu+"%\") "+
+                    " and ram like (\"%"+ram+"%\") "+
+                    " and storage like (\"%"+storage+"%\") "+
+                    " and screen like (\"%"+screen+"%\") "+
+                    " and vendor like (\"%"+vendor+"%\") "+
+                    " and name like (\"%"+name+"%\") "+
+                    " and price like (\"%"+price+"%\") order by vendor, name");
+
+//            st.setString(1,cpu);
+//            st.setString(2,gpu);
+//            st.setString(3,storage);
+//            st.setString(4,screen);
+//            st.setString(5,vendor);
+//            st.setString(6,name);
+//            st.setString(7,price);
+
+            rs = st.executeQuery();
+            while(rs.next())
+            {
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getInt(4));
+                result.add(rs.getInt(5));
+                result.add(rs.getString(6));
+                result.add(rs.getInt(7));
+                result.add(rs.getInt(8));
+                result.add(rs.getString(9));
+                result.add(rs.getString(10));
+                result.add(rs.getString(11));
+                result.add(rs.getString(12));
+                result.add(rs.getString(13));
+                result.add(rs.getString(14));
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table laptops");
             e.printStackTrace();
         }
         return result;
@@ -834,7 +907,8 @@ public class Shop
 
 //        updateCustomer("Customer1", "+3622222222", "customeremail@customer.hu", "piac", "street", "7", "Customer1", "+362222222", "customeremail@customer.hu");
 //        getLaptopsVendor();
-        getLaptopsCpu();
+//        getLaptopsCpu();
+//        getLaptopsForSell("7200", "", "", "HDD", "", "", "", "");
         CloseConnection();
 
     }

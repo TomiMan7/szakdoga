@@ -7,7 +7,7 @@ import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
 
-public class workhoursController
+public class WorkhoursController
 {
     public ListView nameList;
     public TextField nameInput;

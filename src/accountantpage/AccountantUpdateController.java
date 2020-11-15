@@ -2,15 +2,14 @@ package accountantpage;
 
 import Database.Employees;
 import Database.Wagemods;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import login.loginController;
+import login.LoginController;
 
 import java.util.ArrayList;
 
-public class accountantUpdateController
+public class AccountantUpdateController
 {
     public ComboBox empNameList;
     public Label first;
@@ -132,7 +131,7 @@ public class accountantUpdateController
             Wagemods.deleteWage("name", firstText.getText());
 
         else
-            loginController.alert("Nem lehet törölni!");
+            LoginController.alert("Nem lehet törölni!");
 
     }
     public void updateEmployee()
@@ -160,7 +159,7 @@ public class accountantUpdateController
 
         else
         {
-            loginController.alert("Nem megfelelő update!");
+            LoginController.alert("Nem megfelelő update!");
         }
     }
 }

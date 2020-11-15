@@ -6,7 +6,7 @@ import com.gluonhq.charm.glisten.control.TextField;
 
 import java.util.ArrayList;
 
-public class salesmanInsertController
+public class SalesmanInsertController
 {
     public TextField vendor;
     public TextField name;

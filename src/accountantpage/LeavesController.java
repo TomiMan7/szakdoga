@@ -7,7 +7,7 @@ import javafx.scene.control.ListView;
 
 import java.util.ArrayList;
 
-public class leavesController
+public class LeavesController
 {
 
     public DatePicker startdate;

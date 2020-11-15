@@ -8,7 +8,7 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.loginController">
+<VBox prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.LoginController">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <effect>

@@ -27,7 +27,7 @@ public class Main extends Application {
 
         } catch (Exception e)
         {
-            loginController.alert("Nem sikerült az adatbázishoz csatlakozni!" +
+            LoginController.alert("Nem sikerült az adatbázishoz csatlakozni!" +
                     "Kérem ellenőrizze a kapcsolatát és az adatbázis elérhetőségét");
         }
 

@@ -4,7 +4,7 @@ import Database.Employees;
 import Database.Wagemods;
 import javafx.fxml.FXML;
 
-public class accountantInsertController
+public class AccountantInsertController
 {
     @FXML
     private javafx.scene.control.ComboBox tableName;
@@ -49,7 +49,7 @@ public class accountantInsertController
             firstInput.setFloatText("Név:");
             secondInput.setFloatText("Nyugdíj (%):");
             thirdInput.setFloatText("Társadalom biztosítás (%):");
-            fourthInput.setFloatText("SZemélyi jövedelem adó (%):");
+            fourthInput.setFloatText("Személyi jövedelem adó (%):");
             fifthInput.setFloatText("Munkaerőpiaci járulék (%):");
             sixthInput.setFloatText("Nyugdíj takarék:");
         }

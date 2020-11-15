@@ -5,7 +5,7 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="550.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="salesmanpage.salesmanpageController">
+<VBox prefHeight="550.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="salesmanpage.SalesmanpageController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -39,7 +39,7 @@
                         <ComboBox fx:id="name" layoutX="10.0" layoutY="360.0" prefWidth="200.0" promptText="Név" />
                         <Button fx:id="search" layoutX="150.0" layoutY="480.0" mnemonicParsing="false" onAction="#search" text="Keresés" />
                         <Button fx:id="buy" layoutX="10.0" layoutY="480.0" mnemonicParsing="false" onAction="#addNewCustomerScreen" text="Vétel.." />
-                        <Button fx:id="refresh" layoutX="75.0" layoutY="480.0" mnemonicParsing="false" onAction="#setData" text="Frissítés" />
+                        <Button fx:id="refresh" layoutX="65.0" layoutY="480.0" mnemonicParsing="false" onAction="#setData" text="Adatlekérés" />
                         <ComboBox fx:id="price" layoutX="10.0" layoutY="410.0" prefWidth="200.0" promptText="Ár" />
                     </children>
                 </AnchorPane>

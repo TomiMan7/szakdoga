@@ -4,7 +4,7 @@ import Database.Shop;
 import javafx.scene.control.*;
 import java.util.ArrayList;
 
-public class salesmanUpdateController
+public class SalesmanUpdateController
 {
     public Label vendorOut;
     public Label nameOut;

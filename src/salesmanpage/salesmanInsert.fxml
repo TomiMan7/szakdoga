@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="500.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="salesmanpage.salesmanInsertController">
+<VBox prefHeight="500.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="salesmanpage.SalesmanInsertController">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="500.0" prefWidth="991.0" VBox.vgrow="ALWAYS">
             <children>

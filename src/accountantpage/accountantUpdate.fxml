@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accountantpage.accountantUpdateController">
+<VBox prefHeight="420.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="accountantpage.AccountantUpdateController">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="420.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
             <children>
@@ -14,7 +14,7 @@
                     </font>
                 </Label>
                 <ComboBox fx:id="empNameList" layoutX="64.0" layoutY="27.0" prefWidth="150.0" promptText="Dolgozók nevei:" />
-                <Label layoutX="14.0" layoutY="31.0" text="Names:" />
+                <Label layoutX="14.0" layoutY="31.0" text="Nevek:" />
                 <Button layoutX="440.0" layoutY="27.0" mnemonicParsing="false" onAction="#searchForEmployee" text="Dolgozó keresése" />
                 <Label fx:id="first" layoutX="14.0" layoutY="100.0" prefWidth="102.0" />
                 <Label layoutX="14.0" layoutY="68.0" text="Dolgozó adatai:" />
@@ -38,7 +38,7 @@
                 <TextField fx:id="sixthInput" layoutX="250.0" layoutY="300.0" prefWidth="150.0" promptText="Frissített adat" />
                 <Button fx:id="delete" layoutX="28.0" layoutY="341.0" mnemonicParsing="false" onAction="#deleteEmployee" text="Dolgozó törlése" />
                 <Button fx:id="update" layoutX="435.0" layoutY="341.0" mnemonicParsing="false" onAction="#updateEmployee" text="Adatok frissítése" />
-            <Button fx:id="fillNameList" layoutX="250.0" layoutY="27.0" mnemonicParsing="false" onAction="#fillNames" text="Keresés" />
+            <Button fx:id="fillNameList" layoutX="220.0" layoutY="27.0" mnemonicParsing="false" onAction="#fillNames" text="Nevek lekérése" />
             </children>
         </AnchorPane>
     </children>

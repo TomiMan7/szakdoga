@@ -8,7 +8,7 @@ import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 
-public class customerUpdateController
+public class CustomerUpdateController
 {
     public ListView list;
     public Label nameOut;

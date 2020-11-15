@@ -1,20 +1,19 @@
 package salesmanpage;
 
 import Database.Shop;
-import com.sun.javafx.scene.SceneHelper;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class salesmanpageController
+public class SalesmanpageController
 {
     public ComboBox cpu;
     public ComboBox gpu;
@@ -33,6 +32,7 @@ public class salesmanpageController
     public Label amountLabel;
     public Label priceLabel;
     public ComboBox price;
+    public ListView list;
 
     private boolean updateOpen = false;
     private boolean insertOpen = false;
@@ -102,15 +102,15 @@ public class salesmanpageController
             stage.resizableProperty().setValue(false);
             stage.setTitle("Insert new Laptop");
 
-            customerInsertController.vendorLabel = vendorLabel.getText();
-            customerInsertController.nameLabel = nameLabel.getText();
-            customerInsertController.cpuLabel = cpuLabel.getText();
-            customerInsertController.gpuLabel = gpuLabel.getText();
-            customerInsertController.ramLabel = ramLabel.getText();
-            customerInsertController.storageLabel = storageLabel.getText();
-            customerInsertController.screenLabel = screenLabel.getText();
-            customerInsertController.amountLabel = amountLabel.getText();
-            customerInsertController.priceLabel = priceLabel.getText();
+            CustomerInsertController.vendorLabel = vendorLabel.getText();
+            CustomerInsertController.nameLabel = nameLabel.getText();
+            CustomerInsertController.cpuLabel = cpuLabel.getText();
+            CustomerInsertController.gpuLabel = gpuLabel.getText();
+            CustomerInsertController.ramLabel = ramLabel.getText();
+            CustomerInsertController.storageLabel = storageLabel.getText();
+            CustomerInsertController.screenLabel = screenLabel.getText();
+            CustomerInsertController.amountLabel = amountLabel.getText();
+            CustomerInsertController.priceLabel = priceLabel.getText();
 
             stage.show();
 
@@ -145,8 +145,10 @@ public class salesmanpageController
         ram.getItems().clear();
         storage.getItems().clear();
         screen.getItems().clear();
+        price.getItems().clear();
 
-        ArrayList laptops = Shop.getAllLaptopsData();
+        ArrayList vendors = Shop.getLaptopsVendor();
+        ArrayList names = Shop.getLaptopsName();
         ArrayList cpus = Shop.getLaptopsCpu();
         ArrayList gpus = Shop.getLaptopsGpu();
         ArrayList rams = Shop.getLaptopsRam();
@@ -154,18 +156,13 @@ public class salesmanpageController
         ArrayList screens = Shop.getLaptopsScreen();
         ArrayList prices = Shop.getLaptopsPrice();
 
-        for(int i = 2; i <= laptops.size() - 1; i=i+7) {
-            name.getItems().add(laptops.get(i).toString());
-            if(i+7 > laptops.size()){
-                break;
-            }
+        for(int i = 0; i <= vendors.size() - 1; i++)
+        {
+            vendor.getItems().add(vendors.get(i).toString());
         }
-
-        for(int i = 1; i <= laptops.size() - 1; i=i+7) {
-            vendor.getItems().add(laptops.get(i).toString());
-            if(i+7 > laptops.size()){
-                break;
-            }
+        for(int i = 0; i <= names.size() - 1; i++)
+        {
+            name.getItems().add(names.get(i).toString());
         }
 
         for(int i = 0; i <= cpus.size() - 1; i++)
@@ -201,11 +198,44 @@ public class salesmanpageController
 
     public void search()
     {
-//        String cpudata = cpu.getValue().toString();//getSelectionModel().getSelectedItem().toString();
-//        String gpudata = cpu.getSelectionModel().getSelectedItem().toString();
+        String cpudata = "";
+        String gpudata = "";
+        String ramdata = "";
+        String storagedata = "";
+        String screendata = "";
+        String vendordata = "";
+        String namedata = "";
+        String pricedata = "";
+        try
+        {
+            cpudata = cpu.getValue().toString(); //getSelectionModel().getSelectedItem().toString();
+            gpudata = gpu.getValue().toString();
+            ramdata = ram.getValue().toString();
+            storagedata = storage.getValue().toString();
+            screendata = screen.getValue().toString();
+            vendordata = vendor.getValue().toString();
+            namedata = name.getValue().toString();
+            pricedata = price.getValue().toString();
+        }catch ( Exception e){}
 
+        ArrayList laptops = Shop.getLaptopsForSell(cpudata,gpudata,ramdata,storagedata,screendata, vendordata, namedata, pricedata);
+        laptops.forEach(n -> System.out.println(n));
 
-//        if (cpudata == null)
-//            System.out.println("anyad");
+        list.getItems().clear();
+        populateList(laptops);
     }
+
+    public void populateList(ArrayList laptops)
+    {
+
+        for(int i = 1; i < laptops.size() - 1; i=i+14)
+        {
+            list.getItems().add(laptops.get(i).toString() + " " + laptops.get(i+1).toString());
+            if(i+14 > laptops.size())
+                return;
+        }
+
+    }
+
+//    public vpod
 }

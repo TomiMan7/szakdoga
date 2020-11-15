@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class accountantpageController
+public class AccountantpageController
 {
     @FXML
     public Label nyugdijLevonas;

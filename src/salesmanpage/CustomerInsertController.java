@@ -6,7 +6,7 @@ import javafx.scene.control.CheckBox;
 
 import java.util.ArrayList;
 
-public class customerInsertController
+public class CustomerInsertController
 {
     public TextField name;
     public TextField phone;
