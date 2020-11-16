@@ -1,40 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="450.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="salesmanpage.CustomerUpdateController">
+<VBox prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="salesmanpage.CustomerUpdateController">
     <children>
-        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="430.0" prefWidth="748.0" VBox.vgrow="ALWAYS">
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="430.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
             <children>
-                <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-                <Button fx:id="search" layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#getNames" text="Vásárlók keresése" />
-                <Label fx:id="nameLabel" layoutX="14.0" layoutY="111.0" prefHeight="18.0" prefWidth="102.0" text="Név:" />
-                <Label fx:id="phoneLabel" layoutX="14.0" layoutY="151.0" prefHeight="18.0" prefWidth="102.0" text="Telefonszám:" />
-                <Label fx:id="emailLabel" layoutX="14.0" layoutY="191.0" prefHeight="18.0" prefWidth="102.0" text="E-mail:" />
-                <Label fx:id="cityLabel" layoutX="14.0" layoutY="231.0" prefHeight="18.0" prefWidth="102.0" text="Város:" />
-                <Label fx:id="streetLabel" layoutX="14.0" layoutY="271.0" prefHeight="18.0" prefWidth="102.0" text="Utca:" />
-                <Label fx:id="nameOut" layoutX="100.0" layoutY="111.0" onMouseClicked="#setNameIn" prefHeight="18.0" prefWidth="140.0" />
-                <Label fx:id="phoneOut" layoutX="100.0" layoutY="151.0" onMouseClicked="#setPhoneIn" prefHeight="18.0" prefWidth="140.0" />
-                <Label fx:id="emailOut" layoutX="100.0" layoutY="191.0" onMouseClicked="#setEmailIn" prefHeight="18.0" prefWidth="140.0" />
-                <Label fx:id="cityOut" layoutX="100.0" layoutY="231.0" onMouseClicked="#setCityIn" prefHeight="18.0" prefWidth="140.0" />
-                <Label fx:id="streetOut" layoutX="100.0" layoutY="271.0" onMouseClicked="#setStreetIn" prefHeight="18.0" prefWidth="140.0" />
-                <TextField fx:id="nameIn" layoutX="250.0" layoutY="111.0" prefWidth="150.0" promptText="Frissített adat:" />
-                <TextField fx:id="phoneIn" layoutX="250.0" layoutY="151.0" prefWidth="150.0" promptText="Frissített adat:" />
-                <TextField fx:id="emailIn" layoutX="250.0" layoutY="191.0" prefWidth="150.0" promptText="Frissített adat:" />
-                <TextField fx:id="cityIn" layoutX="250.0" layoutY="231.0" prefWidth="150.0" promptText="Frissített adat:" />
-                <TextField fx:id="streetIn" layoutX="250.0" layoutY="271.0" prefWidth="150.0" promptText="Frissített adat:" />
-                <Button fx:id="update" layoutX="325.0" layoutY="381.0" mnemonicParsing="false" onAction="#update" text="Infó frissítése" />
-                <ListView fx:id="list" layoutX="440.0" layoutY="57.0" onMouseClicked="#getCustomerData" prefHeight="350.0" prefWidth="200.0" />
-                <Label fx:id="housenumberLabel" layoutX="14.0" layoutY="311.0" text="Házszám:" />
-                <TextField fx:id="housenumberIn" layoutX="250.0" layoutY="311.0" promptText="Frissített adat:" />
-                <Label fx:id="housenumberOut" layoutX="100.0" layoutY="311.0" onMouseClicked="#setHousenumberIn" prefWidth="140.0" />
-                <Button fx:id="delete" layoutX="14.0" layoutY="381.0" mnemonicParsing="false" onAction="#delete" text="Utolsó vásárlás törlése" />
+                <TextField fx:id="customer" floatText="Név:" layoutX="10.0" layoutY="30.0" prefWidth="150.0" />
+                <TextField fx:id="phone" floatText="Telefonszám:" layoutX="10.0" layoutY="80.0" prefWidth="150.0" />
+                <TextField fx:id="email" floatText="E-mail:" layoutX="10.0" layoutY="180.0" prefWidth="150.0" />
+                <TextField fx:id="city" floatText="Város:" layoutX="10.0" layoutY="130.0" prefWidth="150.0" />
+                <TextField fx:id="street" floatText="Utca:" layoutX="10.0" layoutY="230.0" prefWidth="150.0" />
+                <TextField fx:id="hnumber" floatText="Házszám:" layoutX="10.0" layoutY="280.0" prefWidth="150.0" />
+                <Button layoutX="10.0" layoutY="360.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Vásárló keresése" />
+                <ScrollPane layoutX="200.0" layoutY="70.0">
+                    <content>
+                        <ListView fx:id="list" prefHeight="442.0" prefWidth="300.0" />
+                    </content>
+                </ScrollPane>
+                <Label layoutX="232.0" layoutY="30.0" text="Korábbi vásárlások:" />
+                <Label layoutX="530.0" layoutY="60.0" prefWidth="75.0" text="Gyártó:" textAlignment="CENTER" />
+                <Label layoutX="530.0" layoutY="110.0" prefWidth="75.0" text="Név:" textAlignment="CENTER" />
+                <Label layoutX="530.0" layoutY="160.0" prefWidth="75.0" text="CPU:" textAlignment="CENTER" />
+                <Label layoutX="530.0" layoutY="210.0" prefWidth="75.0" text="GPU:" textAlignment="CENTER" />
+                <Label layoutX="530.0" layoutY="260.0" prefWidth="75.0" text="RAM:" textAlignment="CENTER" />
+                <Label layoutX="530.0" layoutY="310.0" prefWidth="75.0" text="Tárhely:" textAlignment="CENTER" />
+                <Label layoutX="530.0" layoutY="360.0" prefWidth="75.0" text="Kijelző:" textAlignment="CENTER" />
+                <Label layoutX="530.0" layoutY="410.0" prefWidth="75.0" text="Mennyiség:" textAlignment="CENTER" />
+                <Label layoutX="530.0" layoutY="460.0" prefWidth="75.0" text="Ár:" textAlignment="CENTER" />
+                <Label fx:id="vendor" layoutX="615.0" layoutY="60.0" prefWidth="250.0" textAlignment="CENTER" />
+                <Label fx:id="name" layoutX="615.0" layoutY="110.0" prefWidth="250.0" textAlignment="CENTER" />
+                <Label fx:id="cpu" layoutX="615.0" layoutY="160.0" prefWidth="250.0" textAlignment="CENTER" />
+                <Label fx:id="gpu" layoutX="615.0" layoutY="210.0" prefWidth="250.0" textAlignment="CENTER" />
+                <Label fx:id="ram" layoutX="615.0" layoutY="260.0" prefWidth="250.0" textAlignment="CENTER" />
+                <Label fx:id="storage" layoutX="615.0" layoutY="310.0" prefWidth="250.0" textAlignment="CENTER" />
+                <Label fx:id="screen" layoutX="615.0" layoutY="360.0" prefWidth="250.0" textAlignment="CENTER" />
+                <Label fx:id="price" layoutX="615.0" layoutY="460.0" prefWidth="250.0" textAlignment="CENTER" />
+                <TextField fx:id="amount" floatText="Mennyiség:" layoutX="615.0" layoutY="390.0" />
+                <Button layoutX="10.0" layoutY="410.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Vásárlás frissítése" />
+                <Button layoutX="10.0" layoutY="460.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Kijelölt vásárlás törlése" textAlignment="CENTER" wrapText="true" />
             </children>
         </AnchorPane>
     </children>

@@ -246,20 +246,23 @@ public class SalesmanpageController
 
     public void getSelectedLaptop()
     {
-        String[] temp;
-        String vendor = list.getSelectionModel().getSelectedItem().toString();
-        temp = vendor.split(" ", 2);
+        try {
+            String[] temp;
+            String vendor = list.getSelectionModel().getSelectedItem().toString();
+            temp = vendor.split(" ", 2);
 
-        main = Shop.getALaptopAll(temp[0], temp[1]);
+            main = Shop.getALaptopAll(temp[0], temp[1]);
 
-        vendorLabel.setText(main.get(1).toString());
-        nameLabel.setText(main.get(2).toString());
-        amountLabel.setText(main.get(3).toString());
-        cpuLabel.setText(main.get(4).toString());
-        gpuLabel.setText(main.get(5).toString());
-        ramLabel.setText(main.get(6).toString());
-        storageLabel.setText(main.get(7).toString());
-        screenLabel.setText(main.get(8).toString());
-        priceLabel.setText(main.get(9).toString());
+            vendorLabel.setText(main.get(1).toString());
+            nameLabel.setText(main.get(2).toString());
+            amountLabel.setText(main.get(3).toString());
+            cpuLabel.setText(main.get(4).toString());
+            gpuLabel.setText(main.get(5).toString());
+            ramLabel.setText(main.get(6).toString());
+            storageLabel.setText(main.get(7).toString());
+            screenLabel.setText(main.get(8).toString());
+            priceLabel.setText(main.get(9).toString());
+        }
+        catch (Exception e){}
     }
 }
