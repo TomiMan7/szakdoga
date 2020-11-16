@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1:3306
--- Létrehozás ideje: 2020. Nov 02. 14:25
+-- Létrehozás ideje: 2020. Nov 16. 15:58
 -- Kiszolgáló verziója: 5.7.26
 -- PHP verzió: 7.2.18
 
@@ -40,14 +40,14 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `street` varchar(255) NOT NULL,
   `hnumber` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- A tábla adatainak kiíratása `customer`
 --
 
 INSERT INTO `customer` (`id`, `name`, `phone`, `email`, `city`, `street`, `hnumber`) VALUES
-(1, 'Customer1', '+362222222', 'customeremail@customer.hu', 'db', 'street', '7');
+(1, 'Customer1', '+3622222222', 'customeremail@customer.hu', 'piac', 'street', '7');
 
 -- --------------------------------------------------------
 
@@ -66,16 +66,20 @@ CREATE TABLE IF NOT EXISTS `laptops` (
   `availability` int(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `specid` (`specid`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- A tábla adatainak kiíratása `laptops`
 --
 
 INSERT INTO `laptops` (`id`, `vendor`, `name`, `specid`, `amount`, `description`, `availability`) VALUES
-(1, 'Acer', 'Aspire', 1, 1, 'Its good', 1),
+(1, 'Acer', 'Aspire F5-575', 1, 666, 'It\'s good', 1),
 (2, 'ASUS', 'TUF FX5050DT', 2, 3, 'Tapasztald meg a simább és magával ragadóbb játékot az új ASUS TUF Gaming FX505 NVIDIA változattal.', 1),
-(3, 'Acer', 'Aspire', 3, 3, 'Best budget laptop for this price range.', 1);
+(3, 'Acer', 'Aspire F5-575G', 3, 3, 'Best budget laptop for this price range.', 1),
+(4, 'Lenovo', 'Legion 5 82B3002YHV', 4, 5, 'Most ehhez nem lesz leírás és az lesz a leírás.', 1),
+(6, 'asd', 'asd', 6, 5, 'asd', 1),
+(7, 'qwe', 'qwe', 7, 5, 'qwe', 1),
+(8, 'Lenovo', 'Sajat', 8, 2, 'leírás', 1);
 
 -- --------------------------------------------------------
 
@@ -92,9 +96,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `quantity` varchar(255) NOT NULL,
   `finalprice` varchar(255) NOT NULL,
   `date` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `customer` (`customerid`),
-  UNIQUE KEY `laptop` (`laptopid`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
@@ -102,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
 --
 
 INSERT INTO `orders` (`id`, `customerid`, `laptopid`, `paymentmethod`, `quantity`, `finalprice`, `date`) VALUES
-(1, 1, 1, 'cash', '1', '500', '20200908');
+(1, 1, 1, 'cash', '1', '500', 'CANCELED');
 
 -- --------------------------------------------------------
 
@@ -143,16 +145,20 @@ CREATE TABLE IF NOT EXISTS `specification` (
   `screen` varchar(255) NOT NULL,
   `price` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- A tábla adatainak kiíratása `specification`
 --
 
 INSERT INTO `specification` (`id`, `cpu`, `gpu`, `ram`, `storage`, `screen`, `price`) VALUES
-(1, 'ryzen 7 4700', 'amd ry7500', '16gb', '2tb ssd', '17 IPS', '500'),
-(2, 'AMD Ryzen 3550H', 'nVidia GTX1650', '8GB DDR4', '256GB SSD', '15,6 IPS', '800'),
-(4, 'Intel core i5 7200u', 'nVidia 940MX', '4gb DDR4', '750GB HDD', '15,6 TN', '500');
+(1, 'Ryzen 7 4700H', 'AMD RX7500', '16GB', '2TB SSD', '17\"IPS', '500'),
+(2, 'AMD Ryzen 3550H', 'nVidia GTX1650', '8GB DDR4', '256GB SSD', '15,6\" IPS', '800'),
+(3, 'Intel core i5 7200u', 'nVidia 940MX', '4gb DDR4', '750GB HDD', '15,6\" TN', '500'),
+(4, 'Intel Core i5-10300H', 'nVidia Geforce GTX 1650 Ti 4GB', '8GB DDR4 2933MHz', '512 GB SSD', '17,3\" FHD IPS', '999999'),
+(6, 'asd', 'asd', 'asd', 'asd', 'asd', 'asd'),
+(7, 'qwe', 'qwe', 'qwe', 'qwe', 'qwe', 'qwe'),
+(8, 'Intel core i5 7200u', 'nVidia 940MX', '8GB DDR4', '500GB HDD', '17,3\" TN', '500');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

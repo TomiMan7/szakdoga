@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1:3306
--- Létrehozás ideje: 2020. Nov 02. 14:26
+-- Létrehozás ideje: 2020. Nov 16. 15:59
 -- Kiszolgáló verziója: 5.7.26
 -- PHP verzió: 7.2.18
 
@@ -47,8 +47,8 @@ CREATE TABLE IF NOT EXISTS `wagemods` (
 --
 
 INSERT INTO `wagemods` (`id`, `name`, `nyugdij`, `tb`, `szja`, `mpj`, `nyugdijtakarek`) VALUES
-(1, 'shopOwner', '10', '7', '15', '1.5', '24000'),
-(2, 'Dolgozo', '10', '7', '15', '1.5', '20000');
+(1, 'shopOwner', '10', '7', '15', '1.5', '24'),
+(2, 'Dolgozo', '10', '7', '15', '1.5', '20');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

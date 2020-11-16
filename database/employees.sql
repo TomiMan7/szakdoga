@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1:3306
--- Létrehozás ideje: 2020. Nov 02. 14:25
+-- Létrehozás ideje: 2020. Nov 16. 15:58
 -- Kiszolgáló verziója: 5.7.26
 -- PHP verzió: 7.2.18
 
@@ -47,8 +47,8 @@ CREATE TABLE IF NOT EXISTS `employees` (
 --
 
 INSERT INTO `employees` (`id`, `name`, `phone`, `email`, `post`, `wage`, `whours`) VALUES
-(1, 'shopOwner', '+36111111', 'email@email.com', 'manager', 100, 8),
-(2, 'Dolgozo', '+36111112', 'email@email2.com', 'salesman', 990, 8);
+(1, 'shopOwner', '+36111111', 'email@email.com', 'manager', 999, 8),
+(2, 'Dolgozo', '+36111112', 'email@email2.com', 'salesman', 2, 8);
 
 -- --------------------------------------------------------
 
@@ -75,10 +75,10 @@ CREATE TABLE IF NOT EXISTS `leaves` (
 --
 
 INSERT INTO `leaves` (`id`, `startyear`, `startmonth`, `startday`, `endyear`, `endmonth`, `endday`, `sickpay`, `workerid`) VALUES
-(1, '2020', '10', '3', '2020', '10', '6', 0, 1),
-(2, '2020', '10', '2', '2020', '10', '7', 0, 2),
-(3, '2020', '10', '10', '2020', '10', '12', 0, 1),
-(4, '2020', '10', '19', '2020', '10', '23', 1, 1);
+(1, '2020', '11', '3', '2020', '11', '6', 0, 1),
+(2, '2020', '11', '2', '2020', '11', '7', 0, 2),
+(3, '2020', '11', '10', '2020', '11', '12', 0, 1),
+(4, '2020', '11', '19', '2020', '11', '23', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -128,10 +128,10 @@ CREATE TABLE IF NOT EXISTS `whours` (
 --
 
 INSERT INTO `whours` (`id`, `name`, `year`, `month`, `day`, `hour`) VALUES
-(1, 'Dolgozo', '2020', '10', '1', '8'),
-(2, 'shopOwner', '2020', '10', '1', '8'),
-(3, 'Dolgozo', '2020', '10', '2', '8'),
-(4, 'shopOwner', '2020', '10', '17', '8');
+(1, 'Dolgozo', '2020', '11', '1', '8'),
+(2, 'shopOwner', '2020', '11', '1', '8'),
+(3, 'Dolgozo', '2020', '11', '2', '8'),
+(4, 'shopOwner', '2020', '11', '17', '8');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
