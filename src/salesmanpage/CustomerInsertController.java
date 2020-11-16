@@ -15,34 +15,41 @@ public class CustomerInsertController
     public TextField street;
     public TextField housenumber;
 
-    public static String vendorLabel;
-    public static String nameLabel;
-    public static String cpuLabel;
-    public static String gpuLabel;
-    public static String ramLabel;
-    public static String storageLabel;
-    public static String screenLabel;
-    public static String amountLabel;
-    public static String priceLabel;
     public CheckBox paymentMethod;
+    public TextField amount;
 
-    //megnezni h ha mar van ilyen customer akkor annak leszdni az IDjet ha nincs akkor felvenni es annak az IDja
     public void insertCustomer()
     {
-        SalesmanpageController.main.forEach(n -> System.out.println(n));
-        int cash = 0;
+        String cash = "0";
         if(paymentMethod.isSelected())
-            cash = 1;
+            cash = "1";
 
-//        ArrayList customerId = Shop.getCustomerData( "name", name.getText());
+        ArrayList newCustomer = new ArrayList();
+        ArrayList customer = Shop.getACustomer(name.getText(), phone.getText(), email.getText(), city.getText(), street.getText(), housenumber.getText());
 
-        System.out.println(cash);
-//        System.out.println(customerId.get(1));
-//        System.out.println(laptopId.get(1));
+        if(customer.size() == 0)
+        {
+            Shop.insertCustomer(name.getText(), phone.getText(), email.getText(), city.getText(), street.getText(), housenumber.getText());
+            newCustomer = Shop.getACustomer(name.getText(), phone.getText(), email.getText(), city.getText(), street.getText(), housenumber.getText());
+            Shop.insertOrders( Integer.parseInt(newCustomer.get(0).toString()), Integer.parseInt(SalesmanpageController.main.get(0).toString()), cash, amount.getText(), String.valueOf(Integer.parseInt(SalesmanpageController.main.get(9).toString()) * Integer.parseInt(amount.getText())), java.time.LocalDate.now().toString() );
+        }
+        else
+        {
+            Shop.insertOrders(Integer.parseInt(customer.get(0).toString()), Integer.parseInt(SalesmanpageController.main.get(0).toString()), cash, amount.getText(), String.valueOf(Integer.parseInt(SalesmanpageController.main.get(9).toString()) * Integer.parseInt(amount.getText())), java.time.LocalDate.now().toString());
+        }
 
+        clearInputs();
+    }
 
-       //Shop.insertCustomer(name.getText(), phone.getText(), email.getText(), city.getText(), street.getText(), housenumber.getText());
-       //kell customer id, laptop id, milyen fizetesi modszer
-       //Shop.insertOrders(  customerId.get(1), laptopId, cash, "1",priceLabel,java.time.LocalDate.now());
+    public void clearInputs()
+    {
+        name.setText("");
+        phone.setText("");
+        email.setText("");
+        city.setText("");
+        street.setText("");
+        housenumber.setText("");
+        amount.setText("");
+        paymentMethod.setSelected(false);
     }
 }

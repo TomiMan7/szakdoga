@@ -2,7 +2,6 @@ package Database;
 
 import java.sql.*;
 import java.util.ArrayList;
-//import java.util.spi.AbstractResourceBundleProvider;
 
 import static Database.Wagemods.alert;
 
@@ -94,6 +93,46 @@ public class Shop
             }
         } catch (SQLException e) {
 //             alert("Cant get everything from table shop")
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static ArrayList getACustomer(String name, String phone, String email, String city, String street, String hnumber)
+    {
+        ArrayList result = new ArrayList();
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("select * from customer where name = ?" +
+                    "and phone = ?" +
+                    "and email = ?" +
+                    "and city = ?" +
+                    "and street = ?" +
+                    "and hnumber = ?");
+
+            st.setString(1,name);
+            st.setString(2,phone);
+            st.setString(3,email);
+            st.setString(4,city);
+            st.setString(5,street);
+            st.setString(6,hnumber);
+
+            rs = st.executeQuery();
+
+            while(rs.next())
+            {
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getString(4));
+                result.add(rs.getString(5));
+                result.add(rs.getString(6));
+                result.add(rs.getString(7));
+            }
+        }
+        catch (SQLException e)
+        {
+//             alert("Cant get everything from table customer");
             e.printStackTrace();
         }
         return result;
@@ -272,9 +311,6 @@ public class Shop
             while(rs.next())
             {
                 result.add(rs.getString(1));
-//
-//                System.out.println(rs.getString(1));
-                //TODO AFTER GUI
             }
         }
         catch (SQLException e)
@@ -924,6 +960,7 @@ public class Shop
 //        getLaptopsCpu();
 //        getLaptopsForSell("7200", "", "", "HDD", "", "", "", "");
 //        getALaptopAll("Acer", "Aspire F5-575G");
+//        getACustomer("Customer1", "+3622222222", "customeremail@customer.hu", "piac", "street", "7");
         CloseConnection();
 
     }

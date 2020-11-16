@@ -1,6 +1,8 @@
 package salesmanpage;
 
+import Database.Employees;
 import Database.Shop;
+import Database.Wagemods;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -96,6 +98,12 @@ public class SalesmanpageController
     public void addNewCustomerScreen()
     {
         try {
+            String[] temp;
+            String vendor = list.getSelectionModel().getSelectedItem().toString();
+            temp = vendor.split(" ", 2);
+
+            main = Shop.getALaptopAll(temp[0], temp[1]);
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customerInsert.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -104,20 +112,10 @@ public class SalesmanpageController
             stage.resizableProperty().setValue(false);
             stage.setTitle("Vásárlói igény felvitele");
 
-            CustomerInsertController.vendorLabel = vendorLabel.getText();
-            CustomerInsertController.nameLabel = nameLabel.getText();
-            CustomerInsertController.cpuLabel = cpuLabel.getText();
-            CustomerInsertController.gpuLabel = gpuLabel.getText();
-            CustomerInsertController.ramLabel = ramLabel.getText();
-            CustomerInsertController.storageLabel = storageLabel.getText();
-            CustomerInsertController.screenLabel = screenLabel.getText();
-            CustomerInsertController.amountLabel = amountLabel.getText();
-            CustomerInsertController.priceLabel = priceLabel.getText();
-
             stage.show();
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        }catch (Exception e){
+            Wagemods.alert("Válasszon ki egy laptopot!");
         }
     }
 
@@ -140,6 +138,7 @@ public class SalesmanpageController
 
     public void setData()
     {
+        main.clear();
         name.getItems().clear();
         vendor.getItems().clear();
         cpu.getItems().clear();
@@ -253,14 +252,14 @@ public class SalesmanpageController
 
         main = Shop.getALaptopAll(temp[0], temp[1]);
 
-        vendorLabel.setText(main.get(0).toString());
-        nameLabel.setText(main.get(1).toString());
-        amountLabel.setText(main.get(2).toString());
-        cpuLabel.setText(main.get(3).toString());
-        gpuLabel.setText(main.get(4).toString());
-        ramLabel.setText(main.get(5).toString());
-        storageLabel.setText(main.get(6).toString());
-        screenLabel.setText(main.get(7).toString());
-        priceLabel.setText(main.get(8).toString());
+        vendorLabel.setText(main.get(1).toString());
+        nameLabel.setText(main.get(2).toString());
+        amountLabel.setText(main.get(3).toString());
+        cpuLabel.setText(main.get(4).toString());
+        gpuLabel.setText(main.get(5).toString());
+        ramLabel.setText(main.get(6).toString());
+        storageLabel.setText(main.get(7).toString());
+        screenLabel.setText(main.get(8).toString());
+        priceLabel.setText(main.get(9).toString());
     }
 }
