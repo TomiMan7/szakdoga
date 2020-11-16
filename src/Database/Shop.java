@@ -688,20 +688,35 @@ public class Shop
     }
 
     //special
-    public static void getALaptopAll()
+    public static ArrayList getALaptopAll(String vendor, String name)
     {
+        ArrayList result = new ArrayList();
         try {
-            PreparedStatement st = conn.prepareStatement("SELECT * FROM laptops left OUTER JOIN specification on laptops.specid = specification.id");
+            PreparedStatement st = conn.prepareStatement("SELECT * FROM laptops left OUTER JOIN specification on laptops.specid = specification.id where vendor = ? and name = ?");
+            st.setString(1, vendor);
+            st.setString(2,name);
+
             rs = st.executeQuery();
-            while (rs.next()) {
-                System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+
-                        " "+rs.getInt(4)+" "+rs.getInt(5)+" "+rs.getString(6)+" "+rs.getInt(7));
-                //TODO AFTER GUI
+
+            while (rs.next())
+            {
+                result.add(rs.getInt(1));
+                result.add(rs.getString(2));
+                result.add(rs.getString(3));
+                result.add(rs.getString(5));
+                result.add(rs.getString(9));
+                result.add(rs.getString(10));
+                result.add(rs.getString(11));
+                result.add(rs.getString(12));
+                result.add(rs.getString(13));
+                result.add(rs.getString(14));
+
             }
         } catch (SQLException e) {
 //             alert("Cant get everything from table laptops")
             e.printStackTrace();
         }
+        return result;
     }
 
     public static ArrayList getLaptopsCpu()
@@ -858,7 +873,6 @@ public class Shop
 //            st.setString(5,vendor);
 //            st.setString(6,name);
 //            st.setString(7,price);
-
             rs = st.executeQuery();
             while(rs.next())
             {
@@ -909,6 +923,7 @@ public class Shop
 //        getLaptopsVendor();
 //        getLaptopsCpu();
 //        getLaptopsForSell("7200", "", "", "HDD", "", "", "", "");
+//        getALaptopAll("Acer", "Aspire F5-575G");
         CloseConnection();
 
     }

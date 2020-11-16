@@ -92,10 +92,10 @@
                         <Label fx:id="emailLabel" layoutX="93.0" layoutY="270.0" prefWidth="120.0" />
                         <Label fx:id="wageLabel" layoutX="93.0" layoutY="330.0" prefWidth="120.0" />
                         <Label fx:id="workhoursLabel" layoutX="145.0" layoutY="390.0" prefWidth="70.0" textAlignment="RIGHT" />
-                        <Label layoutX="12.0" layoutY="450.0" text="Szabadságon töltött órák:" />
-                        <Label fx:id="leavehoursLabel" layoutX="150.0" layoutY="450.0" prefWidth="50.0" />
-                  <Label layoutX="12.0" layoutY="500.0" text="Táppénz:" />
-                  <Label fx:id="sickpayLabel" layoutX="93.0" layoutY="500.0" prefWidth="120.0" />
+                        <Label layoutX="12.0" layoutY="450.0" text="Szabadságon töltött napok:" />
+                        <Label fx:id="leavehoursLabel" layoutX="160.0" layoutY="450.0" prefWidth="40.0" />
+                  <Label layoutX="12.0" layoutY="500.0" text="Táppénzen töltött napok:" />
+                  <Label fx:id="sickpayLabel" layoutX="150.0" layoutY="500.0" prefWidth="50.0" />
                   <Label layoutX="12.0" layoutY="550.0" text="Nettó fizetés:" />
                   <Label fx:id="netto" layoutX="93.0" layoutY="550.0" prefWidth="120.0" />
                     </children>

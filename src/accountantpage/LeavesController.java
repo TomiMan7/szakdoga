@@ -49,6 +49,15 @@ public class LeavesController
         ArrayList workerid = Employees.getEmployeeData("name", nameList.getSelectionModel().getSelectedItem().toString());
 
         Employees.insertLeaves(datumstart[0], datumstart[1], datumstart[2], datumstop[0], datumstop[1], datumstop[2], tappenz,  Integer.parseInt( workerid.get(0).toString() ));
+
+        clearInputs();
+    }
+
+    public void clearInputs()
+    {
+        startdate.getEditor().clear();
+        enddate.getEditor().clear();
+        sickpay.setSelected(false);
     }
 
 }

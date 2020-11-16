@@ -37,6 +37,8 @@ public class SalesmanpageController
     private boolean updateOpen = false;
     private boolean insertOpen = false;
 
+    public static ArrayList main = new ArrayList();
+
     public void dbUpdateScreen()
     {
         if(!updateOpen)
@@ -100,7 +102,7 @@ public class SalesmanpageController
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root1));
             stage.resizableProperty().setValue(false);
-            stage.setTitle("Insert new Laptop");
+            stage.setTitle("Vásárlói igény felvitele");
 
             CustomerInsertController.vendorLabel = vendorLabel.getText();
             CustomerInsertController.nameLabel = nameLabel.getText();
@@ -194,6 +196,15 @@ public class SalesmanpageController
         {
             price.getItems().add(prices.get(i).toString());
         }
+//        name.setPromptText("Név");
+//        vendor.setPromptText("Gyártó");
+//        cpu.setPromptText("CPU");
+//        gpu.setPromptText("GPU");
+//        ram.setPromptText("RAM");
+//        storage.setPromptText("Tárhely");
+//        screen.setPromptText("Kijelző");
+//        price.setPromptText("Ár");
+
     }
 
     public void search()
@@ -219,7 +230,6 @@ public class SalesmanpageController
         }catch ( Exception e){}
 
         ArrayList laptops = Shop.getLaptopsForSell(cpudata,gpudata,ramdata,storagedata,screendata, vendordata, namedata, pricedata);
-        laptops.forEach(n -> System.out.println(n));
 
         list.getItems().clear();
         populateList(laptops);
@@ -227,15 +237,30 @@ public class SalesmanpageController
 
     public void populateList(ArrayList laptops)
     {
-
         for(int i = 1; i < laptops.size() - 1; i=i+14)
         {
             list.getItems().add(laptops.get(i).toString() + " " + laptops.get(i+1).toString());
             if(i+14 > laptops.size())
                 return;
         }
-
     }
 
-//    public vpod
+    public void getSelectedLaptop()
+    {
+        String[] temp;
+        String vendor = list.getSelectionModel().getSelectedItem().toString();
+        temp = vendor.split(" ", 2);
+
+        main = Shop.getALaptopAll(temp[0], temp[1]);
+
+        vendorLabel.setText(main.get(0).toString());
+        nameLabel.setText(main.get(1).toString());
+        amountLabel.setText(main.get(2).toString());
+        cpuLabel.setText(main.get(3).toString());
+        gpuLabel.setText(main.get(4).toString());
+        ramLabel.setText(main.get(5).toString());
+        storageLabel.setText(main.get(6).toString());
+        screenLabel.setText(main.get(7).toString());
+        priceLabel.setText(main.get(8).toString());
+    }
 }

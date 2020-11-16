@@ -124,15 +124,16 @@ public class AccountantUpdateController
 
     public void deleteEmployee()
     {
-        if(second.getText().equals("Telefon:"))
+//        if(second.getText().equals("Telefon:"))
             Employees.deleteFromDbEmployees("employees", "name", firstText.getText());
 
-        else if(second.getText().equals("Nyugdíj:"))
+//        else if(second.getText().equals("Nyugdíj:"))
             Wagemods.deleteWage("name", firstText.getText());
 
-        else
-            LoginController.alert("Nem lehet törölni!");
+//        else
+//            LoginController.alert("Nem lehet törölni!");
 
+        clearInput();
     }
     public void updateEmployee()
     {
@@ -161,5 +162,7 @@ public class AccountantUpdateController
         {
             LoginController.alert("Nem megfelelő update!");
         }
+
+        clearInput();
     }
 }

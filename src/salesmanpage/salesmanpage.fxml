@@ -30,17 +30,17 @@
                                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
                             </textFill>
                         </Label>
-                        <ComboBox fx:id="cpu" layoutX="10.0" layoutY="60.0" prefWidth="200.0" promptText="CPU" />
-                        <ComboBox fx:id="gpu" layoutX="10.0" layoutY="110.0" prefWidth="200.0" promptText="GPU" />
-                        <ComboBox fx:id="ram" layoutX="10.0" layoutY="160.0" prefWidth="200.0" promptText="RAM" />
-                        <ComboBox fx:id="storage" layoutX="10.0" layoutY="210.0" prefWidth="200.0" promptText="Tárhely" />
-                        <ComboBox fx:id="screen" layoutX="10.0" layoutY="260.0" prefWidth="200.0" promptText="Kijelző" />
-                        <ComboBox fx:id="vendor" layoutX="10.0" layoutY="310.0" prefWidth="200.0" promptText="Gyártó" />
-                        <ComboBox fx:id="name" layoutX="10.0" layoutY="360.0" prefWidth="200.0" promptText="Név" />
+                        <ComboBox fx:id="cpu" editable="true" layoutX="10.0" layoutY="60.0" prefWidth="200.0" promptText="CPU" />
+                        <ComboBox fx:id="gpu" editable="true" layoutX="10.0" layoutY="110.0" prefWidth="200.0" promptText="GPU" />
+                        <ComboBox fx:id="ram" editable="true" layoutX="10.0" layoutY="160.0" prefWidth="200.0" promptText="RAM" />
+                        <ComboBox fx:id="storage" editable="true" layoutX="10.0" layoutY="210.0" prefWidth="200.0" promptText="Tárhely" />
+                        <ComboBox fx:id="screen" editable="true" layoutX="10.0" layoutY="260.0" prefWidth="200.0" promptText="Kijelző" />
+                        <ComboBox fx:id="vendor" editable="true" layoutX="10.0" layoutY="310.0" prefWidth="200.0" promptText="Gyártó" />
+                        <ComboBox fx:id="name" editable="true" layoutX="10.0" layoutY="360.0" prefWidth="200.0" promptText="Név" />
                         <Button fx:id="search" layoutX="150.0" layoutY="480.0" mnemonicParsing="false" onAction="#search" text="Keresés" />
                         <Button fx:id="buy" layoutX="10.0" layoutY="480.0" mnemonicParsing="false" onAction="#addNewCustomerScreen" text="Vétel.." />
                         <Button fx:id="refresh" layoutX="65.0" layoutY="480.0" mnemonicParsing="false" onAction="#setData" text="Adatlekérés" />
-                        <ComboBox fx:id="price" layoutX="10.0" layoutY="410.0" prefWidth="200.0" promptText="Ár" />
+                        <ComboBox fx:id="price" editable="true" layoutX="10.0" layoutY="410.0" prefWidth="200.0" promptText="Ár" />
                     </children>
                 </AnchorPane>
                 <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
@@ -48,7 +48,7 @@
                         <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="800.0" prefWidth="430.0">
                             <children>
                                 <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Keresés eredménye:" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                                <ListView fx:id="list" layoutX="10.0" layoutY="50.0" prefHeight="700.0" prefWidth="410.0" />
+                                <ListView fx:id="list" layoutX="10.0" layoutY="50.0" onMouseClicked="#getSelectedLaptop" prefHeight="700.0" prefWidth="410.0" />
                             </children>
                         </AnchorPane>
                     </content>

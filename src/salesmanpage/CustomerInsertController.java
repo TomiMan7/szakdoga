@@ -26,14 +26,15 @@ public class CustomerInsertController
     public static String priceLabel;
     public CheckBox paymentMethod;
 
+    //megnezni h ha mar van ilyen customer akkor annak leszdni az IDjet ha nincs akkor felvenni es annak az IDja
     public void insertCustomer()
     {
+        SalesmanpageController.main.forEach(n -> System.out.println(n));
         int cash = 0;
         if(paymentMethod.isSelected())
             cash = 1;
 
 //        ArrayList customerId = Shop.getCustomerData( "name", name.getText());
-//        ArrayList laptopId = Shop.getaSpecificationData("cpu", cpuLabel, "gpu", gpuLabel, "ram", ramLabel, "storage", storageLabel, "screen", screenLabel);
 
         System.out.println(cash);
 //        System.out.println(customerId.get(1));

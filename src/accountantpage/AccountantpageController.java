@@ -174,15 +174,15 @@ public class AccountantpageController
         workhoursLabel.setText( String.valueOf(allWorkedHours));
 
         ArrayList leavedHours = Employees.getHoursLeft(id, currentdates[0], currentdates[1]);
-        int totalLeftHours = 0;
+        int totalLeftDays = 0;
         int skip = 0;
-        int sickpay = 0;
+        int sickpay = 0; //táppénz
         for(int i = 0; i <= leavedHours.size() - 3; i=i+3)
         {
             if(skip <= 2) //minden 3 a tappenzt jelzo bejegyzes ezert skippelunk
             {
                 if( Integer.parseInt(leavedHours.get(i+2).toString()) == 0) {
-                    totalLeftHours += Integer.parseInt(leavedHours.get(i + 1).toString()) - Integer.parseInt(leavedHours.get(i).toString());
+                    totalLeftDays += Integer.parseInt(leavedHours.get(i + 1).toString()) - Integer.parseInt(leavedHours.get(i).toString());
                     skip++;
                 }
                 else
@@ -197,8 +197,8 @@ public class AccountantpageController
             }
         }
 
-        int wage =  Integer.parseInt(wageLabel.getText()) * Integer.parseInt( workhoursLabel.getText());
-        wage += sickpay*baseWorkHours;
+        double wage = ((Integer.parseInt( workhoursLabel.getText()) + sickpay*0.6 + totalLeftDays*baseWorkHours)) * Integer.parseInt(wageLabel.getText());
+        //wage += sickpay*0.6*baseWorkHours+totalLeftDays*baseWorkHours;
         brutto.setText( String.valueOf(wage));
 
         nyugdijLevonas.setText( String.valueOf( wage / 100 * Integer.parseInt( nyugdijPercentage.getText() ) ));
@@ -211,7 +211,7 @@ public class AccountantpageController
 
         netto.setText( String.valueOf(wage - levonas));
         osszeslevonas.setText( String.valueOf(levonas));
-        leavehoursLabel.setText( String.valueOf(totalLeftHours));
+        leavehoursLabel.setText( String.valueOf(totalLeftDays));
         sickpayLabel.setText(String.valueOf(sickpay));
     }
 
@@ -222,10 +222,6 @@ public class AccountantpageController
         LocalDate now = LocalDate.now();
         date2 = now.toString();
         date = date2.split("-",3);
-
-//        System.out.println(date[0]);
-//        System.out.println(date[1]);
-//        System.out.println(date[2]);
 
         return date;
     }

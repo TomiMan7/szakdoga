@@ -31,6 +31,23 @@ public class AccountantInsertController
         {
             Wagemods.insert(firstInput.getText(), secondInput.getText(), thirdInput.getText(), fourthInput.getText(), fifthInput.getText(), sixthInput.getText());
         }
+        clearFields();
+    }
+
+    public void clearFields()
+    {
+        firstInput.setFloatText("");
+        firstInput.setText("");
+        secondInput.setFloatText("");
+        secondInput.setText("");
+        thirdInput.setFloatText("");
+        thirdInput.setText("");
+        fourthInput.setFloatText("");
+        fourthInput.setText("");
+        fifthInput.setFloatText("");
+        fifthInput.setText("");
+        sixthInput.setFloatText("");
+        sixthInput.setText("");
     }
 
     public void setTextFields()
@@ -48,7 +65,7 @@ public class AccountantInsertController
         {
             firstInput.setFloatText("Név:");
             secondInput.setFloatText("Nyugdíj (%):");
-            thirdInput.setFloatText("Társadalom biztosítás (%):");
+            thirdInput.setFloatText("Társadalombiztosítás (%):");
             fourthInput.setFloatText("Személyi jövedelem adó (%):");
             fifthInput.setFloatText("Munkaerőpiaci járulék (%):");
             sixthInput.setFloatText("Nyugdíj takarék:");

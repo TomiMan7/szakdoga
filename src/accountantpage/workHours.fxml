@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.*?>
+<?import com.gluonhq.charm.glisten.control.TextField?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 

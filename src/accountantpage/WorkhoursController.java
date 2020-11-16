@@ -38,5 +38,14 @@ public class WorkhoursController
     {
         String[] datum = datumre();
         Employees.insertWhours(nameInput.getText(), datum[0].toString(), datum[1], datum[2], hourInput.getText());
+
+        clearInputs();
+    }
+
+    public void clearInputs()
+    {
+        nameInput.setText("");
+        hourInput.setText("");
+        date.getEditor().clear();
     }
 }
