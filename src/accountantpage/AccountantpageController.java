@@ -55,8 +55,6 @@ public class AccountantpageController
     public Label brutto;
     public Label osszeslevonas;
     @FXML
-    private javafx.scene.control.MenuItem dbUpdate;
-    @FXML
     private javafx.scene.control.ListView nameList;
     @FXML
     private javafx.scene.control.Label nyugdijPercentage;
@@ -141,78 +139,75 @@ public class AccountantpageController
 
     public void getNameList()
     {
-        ArrayList wagemods = Wagemods.getAll(nameList.getSelectionModel().getSelectedItem().toString());
+        try {
+            ArrayList wagemods = Wagemods.getAll(nameList.getSelectionModel().getSelectedItem().toString());
 
-        employeename.setText(nameList.getSelectionModel().getSelectedItem().toString());
-        nyugdijPercentage.setText(wagemods.get(2).toString());
-        tbPercentage.setText(wagemods.get(3).toString());
-        szjaPercentage.setText(wagemods.get(4).toString());
-        mpjPercentage.setText(wagemods.get(5).toString());
-        takarekPercentage.setText(wagemods.get(6).toString());
+            employeename.setText(nameList.getSelectionModel().getSelectedItem().toString());
+            nyugdijPercentage.setText(wagemods.get(2).toString());
+            tbPercentage.setText(wagemods.get(3).toString());
+            szjaPercentage.setText(wagemods.get(4).toString());
+            mpjPercentage.setText(wagemods.get(5).toString());
+            takarekPercentage.setText(wagemods.get(6).toString());
 
-        ArrayList details = Employees.getEmployeeData("name", nameList.getSelectionModel().getSelectedItem().toString());
+            ArrayList details = Employees.getEmployeeData("name", nameList.getSelectionModel().getSelectedItem().toString());
 
-        int id = Integer.parseInt(details.get(0).toString());
+            int id = Integer.parseInt(details.get(0).toString());
 
-        nameLabel.setText(details.get(1).toString());
-        positionLabel.setText(details.get(4).toString());
-        phoneLabel.setText(details.get(2).toString());
-        emailLabel.setText(details.get(3).toString());
-        wageLabel.setText(details.get(5).toString());
-        int baseWorkHours = Integer.parseInt( details.get(6).toString());
+            nameLabel.setText(details.get(1).toString());
+            positionLabel.setText(details.get(4).toString());
+            phoneLabel.setText(details.get(2).toString());
+            emailLabel.setText(details.get(3).toString());
+            wageLabel.setText(details.get(5).toString());
+            int baseWorkHours = Integer.parseInt(details.get(6).toString());
 
-        String[] currentdates = currentDate();
+            String[] currentdates = currentDate();
 
-        ArrayList workedHours = Employees.getHoursWorked(nameList.getSelectionModel().getSelectedItem().toString(),currentdates[0],currentdates[1] );
+            ArrayList workedHours = Employees.getHoursWorked(nameList.getSelectionModel().getSelectedItem().toString(), currentdates[0], currentdates[1]);
 
-        int allWorkedHours = 0;
-        for(int i = 0; i <= workedHours.size()-1; i++)
-        {
-            allWorkedHours += Integer.parseInt(workedHours.get(i).toString());
-        }
+            int allWorkedHours = 0;
+            for (int i = 0; i <= workedHours.size() - 1; i++) {
+                allWorkedHours += Integer.parseInt(workedHours.get(i).toString());
+            }
 
-        workhoursLabel.setText( String.valueOf(allWorkedHours));
+            workhoursLabel.setText(String.valueOf(allWorkedHours));
 
-        ArrayList leavedHours = Employees.getHoursLeft(id, currentdates[0], currentdates[1]);
-        int totalLeftDays = 0;
-        int skip = 0;
-        int sickpay = 0; //táppénz
-        for(int i = 0; i <= leavedHours.size() - 3; i=i+3)
-        {
-            if(skip <= 2) //minden 3 a tappenzt jelzo bejegyzes ezert skippelunk
-            {
-                if( Integer.parseInt(leavedHours.get(i+2).toString()) == 0) {
-                    totalLeftDays += Integer.parseInt(leavedHours.get(i + 1).toString()) - Integer.parseInt(leavedHours.get(i).toString());
-                    skip++;
-                }
-                else
+            ArrayList leavedHours = Employees.getHoursLeft(id, currentdates[0], currentdates[1]);
+            int totalLeftDays = 0;
+            int skip = 0;
+            int sickpay = 0; //táppénz
+            for (int i = 0; i <= leavedHours.size() - 3; i = i + 3) {
+                if (skip <= 2) //minden 3 a tappenzt jelzo bejegyzes ezert skippelunk
                 {
-                    skip++;
-                    sickpay += Integer.parseInt(leavedHours.get(i + 1).toString()) - Integer.parseInt(leavedHours.get(i).toString());
+                    if (Integer.parseInt(leavedHours.get(i + 2).toString()) == 0) {
+                        totalLeftDays += Integer.parseInt(leavedHours.get(i + 1).toString()) - Integer.parseInt(leavedHours.get(i).toString());
+                        skip++;
+                    } else {
+                        skip++;
+                        sickpay += Integer.parseInt(leavedHours.get(i + 1).toString()) - Integer.parseInt(leavedHours.get(i).toString());
+                    }
+                } else {
+                    skip = 0;
                 }
             }
-            else
-            {
-                skip = 0;
-            }
+
+            double wage = ((Integer.parseInt(workhoursLabel.getText()) + sickpay * 0.6 + totalLeftDays * baseWorkHours)) * Integer.parseInt(wageLabel.getText());
+            //wage += sickpay*0.6*baseWorkHours+totalLeftDays*baseWorkHours;
+            brutto.setText(String.valueOf(wage));
+
+            nyugdijLevonas.setText(String.valueOf(wage / 100 * Integer.parseInt(nyugdijPercentage.getText())));
+            tbLevonas.setText(String.valueOf(wage / 100 * Integer.parseInt(tbPercentage.getText())));
+            szjaLevonas.setText(String.valueOf(wage / 100 * Integer.parseInt(szjaPercentage.getText())));
+            mpjLevonas.setText(String.valueOf(wage / 100 * Float.parseFloat(mpjPercentage.getText())));
+            takarekLevonas.setText(takarekPercentage.getText());//(String.valueOf( wage / 100 * Integer.parseInt( takarekPercentage.getText() ) ));
+
+            float levonas = Float.parseFloat(nyugdijLevonas.getText()) + Float.parseFloat(tbLevonas.getText()) + Float.parseFloat(szjaLevonas.getText()) + Float.parseFloat(mpjLevonas.getText()) + Float.parseFloat(takarekLevonas.getText());
+
+            netto.setText(String.valueOf(wage - levonas));
+            osszeslevonas.setText(String.valueOf(levonas));
+            leavehoursLabel.setText(String.valueOf(totalLeftDays));
+            sickpayLabel.setText(String.valueOf(sickpay));
         }
-
-        double wage = ((Integer.parseInt( workhoursLabel.getText()) + sickpay*0.6 + totalLeftDays*baseWorkHours)) * Integer.parseInt(wageLabel.getText());
-        //wage += sickpay*0.6*baseWorkHours+totalLeftDays*baseWorkHours;
-        brutto.setText( String.valueOf(wage));
-
-        nyugdijLevonas.setText( String.valueOf( wage / 100 * Integer.parseInt( nyugdijPercentage.getText() ) ));
-        tbLevonas.setText(String.valueOf( wage / 100 * Integer.parseInt( tbPercentage.getText() ) ));
-        szjaLevonas.setText(String.valueOf( wage / 100 * Integer.parseInt( szjaPercentage.getText() ) ));
-        mpjLevonas.setText(String.valueOf( wage / 100 * Float.parseFloat( mpjPercentage.getText() ) ));
-        takarekLevonas.setText(takarekPercentage.getText());//(String.valueOf( wage / 100 * Integer.parseInt( takarekPercentage.getText() ) ));
-
-        float levonas =  Float.parseFloat(nyugdijLevonas.getText()) +  Float.parseFloat(tbLevonas.getText()) + Float.parseFloat(szjaLevonas.getText()) + Float.parseFloat(mpjLevonas.getText()) + Float.parseFloat(takarekLevonas.getText());
-
-        netto.setText( String.valueOf(wage - levonas));
-        osszeslevonas.setText( String.valueOf(levonas));
-        leavehoursLabel.setText( String.valueOf(totalLeftDays));
-        sickpayLabel.setText(String.valueOf(sickpay));
+        catch (Exception e){Wagemods.alert("Válasszon ki egy nevet!");}
     }
 
     public String[] currentDate()

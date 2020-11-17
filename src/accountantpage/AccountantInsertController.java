@@ -23,15 +23,16 @@ public class AccountantInsertController
 
     public void insert()
     {
-        if(tableName.getValue().toString().equals("Dolgozók"))
-        {
-            Employees.insertEmployee(firstInput.getText(), secondInput.getText(), thirdInput.getText(), fourthInput.getText(), fifthInput.getText(), sixthInput.getText());
+        try {
+            if (tableName.getValue().toString().equals("Dolgozók")) {
+                Employees.insertEmployee(firstInput.getText(), secondInput.getText(), thirdInput.getText(), fourthInput.getText(), fifthInput.getText(), sixthInput.getText());
+            } else if (tableName.getValue().toString().equals("Levonások")) {
+                Wagemods.insert(firstInput.getText(), secondInput.getText(), thirdInput.getText(), fourthInput.getText(), fifthInput.getText(), sixthInput.getText());
+            }
+            clearFields();
         }
-        else if(tableName.getValue().toString().equals("Levonások"))
-        {
-            Wagemods.insert(firstInput.getText(), secondInput.getText(), thirdInput.getText(), fourthInput.getText(), fifthInput.getText(), sixthInput.getText());
+        catch (Exception e){Wagemods.alert("Válasszon ki mezőt!");
         }
-        clearFields();
     }
 
     public void clearFields()
@@ -71,5 +72,4 @@ public class AccountantInsertController
             sixthInput.setFloatText("Nyugdíj takarék:");
         }
     }
-
 }

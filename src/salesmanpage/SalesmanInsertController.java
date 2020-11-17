@@ -1,6 +1,7 @@
 package salesmanpage;
 
 import Database.Shop;
+import Database.Wagemods;
 import com.gluonhq.charm.glisten.control.TextArea;
 import com.gluonhq.charm.glisten.control.TextField;
 
@@ -22,13 +23,21 @@ public class SalesmanInsertController
 
     public void insertLaptop()
     {
-        ArrayList id = Shop.selectMax("id");
-        Shop.insertLaptops(vendor.getText(), name.getText(), Integer.parseInt(id.get(0).toString()) +1, Integer.parseInt(amount.getText()), description.getText(), Integer.parseInt(availability.getText()));
+        try {
+            ArrayList id = Shop.selectMax("id");
+            Shop.insertLaptops(vendor.getText(), name.getText(), Integer.parseInt(id.get(0).toString()) + 1, Integer.parseInt(amount.getText()), description.getText(), Integer.parseInt(availability.getText()));
+        }catch (Exception e){
+            Wagemods.alert("Töltsön ki minden mezőt!");
+        }
     }
 
     public void insertSpec()
     {
-        Shop.insertSpecification(cpu.getText(), gpu.getText(), ram.getText(), storage.getText(), screen.getText(),price.getText());
+        try {
+            Shop.insertSpecification(cpu.getText(), gpu.getText(), ram.getText(), storage.getText(), screen.getText(), price.getText());
+        }catch (Exception e){
+            Wagemods.alert("Töltsön ki minden mezőt!");
+        }
     }
 
     public void clean()

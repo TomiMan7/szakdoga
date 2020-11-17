@@ -1,6 +1,7 @@
 package salesmanpage;
 
 import Database.Shop;
+import Database.Wagemods;
 import javafx.scene.control.*;
 import java.util.ArrayList;
 
@@ -59,57 +60,64 @@ public class SalesmanUpdateController
 
     public void vendor()
     {
+        try {
             String vendorText = vendor.getSelectionModel().getSelectedItem().toString();
             ArrayList laptops = Shop.getLaptopsData("vendor", vendorText);
             name.getItems().clear();
             setMenus(laptops);
             vendor.setPromptText(vendorText);
+        }catch (Exception e){
+            Wagemods.alert("Töltsön ki minden mezőt!");
+        }
     }
 
     public void upload()
     {
         try {
-            Shop.updateLaptops(vendorOut.getText(), nameOut.getText(), Integer.parseInt(amountOut.getText()), Integer.parseInt(availabilityOut.getText()), description.getText(), "name", nameIn.getText() );
+            Shop.updateLaptops(vendorOut.getText(), nameOut.getText(), Integer.parseInt(amountOut.getText()), Integer.parseInt(availabilityOut.getText()), description.getText(), "name", nameIn.getText());
 
-        }catch (Exception e){e.printStackTrace();}
 
-        ArrayList id = Shop.getLaptopsData("name", nameIn.getText());
+            ArrayList id = Shop.getLaptopsData("name", nameIn.getText());
 
-        Shop.updateSpecification(cpuOut.getText(), gpuOut.getText(), ramOut.getText(), storageOut.getText(), screenOut.getText(), priceOut.getText(), "id", id.get(0).toString());
+            Shop.updateSpecification(cpuOut.getText(), gpuOut.getText(), ramOut.getText(), storageOut.getText(), screenOut.getText(), priceOut.getText(), "id", id.get(0).toString());
 
-        updateSearch();
+            updateSearch();
 
-        vendorOut.setText("");
-        nameOut.setText("");
-        specidOut.setText("");
-        amountOut.setText("");
-        description.setText("");
-        availabilityOut.setText("");
+            vendorOut.setText("");
+            nameOut.setText("");
+            specidOut.setText("");
+            amountOut.setText("");
+            description.setText("");
+            availabilityOut.setText("");
 
-        vendorIn.setText("");
-        nameIn.setText("");
-        specidIn.setText("");
-        amountIn.setText("");
-        description.setText("");
-        availabilityIn.setText("");
+            vendorIn.setText("");
+            nameIn.setText("");
+            specidIn.setText("");
+            amountIn.setText("");
+            description.setText("");
+            availabilityIn.setText("");
 
-        cpuOut.setText("");
-        ramOut.setText("");
-        gpuOut.setText("");
-        storageOut.setText("");
-        screenOut.setText("");
-        priceOut.setText("");
+            cpuOut.setText("");
+            ramOut.setText("");
+            gpuOut.setText("");
+            storageOut.setText("");
+            screenOut.setText("");
+            priceOut.setText("");
 
-        cpuIn.setText("");
-        ramIn.setText("");
-        gpuIn.setText("");
-        storageIn.setText("");
-        screenIn.setText("");
-        priceIn.setText("");
+            cpuIn.setText("");
+            ramIn.setText("");
+            gpuIn.setText("");
+            storageIn.setText("");
+            screenIn.setText("");
+            priceIn.setText("");
+        }catch (Exception e){
+                Wagemods.alert("Töltsön ki minden mezőt!");
+            }
     }
 
     public void Search()
     {
+        try {
             ArrayList laptop = Shop.getLaptopsData("name", name.getSelectionModel().getSelectedItem().toString());
 
             vendorOut.setText(laptop.get(1).toString());
@@ -127,6 +135,9 @@ public class SalesmanUpdateController
             storageOut.setText(spec.get(4).toString());
             screenOut.setText(spec.get(5).toString());
             priceOut.setText(spec.get(6).toString());
+        }catch (Exception e){
+            Wagemods.alert("Töltsön ki minden mezőt a kereséshez!");
+        }
     }
 
     public void setVendorOutText()

@@ -62,34 +62,43 @@ public class AccountantUpdateController
 
     public void searchForEmployee()
     {
-        ArrayList employeeData = Employees.getEmployeeData("name",empNameList.getValue().toString());
+        try {
+            ArrayList employeeData = Employees.getEmployeeData("name", empNameList.getValue().toString());
 
-        clearInput();
+            clearInput();
 
-        first.setText("Név:");
-        second.setText("Telefon:");
-        third.setText("Email:");
-        fourth.setText("Beosztás:");
-        fifth.setText("Br. Bér:");
-        sixth.setText("Munkaórák:");
+            first.setText("Név:");
+            second.setText("Telefon:");
+            third.setText("Email:");
+            fourth.setText("Beosztás:");
+            fifth.setText("Br. Bér:");
+            sixth.setText("Munkaórák:");
 
-        setLabels(employeeData);
+            setLabels(employeeData);
+        }
+        catch (Exception e){
+            Wagemods.alert("Válasszon ki dolgozót!");
+        }
     }
 
     public void searchForWagemods()
     {
-        ArrayList wagemods = Wagemods.getAll(empNameList.getValue().toString());
+        try {
+            ArrayList wagemods = Wagemods.getAll(empNameList.getValue().toString());
 
-        clearInput();
+            clearInput();
 
-        first.setText("Név:");
-        second.setText("Nyugdíj:");
-        third.setText("TB:");
-        fourth.setText("SZJA:");
-        fifth.setText("MPJ:");
-        sixth.setText("Nyugdíj takarék:");
+            first.setText("Név:");
+            second.setText("Nyugdíj:");
+            third.setText("TB:");
+            fourth.setText("SZJA:");
+            fifth.setText("MPJ:");
+            sixth.setText("Nyugdíj takarék:");
 
-        setLabels(wagemods);
+            setLabels(wagemods);
+        }catch (Exception e){
+            Wagemods.alert("Válasszon ki dolgozót!");
+        }
     }
 
     public void firstLabel()
@@ -124,45 +133,40 @@ public class AccountantUpdateController
 
     public void deleteEmployee()
     {
-//        if(second.getText().equals("Telefon:"))
+        try {
             Employees.deleteFromDbEmployees("employees", "name", firstText.getText());
-
-//        else if(second.getText().equals("Nyugdíj:"))
             Wagemods.deleteWage("name", firstText.getText());
-
-//        else
-//            LoginController.alert("Nem lehet törölni!");
-
-        clearInput();
+            clearInput();
+        }catch (Exception e){
+            Wagemods.alert("Válasszon ki dolgozót!");
+        }
     }
     public void updateEmployee()
     {
-        if(second.getText().equals("Telefon:"))
-        {
-            Employees.updateEmployee("name", firstInput.getText(), "name", firstText.getText());
-            Employees.updateEmployee("phone", secondInput.getText(), "phone", secondText.getText());
-            Employees.updateEmployee("email", thirdInput.getText(), "email", thirdText.getText());
-            Employees.updateEmployee("post", fourthInput.getText(), "post", fourthText.getText());
-            Employees.updateEmployee("wage", fifthInput.getText(), "wage", fifthText.getText());
-            Employees.updateEmployee("whours", sixthInput.getText(), "whours", sixthText.getText());
-            fillNames();
-        }
-        else if(second.getText().equals("Nyugdíj:"))
-        {
-            Wagemods.updateColumn("name", firstInput.getText(), "name", firstText.getText());
-            Wagemods.updateColumn("nyugdij", secondInput.getText(), "name", firstText.getText());
-            Wagemods.updateColumn("tb", thirdInput.getText(), "name", firstText.getText());
-            Wagemods.updateColumn("szja", fourthInput.getText(), "name", firstText.getText());
-            Wagemods.updateColumn("mpj", fifthInput.getText(), "name", firstText.getText());
-            Wagemods.updateColumn("nyugdijtakarek", sixthInput.getText(), "name", firstText.getText());
-            fillNames();
-        }
+        try {
+            if (second.getText().equals("Telefon:")) {
+                Employees.updateEmployee("name", firstInput.getText(), "name", firstText.getText());
+                Employees.updateEmployee("phone", secondInput.getText(), "phone", secondText.getText());
+                Employees.updateEmployee("email", thirdInput.getText(), "email", thirdText.getText());
+                Employees.updateEmployee("post", fourthInput.getText(), "post", fourthText.getText());
+                Employees.updateEmployee("wage", fifthInput.getText(), "wage", fifthText.getText());
+                Employees.updateEmployee("whours", sixthInput.getText(), "whours", sixthText.getText());
+                fillNames();
+            } else if (second.getText().equals("Nyugdíj:")) {
+                Wagemods.updateColumn("name", firstInput.getText(), "name", firstText.getText());
+                Wagemods.updateColumn("nyugdij", secondInput.getText(), "name", firstText.getText());
+                Wagemods.updateColumn("tb", thirdInput.getText(), "name", firstText.getText());
+                Wagemods.updateColumn("szja", fourthInput.getText(), "name", firstText.getText());
+                Wagemods.updateColumn("mpj", fifthInput.getText(), "name", firstText.getText());
+                Wagemods.updateColumn("nyugdijtakarek", sixthInput.getText(), "name", firstText.getText());
+                fillNames();
+            } else {
+                LoginController.alert("Nem megfelelő update!");
+            }
 
-        else
-        {
-            LoginController.alert("Nem megfelelő update!");
+            clearInput();
+        }catch (Exception e){
+            Wagemods.alert("Válasszon ki dolgozót!");
         }
-
-        clearInput();
     }
 }

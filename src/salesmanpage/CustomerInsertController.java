@@ -1,6 +1,7 @@
 package salesmanpage;
 
 import Database.Shop;
+import Database.Wagemods;
 import com.gluonhq.charm.glisten.control.TextField;
 import javafx.scene.control.CheckBox;
 
@@ -20,25 +21,27 @@ public class CustomerInsertController
 
     public void insertCustomer()
     {
-        String cash = "0";
-        if(paymentMethod.isSelected())
-            cash = "1";
+        try {
+            String cash = "0";
+            if (paymentMethod.isSelected())
+                cash = "1";
 
-        ArrayList newCustomer = new ArrayList();
-        ArrayList customer = Shop.getACustomer(name.getText(), phone.getText(), email.getText(), city.getText(), street.getText(), housenumber.getText());
+            ArrayList newCustomer = new ArrayList();
+            ArrayList customer = Shop.getACustomer(name.getText(), phone.getText(), email.getText(), city.getText(), street.getText(), housenumber.getText());
 
-        if(customer.size() == 0)
+            if (customer.size() == 0) {
+                Shop.insertCustomer(name.getText(), phone.getText(), email.getText(), city.getText(), street.getText(), housenumber.getText());
+                newCustomer = Shop.getACustomer(name.getText(), phone.getText(), email.getText(), city.getText(), street.getText(), housenumber.getText());
+                Shop.insertOrders(Integer.parseInt(newCustomer.get(0).toString()), Integer.parseInt(SalesmanpageController.main.get(0).toString()), cash, amount.getText(), String.valueOf(Integer.parseInt(SalesmanpageController.main.get(9).toString()) * Integer.parseInt(amount.getText())), java.time.LocalDate.now().toString());
+            } else {
+                Shop.insertOrders(Integer.parseInt(customer.get(0).toString()), Integer.parseInt(SalesmanpageController.main.get(0).toString()), cash, amount.getText(), String.valueOf(Integer.parseInt(SalesmanpageController.main.get(9).toString()) * Integer.parseInt(amount.getText())), java.time.LocalDate.now().toString());
+            }
+
+            clearInputs();
+        }catch (Exception e)
         {
-            Shop.insertCustomer(name.getText(), phone.getText(), email.getText(), city.getText(), street.getText(), housenumber.getText());
-            newCustomer = Shop.getACustomer(name.getText(), phone.getText(), email.getText(), city.getText(), street.getText(), housenumber.getText());
-            Shop.insertOrders( Integer.parseInt(newCustomer.get(0).toString()), Integer.parseInt(SalesmanpageController.main.get(0).toString()), cash, amount.getText(), String.valueOf(Integer.parseInt(SalesmanpageController.main.get(9).toString()) * Integer.parseInt(amount.getText())), java.time.LocalDate.now().toString() );
+            Wagemods.alert("Töltsön ki minden mezőt!");
         }
-        else
-        {
-            Shop.insertOrders(Integer.parseInt(customer.get(0).toString()), Integer.parseInt(SalesmanpageController.main.get(0).toString()), cash, amount.getText(), String.valueOf(Integer.parseInt(SalesmanpageController.main.get(9).toString()) * Integer.parseInt(amount.getText())), java.time.LocalDate.now().toString());
-        }
-
-        clearInputs();
     }
 
     public void clearInputs()

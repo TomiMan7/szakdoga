@@ -195,15 +195,6 @@ public class SalesmanpageController
         {
             price.getItems().add(prices.get(i).toString());
         }
-//        name.setPromptText("Név");
-//        vendor.setPromptText("Gyártó");
-//        cpu.setPromptText("CPU");
-//        gpu.setPromptText("GPU");
-//        ram.setPromptText("RAM");
-//        storage.setPromptText("Tárhely");
-//        screen.setPromptText("Kijelző");
-//        price.setPromptText("Ár");
-
     }
 
     public void search()
@@ -218,7 +209,7 @@ public class SalesmanpageController
         String pricedata = "";
         try
         {
-            cpudata = cpu.getValue().toString(); //getSelectionModel().getSelectedItem().toString();
+            cpudata = cpu.getValue().toString();
             gpudata = gpu.getValue().toString();
             ramdata = ram.getValue().toString();
             storagedata = storage.getValue().toString();
@@ -226,12 +217,15 @@ public class SalesmanpageController
             vendordata = vendor.getValue().toString();
             namedata = name.getValue().toString();
             pricedata = price.getValue().toString();
-        }catch ( Exception e){}
+
 
         ArrayList laptops = Shop.getLaptopsForSell(cpudata,gpudata,ramdata,storagedata,screendata, vendordata, namedata, pricedata);
 
         list.getItems().clear();
         populateList(laptops);
+        }catch (Exception e){
+            Wagemods.alert("Töltsön ki minden mezőt!");
+        }
     }
 
     public void populateList(ArrayList laptops)

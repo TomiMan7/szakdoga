@@ -1,6 +1,5 @@
 package salesmanpage;
 
-import Database.Employees;
 import Database.Shop;
 import Database.Wagemods;
 import com.gluonhq.charm.glisten.control.TextField;
@@ -11,8 +10,6 @@ import java.util.ArrayList;
 
 public class CustomerUpdateController
 {
-
-
     public TextField customer;
     public TextField phone;
     public TextField email;
@@ -49,7 +46,7 @@ public class CustomerUpdateController
             setOrders(orderIds, laptopVendorName);
         }
         catch (Exception e){
-            clearLabels();
+            clearLabelsSmall();
             Wagemods.alert("Nincs ilyen korábbi vásárló!");
         }
     }
@@ -105,27 +102,31 @@ public class CustomerUpdateController
 
     public void getOrderDetails()
     {
-        String selectedOrder = list.getSelectionModel().getSelectedItems().toString();
-        selectedOrder = selectedOrder.substring(1, selectedOrder.length()-1); // leszedi a [ ] karakterekt az elejerol es a vegerol
-        String[] temp = selectedOrder.split( " ", 3);
+        try {
+            String selectedOrder = list.getSelectionModel().getSelectedItems().toString();
+            selectedOrder = selectedOrder.substring(1, selectedOrder.length() - 1); // leszedi a [ ] karakterekt az elejerol es a vegerol
+            String[] temp = selectedOrder.split(" ", 3);
 
-        orderID.setText(temp[0]);
-        vendor.setText(temp[1]);
-        name.setText(temp[2]);
+            orderID.setText(temp[0]);
+            vendor.setText(temp[1]);
+            name.setText(temp[2]);
 
-        ArrayList order = Shop.getOrdersData("id", temp[0]);
-        System.out.println("ORDER");
-        order.forEach(n -> System.out.println(n));
+            ArrayList order = Shop.getOrdersData("id", temp[0]);
+            System.out.println("ORDER");
+            order.forEach(n -> System.out.println(n));
 
-        ArrayList laptop = Shop.getALaptopAll(temp[1], temp[2]); //4tol spec adat van benne
-        cpu.setText(laptop.get(4).toString());
-        gpu.setText(laptop.get(5).toString());
-        ram.setText(laptop.get(6).toString());
-        storage.setText(laptop.get(7).toString());
-        screen.setText(laptop.get(8).toString());
-        amount.setText(order.get(4).toString());
-        amountBefore.setText(order.get(4).toString());
-        price.setText(order.get(5).toString());
+            ArrayList laptop = Shop.getALaptopAll(temp[1], temp[2]); //4tol spec adat van benne
+            cpu.setText(laptop.get(4).toString());
+            gpu.setText(laptop.get(5).toString());
+            ram.setText(laptop.get(6).toString());
+            storage.setText(laptop.get(7).toString());
+            screen.setText(laptop.get(8).toString());
+            amount.setText(order.get(4).toString());
+            amountBefore.setText(order.get(4).toString());
+            price.setText(order.get(5).toString());
+        }catch (Exception e){
+            Wagemods.alert("Töltsön ki minden mezőt!");
+        }
     }
 
     public void clearLabels(){
@@ -149,12 +150,32 @@ public class CustomerUpdateController
         list.getItems().clear();
     }
 
+    public void clearLabelsSmall(){
+        name.setText("");
+        vendor.setText("");
+        cpu.setText("");
+        gpu.setText("");
+        ram.setText("");
+        storage.setText("");
+        screen.setText("");
+        price.setText("");
+        amount.setText("");
+        orderID.setText("");
+        amountBefore.setText("");
+        list.getItems().clear();
+    }
+
     public void update()
     {
-        float soloPrice = Float.parseFloat(price.getText()) / Float.parseFloat(amountBefore.getText());
-        Shop.updateOrders("finalprice", String.valueOf(soloPrice * Integer.parseInt(amount.getText())), "id", orderID.getText());
-        Shop.updateOrders("quantity", amount.getText(), "id", orderID.getText());
-        clearLabels();
+        try {
+            float soloPrice = Float.parseFloat(price.getText()) / Float.parseFloat(amountBefore.getText());
+            Shop.updateOrders("finalprice", String.valueOf(soloPrice * Integer.parseInt(amount.getText())), "id", orderID.getText());
+            Shop.updateOrders("quantity", amount.getText(), "id", orderID.getText());
+            clearLabels();
+        }
+        catch (Exception e){
+            Wagemods.alert("Válasszon ki rendelést törlésre");
+        }
     }
 
     public void delete()

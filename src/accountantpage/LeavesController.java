@@ -1,6 +1,7 @@
 package accountantpage;
 
 import Database.Employees;
+import Database.Wagemods;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ListView;
@@ -46,11 +47,15 @@ public class LeavesController
         else
             tappenz = 0;
 
-        ArrayList workerid = Employees.getEmployeeData("name", nameList.getSelectionModel().getSelectedItem().toString());
+        try {
+            ArrayList workerid = Employees.getEmployeeData("name", nameList.getSelectionModel().getSelectedItem().toString());
 
-        Employees.insertLeaves(datumstart[0], datumstart[1], datumstart[2], datumstop[0], datumstop[1], datumstop[2], tappenz,  Integer.parseInt( workerid.get(0).toString() ));
+            Employees.insertLeaves(datumstart[0], datumstart[1], datumstart[2], datumstop[0], datumstop[1], datumstop[2], tappenz, Integer.parseInt(workerid.get(0).toString()));
 
-        clearInputs();
+            clearInputs();
+        }catch (Exception e){
+            Wagemods.alert("Válasszon ki dolgozót!");
+        }
     }
 
     public void clearInputs()

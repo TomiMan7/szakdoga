@@ -1,6 +1,7 @@
 package accountantpage;
 
 import Database.Employees;
+import Database.Wagemods;
 import com.gluonhq.charm.glisten.control.TextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -26,7 +27,11 @@ public class WorkhoursController
 
     public void setNameInput()
     {
-        nameInput.setText(nameList.getSelectionModel().getSelectedItem().toString());
+        try {
+            nameInput.setText(nameList.getSelectionModel().getSelectedItem().toString());
+        }catch (Exception e){
+            Wagemods.alert("Válasszon ki dolgozót!");
+        }
     }
 
     public String[] datumre()
@@ -36,10 +41,13 @@ public class WorkhoursController
 
     public void insert()
     {
-        String[] datum = datumre();
-        Employees.insertWhours(nameInput.getText(), datum[0].toString(), datum[1], datum[2], hourInput.getText());
-
-        clearInputs();
+        try {
+            String[] datum = datumre();
+            Employees.insertWhours(nameInput.getText(), datum[0].toString(), datum[1], datum[2], hourInput.getText());
+            clearInputs();
+        }catch (Exception e){
+            Wagemods.alert("Válassza ki a megfelelő adatot!");
+        }
     }
 
     public void clearInputs()

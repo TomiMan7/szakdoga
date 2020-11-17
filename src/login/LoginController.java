@@ -39,17 +39,17 @@ public class LoginController
 
     public void LoginAs()
     {
-//        ArrayList name = Employees.getPermissionsData("name", "name", username.getText());
-//        ArrayList pass = Employees.getPermissionsData("password", "password", password.getText());
-//
-//        int loginas = 0;
-//        if (combobox.getValue().toString().equals("Accountant"))
-//            loginas = 4;
-//        else if (combobox.getValue().toString().equals("Salesman"))
-//            loginas = 3;
-//
-//        if ( name.contains(username.getText()) && pass.contains(password.getText()) && name.get(loginas - 1).equals(1))
-//        {
+        ArrayList name = Employees.getPermissionsData("name", "name", username.getText());
+        ArrayList pass = Employees.getPermissionsData("password", "password", password.getText());
+
+        int loginas = 0;
+        if (combobox.getValue().toString().equals("Accountant"))
+            loginas = 4;
+        else if (combobox.getValue().toString().equals("Salesman"))
+            loginas = 3;
+
+        if ( name.contains(username.getText()) && pass.contains(password.getText()) && name.get(loginas - 1).equals(1))
+        {
             if (combobox.getValue().toString().equals("Könyvelő")) {
                 try {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/accountantpage/accountantpage.fxml"));
@@ -84,14 +84,14 @@ public class LoginController
                 }
             }
             else {
-                alert("Please select a category to log in!");
+                alert("Kérem válasszon ki egy belépési kategóriát!");
             }
         }
-//        else
-//        {
-//            alert("Wrong username/password or missing information!");
-//        }
-//    }
+        else
+        {
+            alert("Rossz felhasználónév/jelszó vagy hiányzó adatok!");
+        }
+    }
 
 
 }
