@@ -42,13 +42,13 @@ public class LoginController
         ArrayList name = Employees.getPermissionsData("name", "name", username.getText());
         ArrayList pass = Employees.getPermissionsData("password", "password", password.getText());
 
-        int loginas = 0;
-        if (combobox.getValue().toString().equals("Accountant"))
-            loginas = 4;
-        else if (combobox.getValue().toString().equals("Salesman"))
-            loginas = 3;
+        int loginas = 0; // csak inicializalas miatt 0
+        if (combobox.getValue().toString().equals("Könyvelő"))
+            loginas = 3; //a DB-ben a konyvelo permission helye
+        else if (combobox.getValue().toString().equals("Értékesítő"))
+            loginas = 2; //a DB-ben az elado permission helye
 
-        if ( name.contains(username.getText()) && pass.contains(password.getText()) && name.get(loginas - 1).equals(1))
+        if ( name.contains(username.getText()) && pass.contains(password.getText()) && name.get(loginas).equals(1))
         {
             if (combobox.getValue().toString().equals("Könyvelő")) {
                 try {

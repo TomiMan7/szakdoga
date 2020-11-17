@@ -190,7 +190,7 @@ public class AccountantpageController
                 }
             }
 
-            double wage = ((Integer.parseInt(workhoursLabel.getText()) + sickpay * 0.6 + totalLeftDays * baseWorkHours)) * Integer.parseInt(wageLabel.getText());
+            double wage = ((Integer.parseInt(workhoursLabel.getText()) + sickpay * 0.6 * baseWorkHours + totalLeftDays * baseWorkHours)) * Integer.parseInt(wageLabel.getText());
             //wage += sickpay*0.6*baseWorkHours+totalLeftDays*baseWorkHours;
             brutto.setText(String.valueOf(wage));
 
