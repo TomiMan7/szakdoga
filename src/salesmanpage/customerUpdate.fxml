@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.TextField?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import com.gluonhq.charm.glisten.control.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="salesmanpage.CustomerUpdateController">
+<VBox prefHeight="550.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="salesmanpage.CustomerUpdateController">
     <children>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="430.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
             <children>
                 <TextField fx:id="customer" floatText="Név:" layoutX="10.0" layoutY="30.0" prefWidth="150.0" />
                 <TextField fx:id="phone" floatText="Telefonszám:" layoutX="10.0" layoutY="80.0" prefWidth="150.0" />
-                <TextField fx:id="email" floatText="E-mail:" layoutX="10.0" layoutY="180.0" prefWidth="150.0" />
-                <TextField fx:id="city" floatText="Város:" layoutX="10.0" layoutY="130.0" prefWidth="150.0" />
+                <TextField fx:id="city" floatText="Város:" layoutX="10.0" layoutY="180.0" prefWidth="150.0" />
+                <TextField fx:id="email" floatText="E-mail:" layoutX="10.0" layoutY="130.0" prefWidth="150.0" />
                 <TextField fx:id="street" floatText="Utca:" layoutX="10.0" layoutY="230.0" prefWidth="150.0" />
                 <TextField fx:id="hnumber" floatText="Házszám:" layoutX="10.0" layoutY="280.0" prefWidth="150.0" />
-                <Button layoutX="10.0" layoutY="360.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Vásárló keresése" />
+                <Button layoutX="10.0" layoutY="360.0" mnemonicParsing="false" onAction="#getOrders" prefHeight="45.0" prefWidth="150.0" text="Vásárlói rendelések keresése" textAlignment="CENTER" wrapText="true" />
                 <ScrollPane layoutX="200.0" layoutY="70.0">
                     <content>
-                        <ListView fx:id="list" prefHeight="442.0" prefWidth="300.0" />
+                        <ListView fx:id="list" onMouseClicked="#getOrderDetails" prefHeight="442.0" prefWidth="300.0" />
                     </content>
                 </ScrollPane>
                 <Label layoutX="232.0" layoutY="30.0" text="Korábbi vásárlások:" />
@@ -42,9 +38,12 @@
                 <Label fx:id="storage" layoutX="615.0" layoutY="310.0" prefWidth="250.0" textAlignment="CENTER" />
                 <Label fx:id="screen" layoutX="615.0" layoutY="360.0" prefWidth="250.0" textAlignment="CENTER" />
                 <Label fx:id="price" layoutX="615.0" layoutY="460.0" prefWidth="250.0" textAlignment="CENTER" />
-                <TextField fx:id="amount" floatText="Mennyiség:" layoutX="615.0" layoutY="390.0" />
-                <Button layoutX="10.0" layoutY="410.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Vásárlás frissítése" />
-                <Button layoutX="10.0" layoutY="460.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Kijelölt vásárlás törlése" textAlignment="CENTER" wrapText="true" />
+                <TextField fx:id="amount" layoutX="615.0" layoutY="390.0" promptText="Mennyiség:" />
+                <Button layoutX="10.0" layoutY="420.0" mnemonicParsing="false" onAction="#update" prefHeight="30.0" prefWidth="150.0" text="Vásárlás frissítése" />
+                <Button layoutX="10.0" layoutY="460.0" mnemonicParsing="false" onAction="#delete" prefHeight="50.0" prefWidth="150.0" text="Kijelölt vásárlás törlése" textAlignment="CENTER" wrapText="true" />
+            <Label layoutX="530.0" layoutY="510.0" prefWidth="75.0" text="Vásárlás ID:" />
+            <Label fx:id="orderID" layoutX="615.0" layoutY="510.0" prefWidth="250.0" />
+            <Label fx:id="amountBefore" layoutX="781.0" layoutY="410.0" prefWidth="100.0" />
             </children>
         </AnchorPane>
     </children>

@@ -12,7 +12,7 @@
                 <Menu mnemonicParsing="false" text="Adatbázis műveletek">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#addNewLaptopScreen" text="Új laptop felvitele" />
-                        <MenuItem mnemonicParsing="false" onAction="#dbUpdateScreen" text="Laptop frissítése/törlése" />
+                        <MenuItem mnemonicParsing="false" onAction="#dbUpdateScreen" text="Laptop frissítése" />
                         <MenuItem mnemonicParsing="false" onAction="#updateCustomerScreen" text="Vevő adatok frissítése/Rendelés törlése" />
                     </items>
                 </Menu>

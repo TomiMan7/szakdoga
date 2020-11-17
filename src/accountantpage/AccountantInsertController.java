@@ -56,7 +56,7 @@ public class AccountantInsertController
         {
             firstInput.setFloatText("Név:");
             secondInput.setFloatText("Telefon:");
-            thirdInput.setFloatText("Email:");
+            thirdInput.setFloatText("E-mail:");
             fourthInput.setFloatText("Beosztás:");
             fifthInput.setFloatText("Br. Bér:");
             sixthInput.setFloatText("Munkaórák:");

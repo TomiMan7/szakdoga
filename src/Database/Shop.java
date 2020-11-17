@@ -423,8 +423,9 @@ public class Shop
     }
 
     //table orders
-    public static void getOrdersData(String where, String equals)
+    public static ArrayList getOrdersData(String where, String equals)
     {
+        ArrayList result = new ArrayList();
         try
         {
             PreparedStatement st = conn.prepareStatement("select * from orders where "+ where +" = ?");
@@ -432,15 +433,35 @@ public class Shop
             rs = st.executeQuery();
             while(rs.next())
             {
-                System.out.println(rs.getInt(1)+" "+rs.getInt(2)+" "+rs.getInt(3)+
-                        " "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)
-                        +" "+rs.getString(7));
-                //TODO AFTER GUI
+                result.add(rs.getInt(1));
+                result.add(rs.getInt(2));
+                result.add(rs.getInt(3));
+                result.add(rs.getString(4));
+                result.add(rs.getString(5));
+                result.add(rs.getString(6));
+                result.add(rs.getString(7));
             }
         }
         catch (SQLException e)
         {
-//             alert("Cant get everything from table orders")
+//             alert("Cant get everything from table orders");
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static void deleteOrder(String id)
+    {
+        try
+        {
+            PreparedStatement st = conn.prepareStatement("delete from orders where id = ?");
+            st.setString(1,id);
+
+            st.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            //alert("Cant delete the given values from table shop");
             e.printStackTrace();
         }
     }
