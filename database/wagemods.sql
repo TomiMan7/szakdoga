@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1:3306
--- Létrehozás ideje: 2020. Nov 16. 15:59
+-- Létrehozás ideje: 2020. Nov 18. 12:48
 -- Kiszolgáló verziója: 5.7.26
 -- PHP verzió: 7.2.18
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `wagemods` (
   `mpj` varchar(255) NOT NULL,
   `nyugdijtakarek` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- A tábla adatainak kiíratása `wagemods`
@@ -48,7 +48,8 @@ CREATE TABLE IF NOT EXISTS `wagemods` (
 
 INSERT INTO `wagemods` (`id`, `name`, `nyugdij`, `tb`, `szja`, `mpj`, `nyugdijtakarek`) VALUES
 (1, 'shopOwner', '10', '7', '15', '1.5', '24'),
-(2, 'Dolgozo', '10', '7', '15', '1.5', '20');
+(2, 'Dolgozo', '10', '7', '15', '1.5', '20'),
+(3, 'Raktaros', '10', '7', '15', '1.5', '20');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

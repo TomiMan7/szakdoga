@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1:3306
--- Létrehozás ideje: 2020. Nov 16. 15:58
+-- Létrehozás ideje: 2020. Nov 18. 12:48
 -- Kiszolgáló verziója: 5.7.26
 -- PHP verzió: 7.2.18
 
@@ -40,14 +40,16 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `street` varchar(255) NOT NULL,
   `hnumber` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- A tábla adatainak kiíratása `customer`
 --
 
 INSERT INTO `customer` (`id`, `name`, `phone`, `email`, `city`, `street`, `hnumber`) VALUES
-(1, 'Customer1', '+3622222222', 'customeremail@customer.hu', 'piac', 'street', '7');
+(1, 'Customer1', '+3622222222', 'customeremail@customer.hu', 'piac', 'street', '7'),
+(4, 'Gulyás Viktória', '+3620444444', 'vikiemail@vikiemail.hu', 'Debrecen', 'utca', '2'),
+(5, 'Tomi', '+367777777', 'email@email.hu', 'Debrecen', 'Piac', '2');
 
 -- --------------------------------------------------------
 
@@ -97,14 +99,17 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `finalprice` varchar(255) NOT NULL,
   `date` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- A tábla adatainak kiíratása `orders`
 --
 
 INSERT INTO `orders` (`id`, `customerid`, `laptopid`, `paymentmethod`, `quantity`, `finalprice`, `date`) VALUES
-(1, 1, 1, 'cash', '1', '500', 'CANCELED');
+(1, 1, 1, '1', '1', '500', 'CANCELED'),
+(2, 1, 2, '1', '2', '1600', '2020-11-16'),
+(3, 4, 4, '0', '3', '2999997', '2020-11-16'),
+(4, 5, 2, '1', '3', '2400.0', '2020-11-17');
 
 -- --------------------------------------------------------
 
