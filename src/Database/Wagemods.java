@@ -14,7 +14,7 @@ public class Wagemods
     public static void alert(String message)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Stuff");
+        alert.setTitle("Információ");
         alert.setHeight(500);
         alert.setWidth(200);
         alert.setContentText(message);

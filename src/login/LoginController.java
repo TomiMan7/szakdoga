@@ -29,7 +29,7 @@ public class LoginController
     public static void alert(String message)
     {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Alert!");
+        alert.setTitle("Információ!!");
         alert.setHeight(300);
         alert.setWidth(200);
         alert.setContentText(message);
