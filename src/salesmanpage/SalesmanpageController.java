@@ -128,7 +128,7 @@ public class SalesmanpageController
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root1));
             stage.resizableProperty().setValue(false);
-            stage.setTitle("Vevő adatok frissítése/Rendelés törlése");
+            stage.setTitle("Rendelés frissítése/törlése");
             stage.show();
 
         } catch (IOException e) {

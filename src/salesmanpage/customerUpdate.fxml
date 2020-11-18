@@ -38,7 +38,7 @@
                 <Label fx:id="storage" layoutX="615.0" layoutY="310.0" prefWidth="250.0" textAlignment="CENTER" />
                 <Label fx:id="screen" layoutX="615.0" layoutY="360.0" prefWidth="250.0" textAlignment="CENTER" />
                 <Label fx:id="price" layoutX="615.0" layoutY="460.0" prefWidth="250.0" textAlignment="CENTER" />
-                <TextField fx:id="amount" layoutX="615.0" layoutY="390.0" promptText="Mennyiség:" />
+                <TextField fx:id="amount" layoutX="615.0" layoutY="405.0" promptText="Mennyiség:" />
                 <Button layoutX="10.0" layoutY="420.0" mnemonicParsing="false" onAction="#update" prefHeight="30.0" prefWidth="150.0" text="Vásárlás frissítése" />
                 <Button layoutX="10.0" layoutY="460.0" mnemonicParsing="false" onAction="#delete" prefHeight="50.0" prefWidth="150.0" text="Kijelölt vásárlás törlése" textAlignment="CENTER" wrapText="true" />
             <Label layoutX="530.0" layoutY="510.0" prefWidth="75.0" text="Vásárlás ID:" />
