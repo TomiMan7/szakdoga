@@ -52,7 +52,7 @@ public class SalesmanpageController
 //            stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(root1));
                 stage.resizableProperty().setValue(false);
-                stage.setTitle("Laptop frissítése/törlése");
+                stage.setTitle("Laptop frissítése");
                 stage.setOnCloseRequest(event ->
                 {
                     updateOpen = false;
