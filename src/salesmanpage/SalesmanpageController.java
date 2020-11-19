@@ -197,7 +197,7 @@ public class SalesmanpageController
         }
     }
 
-    public void search()
+    public void search ()
     {
         String cpudata = "";
         String gpudata = "";
@@ -207,8 +207,8 @@ public class SalesmanpageController
         String vendordata = "";
         String namedata = "";
         String pricedata = "";
-        try
-        {
+
+        try {
             cpudata = cpu.getValue().toString();
             gpudata = gpu.getValue().toString();
             ramdata = ram.getValue().toString();
@@ -217,15 +217,13 @@ public class SalesmanpageController
             vendordata = vendor.getValue().toString();
             namedata = name.getValue().toString();
             pricedata = price.getValue().toString();
+        }catch (Exception e){}
 
+            ArrayList laptops = Shop.getLaptopsForSell(cpudata, gpudata, ramdata, storagedata, screendata, vendordata, namedata, pricedata);
 
-        ArrayList laptops = Shop.getLaptopsForSell(cpudata,gpudata,ramdata,storagedata,screendata, vendordata, namedata, pricedata);
+            list.getItems().clear();
+            populateList(laptops);
 
-        list.getItems().clear();
-        populateList(laptops);
-        }catch (Exception e){
-            Wagemods.alert("Töltsön ki minden mezőt!");
-        }
     }
 
     public void populateList(ArrayList laptops)

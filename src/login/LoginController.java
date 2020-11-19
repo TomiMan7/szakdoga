@@ -1,6 +1,7 @@
 package login;
 
 import Database.Employees;
+import Database.Wagemods;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,6 +40,7 @@ public class LoginController
 
     public void LoginAs()
     {
+        try {
         ArrayList name = Employees.getPermissionsData("name", "name", username.getText());
         ArrayList pass = Employees.getPermissionsData("password", "password", password.getText());
 
@@ -91,7 +93,9 @@ public class LoginController
         {
             alert("Rossz felhasználónév/jelszó vagy hiányzó adatok!");
         }
+    }catch (Exception e)
+        {
+            Wagemods.alert("Nem sikerült csatlakozni az adatbázishoz!");
+        }
     }
-
-
 }
