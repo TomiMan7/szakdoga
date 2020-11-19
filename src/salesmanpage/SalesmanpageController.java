@@ -157,40 +157,49 @@ public class SalesmanpageController
         ArrayList screens = Shop.getLaptopsScreen();
         ArrayList prices = Shop.getLaptopsPrice();
 
+        vendor.getItems().add("");
         for(int i = 0; i <= vendors.size() - 1; i++)
         {
             vendor.getItems().add(vendors.get(i).toString());
         }
+
+        name.getItems().add("");
         for(int i = 0; i <= names.size() - 1; i++)
         {
             name.getItems().add(names.get(i).toString());
         }
 
+        cpu.getItems().add("");
         for(int i = 0; i <= cpus.size() - 1; i++)
         {
             cpu.getItems().add(cpus.get(i).toString());
         }
-
+        
+        gpu.getItems().add("");
         for(int i = 0; i <= gpus.size() - 1; i++)
         {
             gpu.getItems().add(gpus.get(i).toString());
         }
 
+        ram.getItems().add("");
         for(int i = 0; i <= rams.size() - 1; i++)
         {
             ram.getItems().add(rams.get(i).toString());
         }
 
+        storage.getItems().add("");
         for(int i = 0; i <= storages.size() - 1; i++)
         {
             storage.getItems().add(storages.get(i).toString());
         }
 
+        screen.getItems().add("");
         for(int i = 0; i <= screens.size() - 1; i++)
         {
             screen.getItems().add(screens.get(i).toString());
         }
 
+        price.getItems().add("");
         for(int i = 0; i <= prices.size() - 1; i++)
         {
             price.getItems().add(prices.get(i).toString());
