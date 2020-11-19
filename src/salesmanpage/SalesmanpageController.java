@@ -210,14 +210,28 @@ public class SalesmanpageController
 
         try {
             cpudata = cpu.getValue().toString();
+        }catch (Exception e){ cpudata = "";}
+        try {
             gpudata = gpu.getValue().toString();
+        }catch (Exception e){ gpudata = "";}
+        try {
             ramdata = ram.getValue().toString();
+        }catch (Exception e){ ramdata = "";}
+        try {
             storagedata = storage.getValue().toString();
+        }catch (Exception e){storagedata = "";}
+        try {
             screendata = screen.getValue().toString();
+        }catch (Exception e){screendata = "";}
+        try {
             vendordata = vendor.getValue().toString();
+        }catch (Exception e){vendordata = "";}
+        try {
             namedata = name.getValue().toString();
+        }catch (Exception e){namedata = "";}
+        try {
             pricedata = price.getValue().toString();
-        }catch (Exception e){}
+        }catch (Exception e){pricedata = "";}
 
             ArrayList laptops = Shop.getLaptopsForSell(cpudata, gpudata, ramdata, storagedata, screendata, vendordata, namedata, pricedata);
 
