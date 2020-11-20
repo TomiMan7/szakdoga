@@ -174,7 +174,7 @@ public class SalesmanpageController
         {
             cpu.getItems().add(cpus.get(i).toString());
         }
-        
+
         gpu.getItems().add("");
         for(int i = 0; i <= gpus.size() - 1; i++)
         {
